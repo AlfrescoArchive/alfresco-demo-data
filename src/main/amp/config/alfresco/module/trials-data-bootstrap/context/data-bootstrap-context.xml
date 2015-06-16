@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<beans>
+
+  <bean id="acp.users.bootstrap" class="org.alfresco.repo.module.ImporterModuleComponent"
+        parent="module.baseComponent">
+    <property name="moduleId" value="abc"/>
+    <property name="name" value="${project.artifactId}-booststrapUsers"/>
+    <property name="description" value="Creates users during Alfresco bootstrap"/>
+    <property name="sinceVersion" value="0.1"/>
+    <property name="appliesFromVersion" value="0.1"/>
+    <property name="importer" ref="userBootstrap"/>
+    <property name="bootstrapViews">
+      <list>
+        <props>
+          <prop key="path">/${alfresco_user_store.system_container.childname}/sys:people</prop>
+          <prop key="location">alfresco/module/${project.artifactId}/bootstrap/users.xml</prop>
+        </props>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="acp.authorities.bootstrap" class="org.alfresco.repo.module.ImporterModuleComponent"
+        parent="module.baseComponent" depends-on="acp.users.bootstrap">
+    <property name="moduleId" value="${project.artifactId}"/>
+    <property name="name" value="${project.artifactId}-booststrapAuth"/>
+    <property name="description" value="Creates groups during Alfresco bootstrap"/>
+    <property name="sinceVersion" value="0.1"/>
+    <property name="appliesFromVersion" value="0.1"/>
+    <property name="importer" ref="spacesBootstrap"/>
+    <property name="bootstrapViews">
+      <list>
+        <props>
+          <prop key="path">/${alfresco_user_store.system_container.childname}/sys:authorities</prop>
+          <prop key="location">alfresco/module/${project.artifactId}/bootstrap/groups.xml</prop>
+        </props>
+        <props>
+          <prop key="path">
+            /${alfresco_user_store.system_container.childname}/${alfresco_user_store.user_container.childname}
+          </prop>
+          <prop key="location">alfresco/module/${project.artifactId}/bootstrap/people.xml</prop>
+        </props>
+        <props>
+          <prop key="path">
+            /${alfresco_user_store.system_container.childname}/${alfresco_user_store.user_container.childname}
+          </prop>
+          <prop key="location">alfresco/module/${project.artifactId}/bootstrap/group-members.xml</prop>
+        </props>
+        <props>
+          <prop key="path">/${alfresco_user_store.system_container.childname}/sys:authorities</prop>
+          <prop key="location">alfresco/module/${project.artifactId}/bootstrap/group-zones.xml</prop>
+        </props>
+      </list>
+    </property>
+  </bean>
+
+  <!-- <bean id="acp.contents.bootstrap" class="org.alfresco.repo.module.ImporterModuleComponent"
+        parent="module.baseComponent" depends-on="acp.authorities.bootstrap">
+    <property name="moduleId" value="${project.artifactId}"/>
+    <property name="name" value="${project.artifactId}-booststrapContents"/>
+    <property name="description" value="Creates cm:folder and cm:content items during Alfresco bootstrap"/>
+    <property name="sinceVersion" value="0.1"/>
+    <property name="appliesFromVersion" value="0.1"/>
+    <property name="importer" ref="spacesBootstrap"/>
+    <property name="bootstrapViews">
+      <list>
+        <props>
+          <prop key="path">/${spaces.company_home.childname}/st:sites</prop>
+          <prop key="location">alfresco/module/repository-amp/bootstrap/contents/site-contents.acp</prop>
+        </props>
+      </list>
+    </property>
+  </bean> -->
+
+</beans>
