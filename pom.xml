@@ -19,7 +19,8 @@
       <connection>scm:git:git@github.com:maoo/alfresco-demo-data.git</connection>
       <url>scm:git:git@github.com:maoo/alfresco-demo-data.git</url>
       <developerConnection>scm:git:git@github.com:maoo/alfresco-demo-data.git</developerConnection>
-    </scm>
+      <tag>HEAD</tag>
+  </scm>
 
     <distributionManagement>
       <repository>
@@ -62,9 +63,10 @@
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-release-plugin</artifactId>
+              <version>2.5.2</version>
               <configuration>
                 <autoVersionSubmodules>true</autoVersionSubmodules>
-                <javaHome>${env.JAVA_HOME}</javaHome>
+                <!-- <javaHome>${env.JAVA_HOME}</javaHome> -->
               </configuration>
             </plugin>
         </plugins>
