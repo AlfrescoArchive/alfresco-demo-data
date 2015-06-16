@@ -113,13 +113,4 @@
         </props>
       </property>
   </bean>
-
-  <bean id="patch.sitePatch" class="org.alfresco.devops.patch.SitePatch" parent="acp.parent.bootstrap">
-      <property name="id"><value>patch.sitePatch</value></property>
-      <property name="description"><value>patch.sitePatch.description</value></property>
-      <property name="siteService" ref="siteService" />
-      <property name="hiddenAspect" ref="hiddenAspect" />
-      <property name="siteName" value="${data.boot.siteName}" />
-  </bean>
-
 </beans>

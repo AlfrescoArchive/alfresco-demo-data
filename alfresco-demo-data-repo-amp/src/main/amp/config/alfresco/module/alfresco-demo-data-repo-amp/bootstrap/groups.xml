@@ -3,6 +3,22 @@
            xmlns:cm="http://www.alfresco.org/model/content/1.0"
            xmlns:sys="http://www.alfresco.org/model/system/1.0">
 
+  <cm:authorityContainer view:childName="cm:GROUP_site_${data.boot.siteName}">
+   <view:aspects>
+     <sys:referenceable></sys:referenceable>
+     <sys:localized></sys:localized>
+   </view:aspects>
+   <view:properties>
+     <sys:store-protocol>user</sys:store-protocol>
+     <cm:name>GROUP_site_${data.boot.siteName}</cm:name>
+     <sys:node-uuid>GROUP_site_${data.boot.siteName}</sys:node-uuid>
+     <cm:authorityName>GROUP_site_${data.boot.siteName}</cm:authorityName>
+     <sys:store-identifier>alfrescoUserStore</sys:store-identifier>
+   </view:properties>
+   <view:associations>
+   </view:associations>
+  </cm:authorityContainer>
+
   <cm:authorityContainer view:childName="cm:GROUP_site_${data.boot.siteName}_SiteManager">
     <view:aspects>
       <sys:referenceable></sys:referenceable>

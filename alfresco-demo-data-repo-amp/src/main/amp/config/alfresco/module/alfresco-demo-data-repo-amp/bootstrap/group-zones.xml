@@ -6,6 +6,11 @@
     <view:associations>
       <cm:inZone>
         <view:reference
+            view:pathref="cm:GROUP_site_${data.boot.siteName}"
+            view:childName="cm:GROUP_site_${data.boot.siteName}"/>
+      </cm:inZone>
+      <cm:inZone>
+        <view:reference
             view:pathref="cm:GROUP_site_${data.boot.siteName}_SiteManager"
             view:childName="cm:GROUP_site_${data.boot.siteName}_SiteManager"/>
       </cm:inZone>
@@ -31,6 +36,11 @@
     <view:associations>
       <cm:inZone>
         <view:reference
+            view:pathref="cm:GROUP_site_${data.boot.siteName}"
+            view:childName="cm:GROUP_site_${data.boot.siteName}"/>
+      </cm:inZone>
+      <cm:inZone>
+        <view:reference
             view:pathref="cm:GROUP_site_${data.boot.siteName}_SiteManager"
             view:childName="cm:GROUP_site_${data.boot.siteName}_SiteManager"/>
       </cm:inZone>
@@ -54,6 +64,11 @@
 
   <view:reference view:pathref="../${system.zones_container.childname}/cm:APP.SHARE">
     <view:associations>
+      <cm:inZone>
+        <view:reference
+            view:pathref="cm:GROUP_site_${data.boot.siteName}"
+            view:childName="cm:GROUP_site_${data.boot.siteName}"/>
+      </cm:inZone>
       <cm:inZone>
         <view:reference
             view:pathref="cm:GROUP_site_${data.boot.siteName}_SiteManager"
