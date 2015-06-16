@@ -1,14 +1,14 @@
 <view:view xmlns:view="http://www.alfresco.org/view/repository/1.0" xmlns:cm="http://www.alfresco.org/model/content/1.0"
     >
 
-  <cm:person view:childName="cm:publisher">
-    <cm:userName>publisher</cm:userName>
-    <cm:firstName>publisher</cm:firstName>
-    <cm:lastName>publisher</cm:lastName>
+  <cm:person view:childName="cm:manager">
+    <cm:userName>manager</cm:userName>
+    <cm:firstName>manager</cm:firstName>
+    <cm:lastName>manager</cm:lastName>
     <cm:presenceUsername></cm:presenceUsername>
-    <cm:email>maurizio.pillitu+publisher@alfresco.com</cm:email>
+    <cm:email>maurizio.pillitu+manager@alfresco.com</cm:email>
     <cm:organization></cm:organization>
-    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/publisher</cm:homeFolder>
+    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/manager</cm:homeFolder>
     <cm:location></cm:location>
     <cm:jobtitle></cm:jobtitle>
     <cm:organizationId></cm:organizationId>
@@ -16,14 +16,14 @@
     <cm:sizeCurrent>0</cm:sizeCurrent>
   </cm:person>
 
-  <cm:person view:childName="cm:reviewer">
-    <cm:userName>reviewer</cm:userName>
-    <cm:firstName>reviewer</cm:firstName>
-    <cm:lastName>reviewer</cm:lastName>
+  <cm:person view:childName="cm:collaborator">
+    <cm:userName>collaborator</cm:userName>
+    <cm:firstName>collaborator</cm:firstName>
+    <cm:lastName>collaborator</cm:lastName>
     <cm:presenceUsername></cm:presenceUsername>
-    <cm:email>maurizio.pillitu+reviewer@alfresco.com</cm:email>
+    <cm:email>maurizio.pillitu+collaborator@alfresco.com</cm:email>
     <cm:organization></cm:organization>
-    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/reviewer</cm:homeFolder>
+    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/collaborator</cm:homeFolder>
     <cm:location></cm:location>
     <cm:jobtitle></cm:jobtitle>
     <cm:organizationId></cm:organizationId>
@@ -31,14 +31,14 @@
     <cm:sizeCurrent>0</cm:sizeCurrent>
   </cm:person>
 
-  <cm:person view:childName="cm:marketer">
-    <cm:userName>marketer</cm:userName>
-    <cm:firstName>marketer</cm:firstName>
-    <cm:lastName>marketer</cm:lastName>
+  <cm:person view:childName="cm:contributor">
+    <cm:userName>contributor</cm:userName>
+    <cm:firstName>contributor</cm:firstName>
+    <cm:lastName>contributor</cm:lastName>
     <cm:presenceUsername></cm:presenceUsername>
-    <cm:email>maurizio.pillitu+marketer@alfresco.com</cm:email>
+    <cm:email>maurizio.pillitu+contributor@alfresco.com</cm:email>
     <cm:organization></cm:organization>
-    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/marketer</cm:homeFolder>
+    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/contributor</cm:homeFolder>
     <cm:location></cm:location>
     <cm:jobtitle></cm:jobtitle>
     <cm:organizationId></cm:organizationId>
@@ -46,14 +46,14 @@
     <cm:sizeCurrent>0</cm:sizeCurrent>
   </cm:person>
 
-  <cm:person view:childName="cm:it">
-    <cm:userName>it</cm:userName>
-    <cm:firstName>it</cm:firstName>
-    <cm:lastName>it</cm:lastName>
+  <cm:person view:childName="cm:consumer">
+    <cm:userName>consumer</cm:userName>
+    <cm:firstName>consumer</cm:firstName>
+    <cm:lastName>consumer</cm:lastName>
     <cm:presenceUsername></cm:presenceUsername>
-    <cm:email>maurizio.pillitu+it@alfresco.com</cm:email>
+    <cm:email>maurizio.pillitu+consumer@alfresco.com</cm:email>
     <cm:organization></cm:organization>
-    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/it</cm:homeFolder>
+    <cm:homeFolder>/${spaces.company_home.childname}/${spaces.user_homes.childname}/consumer</cm:homeFolder>
     <cm:location></cm:location>
     <cm:jobtitle></cm:jobtitle>
     <cm:organizationId></cm:organizationId>

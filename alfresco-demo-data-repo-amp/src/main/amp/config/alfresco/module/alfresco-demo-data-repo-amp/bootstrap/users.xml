@@ -2,7 +2,7 @@
 <view:view xmlns:view="http://www.alfresco.org/view/repository/1.0"
            xmlns:usr="http://www.alfresco.org/model/user/1.0"
            xmlns:sys="http://www.alfresco.org/model/system/1.0">
-  <usr:user view:childName="usr:publisher">
+  <usr:user view:childName="usr:manager">
     <view:aspects>
       <sys:referenceable></sys:referenceable>
     </view:aspects>
@@ -11,7 +11,7 @@
       <usr:credentialsExpire>false</usr:credentialsExpire>
       <usr:password>3dbde697d71690a769204beb12283678</usr:password>
       <usr:accountLocked>false</usr:accountLocked>
-      <usr:username>publisher</usr:username>
+      <usr:username>manager</usr:username>
       <usr:salt>
         <view:value view:isNull="true"></view:value>
       </usr:salt>
@@ -19,7 +19,7 @@
     </view:properties>
   </usr:user>
 
-  <usr:user view:childName="usr:reviewer">
+  <usr:user view:childName="usr:collaborator">
     <view:aspects>
       <sys:referenceable></sys:referenceable>
     </view:aspects>
@@ -28,7 +28,7 @@
       <usr:credentialsExpire>false</usr:credentialsExpire>
       <usr:password>3dbde697d71690a769204beb12283678</usr:password>
       <usr:accountLocked>false</usr:accountLocked>
-      <usr:username>reviewer</usr:username>
+      <usr:username>collaborator</usr:username>
       <usr:salt>
         <view:value view:isNull="true"></view:value>
       </usr:salt>
@@ -36,7 +36,7 @@
     </view:properties>
   </usr:user>
 
-  <usr:user view:childName="usr:marketer">
+  <usr:user view:childName="usr:contributor">
     <view:aspects>
       <sys:referenceable></sys:referenceable>
     </view:aspects>
@@ -45,7 +45,7 @@
       <usr:credentialsExpire>false</usr:credentialsExpire>
       <usr:password>3dbde697d71690a769204beb12283678</usr:password>
       <usr:accountLocked>false</usr:accountLocked>
-      <usr:username>marketer</usr:username>
+      <usr:username>contributor</usr:username>
       <usr:salt>
         <view:value view:isNull="true"></view:value>
       </usr:salt>
@@ -53,7 +53,7 @@
     </view:properties>
   </usr:user>
 
-  <usr:user view:childName="usr:it">
+  <usr:user view:childName="usr:consumer">
     <view:aspects>
       <sys:referenceable></sys:referenceable>
     </view:aspects>
@@ -62,7 +62,7 @@
       <usr:credentialsExpire>false</usr:credentialsExpire>
       <usr:password>3dbde697d71690a769204beb12283678</usr:password>
       <usr:accountLocked>false</usr:accountLocked>
-      <usr:username>it</usr:username>
+      <usr:username>consumer</usr:username>
       <usr:salt>
         <view:value view:isNull="true"></view:value>
       </usr:salt>

@@ -5,8 +5,12 @@
   <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteManager">
     <view:associations>
       <cm:member>
-        <view:reference view:pathref="cm:publisher"
-                        view:childName="cm:publisher"/>
+        <view:reference view:pathref="cm:admin"
+                        view:childName="cm:admin"/>
+      </cm:member>
+      <cm:member>
+        <view:reference view:pathref="cm:manager"
+                        view:childName="cm:manager"/>
       </cm:member>
     </view:associations>
   </view:reference>
@@ -14,8 +18,8 @@
   <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteCollaborator">
     <view:associations>
       <cm:member>
-        <view:reference view:pathref="cm:reviewer"
-                        view:childName="cm:reviewer"/>
+        <view:reference view:pathref="cm:collaborator"
+                        view:childName="cm:collaborator"/>
       </cm:member>
     </view:associations>
   </view:reference>
@@ -23,8 +27,8 @@
   <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteConsumer">
     <view:associations>
       <cm:member>
-        <view:reference view:pathref="cm:marketer"
-                        view:childName="cm:marketer"/>
+        <view:reference view:pathref="cm:consumer"
+                        view:childName="cm:consumer"/>
       </cm:member>
     </view:associations>
   </view:reference>
@@ -32,8 +36,8 @@
   <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteContributor">
     <view:associations>
       <cm:member>
-        <view:reference view:pathref="cm:it"
-                        view:childName="cm:it"/>
+        <view:reference view:pathref="cm:contributor"
+                        view:childName="cm:contributor"/>
       </cm:member>
     </view:associations>
   </view:reference>
