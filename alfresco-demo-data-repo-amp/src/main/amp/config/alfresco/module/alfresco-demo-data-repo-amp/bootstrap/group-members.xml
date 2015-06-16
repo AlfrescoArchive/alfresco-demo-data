@@ -2,7 +2,7 @@
 <view:view xmlns:view="http://www.alfresco.org/view/repository/1.0"
            xmlns:cm="http://www.alfresco.org/model/content/1.0">
 
-  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_Publisher">
+  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteManager">
     <view:associations>
       <cm:member>
         <view:reference view:pathref="cm:publisher"
@@ -11,7 +11,7 @@
     </view:associations>
   </view:reference>
 
-  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_Reviewer">
+  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteCollaborator">
     <view:associations>
       <cm:member>
         <view:reference view:pathref="cm:reviewer"
@@ -20,7 +20,7 @@
     </view:associations>
   </view:reference>
 
-  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_Marketer">
+  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteConsumer">
     <view:associations>
       <cm:member>
         <view:reference view:pathref="cm:marketer"
@@ -29,7 +29,7 @@
     </view:associations>
   </view:reference>
 
-  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_IT">
+  <view:reference view:pathref="../${system.authorities_container.childname}/cm:GROUP_site_${data.boot.siteName}_SiteContributor">
     <view:associations>
       <cm:member>
         <view:reference view:pathref="cm:it"

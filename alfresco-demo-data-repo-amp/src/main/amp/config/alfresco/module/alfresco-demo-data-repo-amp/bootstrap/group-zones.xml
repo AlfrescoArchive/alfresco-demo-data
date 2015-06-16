@@ -24,26 +24,6 @@
             view:pathref="cm:GROUP_site_${data.boot.siteName}_SiteContributor"
             view:childName="cm:GROUP_site_${data.boot.siteName}_SiteContributor"/>
       </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Publisher"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Publisher"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Reviewer"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Reviewer"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Marketer"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Marketer"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_IT"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_IT"/>
-      </cm:inZone>
     </view:associations>
   </view:reference>
 
@@ -69,26 +49,6 @@
             view:pathref="cm:GROUP_site_${data.boot.siteName}_SiteContributor"
             view:childName="cm:GROUP_site_${data.boot.siteName}_SiteContributor"/>
       </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Publisher"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Publisher"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Reviewer"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Reviewer"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Marketer"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Marketer"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_IT"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_IT"/>
-      </cm:inZone>
     </view:associations>
   </view:reference>
 
@@ -113,26 +73,6 @@
         <view:reference
             view:pathref="cm:GROUP_site_${data.boot.siteName}_SiteContributor"
             view:childName="cm:GROUP_site_${data.boot.siteName}_SiteContributor"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Publisher"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Publisher"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Reviewer"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Reviewer"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_Marketer"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_Marketer"/>
-      </cm:inZone>
-      <cm:inZone>
-        <view:reference
-            view:pathref="cm:GROUP_site_${data.boot.siteName}_IT"
-            view:childName="cm:GROUP_site_${data.boot.siteName}_IT"/>
       </cm:inZone>
     </view:associations>
   </view:reference>
