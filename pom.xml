@@ -83,13 +83,13 @@
         <profile>
           <id>release</id>
              <modules>
-               <module>demo-data-repo-amp</module>
+               <module>alfresco-demo-data-repo-amp</module>
              </modules>
          </profile>
     </profiles>
 
     <modules>
-      <module>demo-data-repo-amp</module>
+      <module>alfresco-demo-data-repo-amp</module>
       <module>repo</module>
       <module>share</module>
       <module>runner</module>

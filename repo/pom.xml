@@ -33,7 +33,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>demo-data-repo-amp</artifactId>
+            <artifactId>alfresco-demo-data-repo-amp</artifactId>
             <version>${project.version}</version>
             <type>amp</type>
         </dependency>
@@ -54,7 +54,7 @@
                         </overlay>
                         <overlay>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>demo-data-repo-amp</artifactId>
+                            <artifactId>alfresco-demo-data-repo-amp</artifactId>
                             <type>amp</type>
                         </overlay>
                     </overlays>
