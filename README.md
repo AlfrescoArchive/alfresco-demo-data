@@ -15,8 +15,8 @@ MAVEN_OPTS="-noverify -Xms256m -Xmx2G" mvn clean install -Ppurge,run
 ```
 
 You can now access [http://localhost:8080/share](http://localhost:8080/share) and edit your contents; by default the following items are added:
-- Site `demo` with 3 text files in the Project Library
-- Users manager, consumer, contributor and collaborator; all user's passwords are `123`; they are all part of `demo` site, belonging to the site group reflected by the username (SiteManager, SiteConsumer, SiteContributor, SiteCollaborator)
+- `demo` site with 3 text files in the Project Library (including `SiteManager`, `SiteConsumer`, `SiteContributor` and `SiteCollaborator` groups)
+- `manager`, `consumer`, `contributor` and `collaborator` users; all user's passwords are `123`; they are all part of `demo` site, belonging to the site group reflected by the username
 
 You can change demo site data, or create a new one and set your own data structure.
 
