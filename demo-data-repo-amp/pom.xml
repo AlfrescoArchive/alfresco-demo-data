@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>org.alfresco.devops</groupId>
-        <artifactId>demo-data</artifactId>
+        <artifactId>alfresco-demo-data</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
