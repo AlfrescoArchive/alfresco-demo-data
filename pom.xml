@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-      <trials.data.boot.siteName>demo-site</trials.data.boot.siteName>
+      <trials.data.boot.siteName>demo</trials.data.boot.siteName>
     </properties>
 
     <dependencyManagement>
