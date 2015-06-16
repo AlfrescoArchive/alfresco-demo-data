@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.alfresco.devops</groupId>
-    <artifactId>alfresco-data-bootstrap</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>alfresco-data-bootstrap Repository AMP project</name>
-    <packaging>amp</packaging>
-    <description>Manages the lifecycle of the alfresco-data-bootstrap Repository AMP (Alfresco Module Package)</description>
+    <artifactId>demo-data</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>Alfresco Repository and Share Quickstart with database and an embedded Tomcat runner.</name>
+    <description>This All-in-One project allows to manage all the components involved in Alfresco development (Repo, Share, Solr4, AMPs) in one project
+    </description>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.alfresco.maven</groupId>
@@ -15,8 +15,26 @@
         <version>2.1.0</version>
     </parent>
 
+    <scm>
+      <connection>scm:git:git@github.com:maoo/alfresco-demo-data.git</connection>
+      <url>scm:git:git@github.com:maoo/alfresco-demo-data.git</url>
+      <developerConnection>scm:git:git@github.com:maoo/alfresco-demo-data.git</developerConnection>
+    </scm>
+
+    <distributionManagement>
+      <repository>
+        <id>alfresco-internal</id>
+        <url>https://artifacts.alfresco.com/nexus/content/repositories/internal/</url>
+      </repository>
+      <snapshotRepository>
+        <id>alfresco-internal-snapshots</id>
+        <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-snapshots/</url>
+      </snapshotRepository>
+    </distributionManagement>
+
     <properties>
-      <trials.data.boot.siteName>demo</trials.data.boot.siteName>
+        <data.boot.siteName>demo</data.boot.siteName>
+        <share.client.url>http://localhost:8080/share</share.client.url>
     </properties>
 
     <dependencyManagement>
@@ -31,34 +49,38 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>alfresco-repository</artifactId>
-        </dependency>
-    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.alfresco.maven.plugin</groupId>
+                <artifactId>alfresco-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <profiles>
         <profile>
-            <id>enterprise</id>
-            <dependencies>
-                <dependency>
-                    <groupId>${alfresco.groupId}</groupId>
-                    <artifactId>alfresco-enterprise-repository</artifactId>
-                    <version>${alfresco.version}</version>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
+            <id>run</id>
+            <properties>
+                <maven.alfresco.includeWebResources>false</maven.alfresco.includeWebResources>
+            </properties>
         </profile>
         <profile>
-            <id>amp-to-war</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.alfresco.maven</groupId>
-                    <artifactId>alfresco-rad</artifactId>
-                    <version>${maven.alfresco.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
+          <id>release</id>
+             <modules>
+               <module>demo-data-repo-amp</module>
+             </modules>
+         </profile>
     </profiles>
+
+    <modules>
+      <module>demo-data-repo-amp</module>
+      <module>repo</module>
+      <module>share</module>
+      <module>runner</module>
+    </modules>
 </project>

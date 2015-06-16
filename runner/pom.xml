@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>runner</artifactId>
+    <name>Alfresco, Share and Solr4 Tomcat Runner</name>
+    <packaging>pom</packaging>
+    <description>Alfresco, Share and Solr4 Tomcat Runner</description>
+
+    <parent>
+        <groupId>org.alfresco.devops</groupId>
+        <artifactId>demo-data</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <profiles>
+        <profile>
+            <id>run</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-tomcat-resources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/contexts</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>tomcat</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>run-wars</id>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <phase>pre-integration-test</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <ignorePackaging>true</ignorePackaging>
+                            <useSeparateTomcatClassLoader>true</useSeparateTomcatClassLoader>
+                            <path>/</path>
+                            <delegate>false</delegate>
+                            <webapps>
+                                <webapp>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>repo</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>war</type>
+                                    <asWebapp>true</asWebapp>
+                                    <contextPath>/alfresco</contextPath>
+                                    <contextFile>${project.build.directory}/contexts/context-repo.xml</contextFile>
+                                </webapp>
+                                <webapp>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>share</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>war</type>
+                                    <asWebapp>true</asWebapp>
+                                    <contextPath>/share</contextPath>
+                                    <contextFile>${project.build.directory}/contexts/context-share.xml</contextFile>
+                                </webapp>
+                            </webapps>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
