@@ -10,8 +10,7 @@
     OF ANY KIND, either express or implied. See the License for the specific
     language governing permissions and limitations under the License. -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>repo</artifactId>
     <name>Alfresco Repository WAR Aggregator</name>
@@ -21,7 +20,7 @@
     <parent>
         <groupId>org.alfresco.devops</groupId>
         <artifactId>alfresco-demo-data</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.1</version>
     </parent>
 
     <dependencies>
@@ -52,12 +51,12 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <overlays>
-                        <overlay/>
+                        <overlay />
                         <overlay>
                             <groupId>${alfresco.groupId}</groupId>
                             <artifactId>${alfresco.repo.artifactId}</artifactId>
                             <type>war</type>
-                            <excludes/>
+                            <excludes />
                         </overlay>
                         <overlay>
                             <groupId>${project.groupId}</groupId>
