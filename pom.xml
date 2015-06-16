@@ -59,6 +59,17 @@
                 <groupId>org.alfresco.maven.plugin</groupId>
                 <artifactId>alfresco-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <configuration>
+                <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+                <autoVersionSubmodules>true</autoVersionSubmodules>
+                <arguments>-Prelease</arguments>
+                <goals>install deploy</goals>
+                <javaHome>${env.JAVA_HOME}</javaHome>
+              </configuration>
+            </plugin>
         </plugins>
     </build>
 
