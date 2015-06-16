@@ -1,7 +1,7 @@
 Alfresco Demo Data
 ---
 
-This module loads some demo data into Alfresco at boot time; it also provides a way to create and export demo data (using the [share-import-export add-on](https://addons.alfresco.com/addons/importexport-acpzip-share))
+This module loads some demo data into Alfresco at boot time; it also provides a Share local interface to load data; you can export data using `curl/wget` (see below)
 
 Test local
 ---
