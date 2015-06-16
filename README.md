@@ -18,6 +18,15 @@ Deploy/Release
 mvn release:prepare release:perform
 ```
 
+Make sure that the following item is defined in your `~/.m2/settings.xml`
+```
+    <server>
+      <id>alfresco-internal</id>
+      <username>...</username>
+      <password>...</password>
+    </server>
+```
+
 Download site ACP
 ---
 ```
