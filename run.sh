@@ -7,3 +7,4 @@ if [ ! -f $springloadedfile ]; then
 mvn validate -Psetup
 fi
 MAVEN_OPTS="-javaagent:$springloadedfile -noverify -Xms256m -Xmx2G" mvn install -Prun
+#MAVEN_OPTS="-javaagent:$springloadedfile -noverify -Xms256m -Xmx2G -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=1044" mvn install -Prun
