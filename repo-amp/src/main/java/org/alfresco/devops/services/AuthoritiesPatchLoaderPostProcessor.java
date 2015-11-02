@@ -14,7 +14,6 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
-import org.springframework.util.ResourceUtils;
 
 public class AuthoritiesPatchLoaderPostProcessor implements BeanDefinitionRegistryPostProcessor {
 
@@ -33,64 +32,59 @@ public class AuthoritiesPatchLoaderPostProcessor implements BeanDefinitionRegist
 
 	private static Log logger = LogFactory.getLog(AuthoritiesPatchLoaderPostProcessor.class);
 
-
-
 	@Override
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
 			throws BeansException {
 
 
 		BeanDefinitionBuilder beanDefinition = getAuthoritiesBeanDefinition();
-		registry.registerBeanDefinition(beanId, beanDefinition.getBeanDefinition() );
+		if(beanDefinition!=null){
+			registry.registerBeanDefinition(beanId, beanDefinition.getBeanDefinition() );
+		}
 
 	}
 
 	private BeanDefinitionBuilder getAuthoritiesBeanDefinition() {
-		BeanDefinitionBuilder beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(UsersGroupsImporterPatch.class); 
 
-		beanDefinition.setParentName(parentName);
-		beanDefinition.addPropertyValue(Constants.ID, patchId);
-		beanDefinition.addPropertyValue(Constants.DISABLED, disabled);
 		Map<String,Properties> bootstrapViews = new HashMap<String,Properties>();
 
 		try {
-			if(resourcesResolver.existsResource(usersLocation)){
+			if(resourcesResolver.existsResource(usersLocation) && resourcesResolver.existsResource(peopleLocation)){
 				Properties users = new Properties();
 				users.setProperty(Constants.LOCATION, usersLocation);
 				bootstrapViews.put(Constants.USERS, users);
-			}
-		} catch (IOException e) {
-			logger.warn("Resource "+usersLocation+" not found");
-		}
-
-		try {
-			if(resourcesResolver.existsResource(peopleLocation)){
 				Properties people = new Properties();
 				people.setProperty(Constants.LOCATION, peopleLocation);
 				bootstrapViews.put(Constants.PEOPLE, people);
 			}
-		} catch (IOException e) {
-			logger.warn("Resource "+peopleLocation+" not found");
-		}
 
-		try {
 			if(resourcesResolver.existsResource(groupsLocation)){
 				Properties groups = new Properties();
 				groups.setProperty(Constants.LOCATION, groupsLocation);
 				bootstrapViews.put(Constants.GROUPS, groups);
 			}
-		} catch (IOException e) {
-			logger.warn("Resource "+groupsLocation+" not found");
+		}catch(IOException ex){
+			logger.error("One or more authorities resources (acp/json) could not be found");
 		}
 
-		beanDefinition.addPropertyValue(Constants.BOOTSTRAPVIEWS, bootstrapViews);
-		return beanDefinition;
+		if(!bootstrapViews.isEmpty()){
+			BeanDefinitionBuilder beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(UsersGroupsImporterPatch.class); 
+
+			beanDefinition.setParentName(parentName);
+			beanDefinition.addPropertyValue(Constants.ID, patchId);
+			beanDefinition.addPropertyValue(Constants.DISABLED, disabled);		
+			beanDefinition.addPropertyValue(Constants.BOOTSTRAPVIEWS, bootstrapViews);
+			return beanDefinition;
+		}
+		else{
+			return null;
+		}
 	}
 
 	@Override
 	public void postProcessBeanFactory(
 			ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
+		//do nothing
 	}
 
 	public void setDisabled(boolean disabled)

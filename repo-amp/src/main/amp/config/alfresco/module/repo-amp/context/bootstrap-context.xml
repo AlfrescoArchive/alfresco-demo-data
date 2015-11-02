@@ -11,7 +11,7 @@
 		<property name="parentName" value="patch.siteLoadPatch.generic"/>
 		<property name="patchId" value="patch.siteLoadPatch.demoData"/>
 		<property name="beanId" value="patch.siteLoadPatch." />
-		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/sites/**/Contents.acp"/>
+		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp"/>
 	</bean>
 	
 	<bean id="authoritiesLoaderPostProcessor" class="org.alfresco.devops.services.AuthoritiesPatchLoaderPostProcessor">
@@ -20,9 +20,9 @@
 		<property name="parentName" value="patch.authoritiesPatch.generic"/>
 		<property name="patchId" value="patch.groupsUsersPeople.demoData"/>
 		<property name="beanId" value="patch.authorityLoadPatch.demoData" />
-		<property name="usersLocation" value="alfresco/module/${project.artifactId}/bootstrap/repo/Users.acp"/>
-		<property name="peopleLocation" value="alfresco/module/${project.artifactId}/bootstrap/repo/People.acp"/>
-		<property name="groupsLocation" value="alfresco/module/${project.artifactId}/bootstrap/repo/Groups.json"/>
+		<property name="usersLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp"/>
+		<property name="peopleLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp"/>
+		<property name="groupsLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json"/>
 	</bean>
    
    
@@ -35,7 +35,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/2014-company-rebranding/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/2014-company-rebranding/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -51,7 +51,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/brand-awareness-campaign/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/brand-awareness-campaign/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -66,7 +66,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/company-reports/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/company-reports/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -81,7 +81,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/contracts/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/contracts/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -96,7 +96,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/customer-service-case-files/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/customer-service-case-files/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -111,7 +111,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/engineering-development/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/engineering-development/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -126,7 +126,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/global-sales-enablement/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/global-sales-enablement/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -141,7 +141,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/hr-files/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/hr-files/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -156,7 +156,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/marketing/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/marketing/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -171,7 +171,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/marketing-image-gallery/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/marketing-image-gallery/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -186,7 +186,7 @@
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/sales-operations/Contents.acp</prop></props> -->
+<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/sales-operations/Contents.acp</prop></props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
@@ -206,7 +206,7 @@
 <!-- 			<map> -->
 <!-- 				<entry key="contents"> -->
 <!-- 					<props> -->
-<!-- 						<prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/rm/Contents.acp</prop> -->
+<!-- 						<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/rm/Contents.acp</prop> -->
 <!-- 					</props> -->
 <!-- 				</entry> -->
 <!-- 			</map> -->
@@ -221,17 +221,17 @@
 <!--             <map> -->
 <!--                 <entry key="users"> -->
 <!--                     <props> -->
-<!-- 						<prop key="location">alfresco/module/${project.artifactId}/bootstrap/repo/Users.acp</prop> -->
+<!-- 						<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/Users.acp</prop> -->
 <!--                     </props> -->
 <!--                 </entry> -->
 <!--                 <entry key="people"> -->
 <!--                     <props> -->
-<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/repo/People.acp</prop> -->
+<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/People.acp</prop> -->
 <!--                     </props> -->
 <!--                 </entry> -->
 <!--                 <entry key="groups"> -->
 <!--                     <props> -->
-<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/repo/Groups.json</prop> -->
+<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/Groups.json</prop> -->
 <!--                     </props> -->
 <!--                 </entry> -->
 <!--             </map> -->

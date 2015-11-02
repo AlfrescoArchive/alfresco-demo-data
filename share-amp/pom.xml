@@ -1,80 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>share-amp</artifactId>
-    <name>Alfresco Share AMP Module</name>
-    <packaging>amp</packaging>
-    <description>This is a sample Alfresco Share AMP project, depended upon by the share WAR module</description>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>share-amp</artifactId>
+	<name>Alfresco Share AMP Module</name>
+	<packaging>amp</packaging>
+	<description>This is a sample Alfresco Share AMP project, depended upon by the share WAR module</description>
 
-    <parent>
-        <groupId>org.alfresco.devops</groupId>
-        <artifactId>alfresco-demo-data</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>org.alfresco.devops</groupId>
+		<artifactId>alfresco-demo-data</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
-    <properties>
-        <app.amp.client.war.artifactId>share</app.amp.client.war.artifactId>
-        <app.log.root.level>WARN</app.log.root.level>
-    </properties>
+	<properties>
+		<app.amp.client.war.artifactId>share</app.amp.client.war.artifactId>
+		<app.log.root.level>WARN</app.log.root.level>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>share</artifactId>
-            <version>${alfresco.version}</version>
-            <classifier>classes</classifier>
-            <scope>provided</scope>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share</artifactId>
+			<version>${alfresco.version}</version>
+			<classifier>classes</classifier>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.extensions.surf</groupId>
-            <artifactId>spring-surf-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.extensions.surf</groupId>
+			<artifactId>spring-surf-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>share-po</artifactId>
-            <version>${alfresco.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>share-po</artifactId>
-            <version>${alfresco.version}</version>
-            <classifier>tests</classifier>
-            <scope>test</scope>
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share-po</artifactId>
+			<version>${alfresco.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share-po</artifactId>
+			<version>${alfresco.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
 
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-java</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-server</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>2.45.0-alfresco</version>
-        </dependency>
-        <dependency>
-            <groupId>org.alfresco.test</groupId>
-            <artifactId>alfresco-testng</artifactId>
-            <version>1.1</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hamcrest</groupId>
-                    <artifactId>hamcrest-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-server</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.45.0-alfresco</version>
+		</dependency>
+		<dependency>
+			<groupId>org.alfresco.test</groupId>
+			<artifactId>alfresco-testng</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
-    </dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
 
 </project>
