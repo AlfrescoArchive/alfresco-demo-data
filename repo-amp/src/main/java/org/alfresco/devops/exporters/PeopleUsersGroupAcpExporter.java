@@ -58,7 +58,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private static Log logger = LogFactory.getLog(PeopleUsersGroupAcpExporter.class);
 
 
-	private static final List<String> USERS_NOT_TO_EXPORT = Arrays.asList(new String[] { "guest" });
+	private static final List<String> USERS_NOT_TO_EXPORT = Arrays.asList(new String[] { "guest","admin" });
 	private static final String PARAM_USERS_TO_EXPORT = "usersToExport";
 	private static final String PARAM_GROUPS_TO_EXPORT = "groupsToExport";
 	private static final String PARAM_EXCLUDE_SITES_GROUPS = "excludeSiteGroups";
@@ -329,6 +329,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		String displayName = authorityService.getAuthorityDisplayName(group);
 		JSONArray zones = createZones(authorityService.getAuthorityZones(group));
 		JSONArray members =createMembers(authorityService.getContainedAuthorities(AuthorityType.USER, group, true));
+		
 		Set<String> containedGroups =authorityService.getContainedAuthorities(AuthorityType.GROUP, group, true);
 
 		for(String containedGroup : containedGroups){
@@ -358,9 +359,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private JSONArray createMembers(Set<String> members) throws JSONException{
 		JSONArray jmembers = new JSONArray();
 		for(String member:members){
-			if(includeUser(member)){
 				jmembers.put(member);
-			}
 		}
 		return jmembers;
 	}

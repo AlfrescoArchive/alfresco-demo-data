@@ -34,9 +34,13 @@
 			<version>${project.version}</version>
 			<type>amp</type>
 		</dependency>
-		<!-- Uncomment if you are using RM (Records Management) module -->
-		<!-- <dependency> <groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-rm-share</artifactId> 
-			<version>${alfresco.rm.version}</version> <type>amp</type> </dependency> -->
+			<!-- Uncomment if you are using RM (Records Management) module -->
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>alfresco-rm-share</artifactId>
+			<version>${alfresco.rm.version}</version>
+			<type>amp</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -73,9 +77,12 @@
 							<artifactId>share-amp</artifactId>
 							<type>amp</type>
 						</overlay>
-						<!-- Uncomment if you are using RM module -->
-						<!-- <overlay> <groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-rm-share</artifactId> 
-							<type>amp</type> </overlay> -->
+											<!-- Uncomment if you are using RM module -->
+						<overlay>
+							<groupId>${alfresco.groupId}</groupId>
+							<artifactId>alfresco-rm-share</artifactId>
+							<type>amp</type>
+						</overlay>
 					</overlays>
 				</configuration>
 			</plugin>

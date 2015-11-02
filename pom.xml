@@ -37,7 +37,7 @@
 
 	<properties>
 		<!-- <alfresco.version>5.0.d</alfresco.version> -->
-		<!-- <alfresco.rm.version>2.3</alfresco.rm.version> -->
+		<alfresco.rm.version>2.3</alfresco.rm.version>
 		<!-- <alfresco.data.location>alf_data_dev</alfresco.data.location> -->
 		<!-- <app.log.root.level>WARN</app.log.root.level> -->
 		<!-- <env>local</env> -->

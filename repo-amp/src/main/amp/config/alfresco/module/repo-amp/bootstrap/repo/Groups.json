@@ -3,7 +3,7 @@
     "displayName": "ALFRESCO_ADMINISTRATORS",
     "members": [
       "admin",
-      "phantom"
+      "phampton"
     ],
     "name": "GROUP_ALFRESCO_ADMINISTRATORS",
     "groups": [],
@@ -317,7 +317,7 @@
               "jteatime",
               "ltze",
               "mridcully",
-              "phantom",
+              "phampton",
               "taching"
             ],
             "name": "GROUP_MARKETING_MANAGEMENT",
@@ -356,7 +356,7 @@
           {
             "displayName": "Product Marketing",
             "members": [
-              "phantom",
+              "phampton",
               "svimes",
               "svonhumpeding"
             ],
@@ -477,6 +477,18 @@
         ]
       }
     ],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "RECORD_CONTRIBUTORS",
+    "members": [
+      "admin"
+    ],
+    "name": "GROUP_RECORD_CONTRIBUTORS",
+    "groups": [],
     "zones": [
       "APP.DEFAULT",
       "AUTH.ALF"
@@ -607,7 +619,11 @@
     "groups": [
       {
         "displayName": "site_company-reports_SiteCollaborator",
-        "members": [],
+        "members": [
+          "aironfoundersson",
+          "eweatherwax",
+          "hvetinari"
+        ],
         "name": "GROUP_site_company-reports_SiteCollaborator",
         "groups": [],
         "zones": [
@@ -660,24 +676,16 @@
     "groups": [
       {
         "displayName": "site_contracts_SiteCollaborator",
-        "members": [],
-        "name": "GROUP_site_contracts_SiteCollaborator",
-        "groups": [
-          {
-            "displayName": "Accounts",
-            "members": [
-              "bloveknot",
-              "bstronginthearm",
-              "learwig"
-            ],
-            "name": "GROUP_ACCOUNTS",
-            "groups": [],
-            "zones": [
-              "APP.DEFAULT",
-              "AUTH.ALF"
-            ]
-          }
+        "members": [
+          "brincewind",
+          "hking",
+          "kdarktan",
+          "nnobbs",
+          "sbucket",
+          "wpoons"
         ],
+        "name": "GROUP_site_contracts_SiteCollaborator",
+        "groups": [],
         "zones": [
           "APP.SHARE",
           "AUTH.ALF"
@@ -728,7 +736,23 @@
     "groups": [
       {
         "displayName": "site_customer-service-case-files_SiteCollaborator",
-        "members": [],
+        "members": [
+          "emargaret",
+          "etreason",
+          "gwhemper",
+          "jblouse",
+          "jogg",
+          "lquirm",
+          "lweatherwax",
+          "mbent",
+          "mtwoflower",
+          "mvonlipwig",
+          "ntulip",
+          "ovonchriek",
+          "rpalm",
+          "sahmed",
+          "tlikely"
+        ],
         "name": "GROUP_site_customer-service-case-files_SiteCollaborator",
         "groups": [],
         "zones": [
@@ -781,7 +805,31 @@
     "groups": [
       {
         "displayName": "site_engineering-development_SiteCollaborator",
-        "members": [],
+        "members": [
+          "cdun",
+          "dtockley",
+          "emargaret",
+          "etreason",
+          "gblackcap",
+          "gglooper",
+          "gogg",
+          "hgoatfounder",
+          "htick",
+          "hturvy",
+          "imort",
+          "jblouse",
+          "jclockson",
+          "jdrum",
+          "ldechumsfanleigh",
+          "lquirm",
+          "mbent",
+          "mgarlick",
+          "mtwoflower",
+          "ovonchriek",
+          "rpalm",
+          "sahmed",
+          "tgroat"
+        ],
         "name": "GROUP_site_engineering-development_SiteCollaborator",
         "groups": [],
         "zones": [
@@ -834,7 +882,13 @@
     "groups": [
       {
         "displayName": "site_global-sales-enablement_SiteCollaborator",
-        "members": [],
+        "members": [
+          "elittlebottom",
+          "pstibbons",
+          "svimes",
+          "svonhumpeding",
+          "tluggage"
+        ],
         "name": "GROUP_site_global-sales-enablement_SiteCollaborator",
         "groups": [],
         "zones": [
@@ -844,7 +898,35 @@
       },
       {
         "displayName": "site_global-sales-enablement_SiteConsumer",
-        "members": [],
+        "members": [
+          "adearheart",
+          "ahancock",
+          "ddownspout",
+          "dhubbub",
+          "elancre",
+          "esaturday",
+          "ethursley",
+          "gsugarbean",
+          "imaccalariat",
+          "iping",
+          "jgoatberger",
+          "jhix",
+          "jlawn",
+          "jnettle",
+          "kkelirehenna",
+          "llewton",
+          "lludd",
+          "lslant",
+          "ltin-wheedle",
+          "pgristle",
+          "rdechumsfanleigh",
+          "rdrumknott",
+          "rrust",
+          "rshoe",
+          "shaddock",
+          "showler",
+          "sswires"
+        ],
         "name": "GROUP_site_global-sales-enablement_SiteConsumer",
         "groups": [],
         "zones": [
@@ -952,6 +1034,7 @@
           "jteatime",
           "ldetritus",
           "ltze",
+          "phampton",
           "svimes",
           "svonhumpeding",
           "taching"
@@ -1014,7 +1097,19 @@
     "groups": [
       {
         "displayName": "site_marketing-image-gallery_SiteCollaborator",
-        "members": [],
+        "members": [
+          "asideways",
+          "edeath",
+          "idibbler",
+          "jbeans",
+          "jteatime",
+          "ldetritus",
+          "ltze",
+          "phampton",
+          "svimes",
+          "svonhumpeding",
+          "taching"
+        ],
         "name": "GROUP_site_marketing-image-gallery_SiteCollaborator",
         "groups": [],
         "zones": [
@@ -1034,7 +1129,13 @@
       },
       {
         "displayName": "site_marketing-image-gallery_SiteContributor",
-        "members": [],
+        "members": [
+          "avonuberwald",
+          "ecake",
+          "fcolon",
+          "wdeworde",
+          "wplinge"
+        ],
         "name": "GROUP_site_marketing-image-gallery_SiteContributor",
         "groups": [],
         "zones": [
@@ -1048,6 +1149,73 @@
           "admin"
         ],
         "name": "GROUP_site_marketing-image-gallery_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_rm",
+    "members": [],
+    "name": "GROUP_site_rm",
+    "groups": [
+      {
+        "displayName": "site_rm_SiteCollaborator",
+        "members": [
+          "aironfoundersson",
+          "brincewind",
+          "hking",
+          "kdarktan"
+        ],
+        "name": "GROUP_site_rm_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_rm_SiteConsumer",
+        "members": [
+          "nnobbs",
+          "sbucket"
+        ],
+        "name": "GROUP_site_rm_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_rm_SiteContributor",
+        "members": [
+          "elittlebottom",
+          "esmith",
+          "hvetinari",
+          "mridcully"
+        ],
+        "name": "GROUP_site_rm_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_rm_SiteManager",
+        "members": [
+          "admin",
+          "wpoons"
+        ],
+        "name": "GROUP_site_rm_SiteManager",
         "groups": [],
         "zones": [
           "APP.SHARE",
@@ -1110,31 +1278,6 @@
     ],
     "zones": [
       "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "test1",
-    "members": [
-      "admin"
-    ],
-    "name": "GROUP_test1",
-    "groups": [
-      {
-        "displayName": "test2",
-        "members": [
-          "adearheart"
-        ],
-        "name": "GROUP_test2",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.DEFAULT",
       "AUTH.ALF"
     ]
   }

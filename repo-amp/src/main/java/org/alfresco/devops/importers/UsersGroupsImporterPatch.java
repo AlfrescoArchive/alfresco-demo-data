@@ -34,6 +34,7 @@ import org.alfresco.repo.admin.patch.AbstractPatch;
 import org.alfresco.repo.importer.ImporterBootstrap;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
+import org.alfresco.service.cmr.security.PersonService;
 import org.alfresco.service.cmr.view.ImporterBinding.UUID_BINDING;
 import org.alfresco.service.descriptor.Descriptor;
 import org.alfresco.service.descriptor.DescriptorService;
@@ -52,6 +53,8 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 	public static final String PROPERTIES_PEOPLE = "people";
 	public static final String PROPERTIES_GROUPS = "groups";
 
+	public static final String PROPERTY_LOCATION = "location";
+
 	private static final Map<String,String> DEFAULT_PATHS = new HashMap<String, String>();
 	static {
 		DEFAULT_PATHS.put(PROPERTIES_USERS, "/${alfresco_user_store.system_container.childname}/${alfresco_user_store.user_container.childname}"); 
@@ -67,6 +70,8 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 
 	private ImporterBootstrap spacesBootstrap;
 	private ImporterBootstrap usersBootstrap;
+	private PersonService personService;
+
 
 	private Map<String,Properties> bootstrapViews;
 
@@ -141,7 +146,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 			return "Load of groups/users is disabled.";
 		}
 
-			return applyInternalImpl();
+		return applyInternalImpl();
 	}
 
 	private String applyInternalImpl() throws Exception
@@ -157,7 +162,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 				return "Groups/users not created.";
 			}
 		}
-		
+
 		if (bootstrapViews == null || bootstrapViews.size() == 0)
 		{
 			if (logger.isDebugEnabled())
@@ -208,7 +213,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 		{
 			try
 			{
-				doGroupImport(bootstrapViews.get(PROPERTIES_GROUPS).getProperty("location"));
+				doGroupImport(bootstrapViews.get(PROPERTIES_GROUPS).getProperty(PROPERTY_LOCATION));
 			} 
 			catch(Throwable t)
 			{
@@ -241,17 +246,19 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 
 	private void createOrUpdateGroup(JSONObject group) throws JSONException {
 		String name = (String) group.get(Constants.GROUP_NAME);
-		String displayName = (String) group.get(Constants.GROUP_DISPLAYNAME) != null ? (String) group.get("displayName") : name;
+		String displayName = (String) group.get(Constants.GROUP_DISPLAYNAME) != null ? (String) group.get(Constants.GROUP_DISPLAYNAME) : name;
 
 		JSONArray zones = (JSONArray) group.get(Constants.GROUP_ZONES);
 		JSONArray subgroups = (JSONArray) group.get(Constants.GROUP_SUBGROUPS);
 		JSONArray members = (JSONArray) group.get(Constants.GROUP_MEMBERS);
 
 		Set<String> zonesList = new HashSet<String>();     
-		if (zones != null) { 
+		if (zones != null) {
 			int len = zones.size();
 			for (int j=0;j<len;j++){
-				zonesList.add(zones.get(j).toString());
+				if(zones.get(j)!=null){
+					zonesList.add(zones.get(j).toString());
+				}
 			} 
 		}
 
@@ -259,15 +266,19 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 		if (subgroups != null) { 
 			int len = subgroups.size();
 			for (int j=0;j<len;j++){ 
-				subgroupsList.add((JSONObject)subgroups.get(j));
+				if(subgroups.get(j)!=null){
+					subgroupsList.add((JSONObject)subgroups.get(j));
+				}
 			} 
 		}
 
 		Set<String> membersList = new HashSet<String>();     
-		if (members != null) { 
+		if (members != null) {
 			int len = members.size();
 			for (int j=0;j<len;j++){
-				membersList.add(members.get(j).toString());
+				if(members.get(j)!=null){
+					membersList.add(members.get(j).toString());
+				}
 			} 
 		}
 
@@ -279,17 +290,18 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 		}else{
 			logger.debug("Updating authority: "+name);
 			Set<String> zonesToAdd = new HashSet<String>();
-			Set<String> existingZones = new HashSet<String>();
-
-			for(String z:zonesList){
-				if(!existingZones.contains(z)){
-					zonesToAdd.add(z);
+			Set<String> existingZones = authorityService.getAuthorityZones(name);
+			
+			for(String currentZone:zonesList){
+				if(!existingZones.contains(currentZone)){
+					zonesToAdd.add(currentZone);
 				}
-
 			}
-			if(!existingZones.isEmpty()){
+			if(!zonesToAdd.isEmpty()){
+				//updating zones if necessary
 				authorityService.addAuthorityToZones(name, zonesToAdd);
 			}
+			//updating displayname
 			authorityService.setAuthorityDisplayName(name, displayName);
 		}
 
@@ -298,20 +310,28 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 
 
 		for(String member:membersList){
-			if(!containedUsers.contains(member)){
+			if(!containedUsers.contains(member) && personService.personExists(member)){
+				//add authority if not there already and if exists
 				authorityService.addAuthority(name, member);
 			}
 		}
 
 		for(JSONObject subGroup:subgroupsList){
+			//create or update subgroup
 			createOrUpdateGroup(subGroup);
 			String subgroupName = (String)subGroup.get(Constants.GROUP_NAME);
 			if(subgroupName!= null && !containedGroups.contains(subgroupName)){
+				//adding authority
 				authorityService.addAuthority(name, subgroupName);
 			}
 		}
 
 
+	}
+
+
+	public void setPersonService(PersonService personService) {
+		this.personService = personService;
 	}
 
 
