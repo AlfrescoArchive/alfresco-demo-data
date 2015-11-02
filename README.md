@@ -244,3 +244,6 @@ In the url you can set:
 - excludeSiteGroups: boolean (TRUE/FALSE), determines whether to exclude or not Site Groups
 - groupsToExclude: comma separated list of groups to export, if not present all the groups will be exported. IGNORED if groupsToExport is present
 - usersToExclude: comma separated list of users to export, if not present all the users will be exported. IGNORED if usersToExport is present
+
+####org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webscript.org.alfresco.devops.exporters.rm-site-export.get' defined in class path resource [alfresco/module/repo-amp/context/service-context.xml]: Instantiation of bean failed; nested exception is java.lang.NoSuchFieldError: r$sfields
+This exception seems to be caused by SpringLoaded, so if this exception is hit when running the SDK please remove the Spring Loaded agent
