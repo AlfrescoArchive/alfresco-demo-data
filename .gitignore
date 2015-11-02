@@ -1,3 +1,6 @@
 alf_data_dev/
-alfresco.log
+*.log
 target/
+.classpath
+.project 
+.settings

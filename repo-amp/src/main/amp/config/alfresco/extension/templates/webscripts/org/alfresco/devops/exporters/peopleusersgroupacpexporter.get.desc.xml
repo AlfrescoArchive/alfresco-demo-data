@@ -1,0 +1,11 @@
+<webscript>
+  <shortname>Export People,Users,Groups</shortname>
+  <description>
+  <![CDATA[
+  Exports a zip containing the ACPs of groups, users and people]]></description>
+  <url>/api/people-groups/export?usersToExport={usersToExport}&amp;groupsToExport={groupsToExport}&amp;excludeSiteGroups={excludeSiteGroups}&amp;groupsToExclude={groupsToExclude}&amp;usersToExclude={usersToExclude}</url>
+  <format default="html">argument</format>
+  <authentication>admin</authentication>
+  <transaction allow="readonly">required</transaction>
+  <lifecycle>internal</lifecycle>
+</webscript>

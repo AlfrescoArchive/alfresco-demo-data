@@ -1,0 +1,14 @@
+<alfresco-config>
+
+   <config replace="true">
+      <flags>
+         <client-debug>true</client-debug>
+         <client-debug-autologging>false</client-debug-autologging>
+      </flags>
+   </config>
+
+   <config evaluator="string-compare" condition="CSRFPolicy" replace="true">
+      <filter/>
+   </config>
+
+</alfresco-config>

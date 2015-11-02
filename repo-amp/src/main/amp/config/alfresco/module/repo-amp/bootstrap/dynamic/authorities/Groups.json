@@ -1,0 +1,1284 @@
+[
+  {
+    "displayName": "ALFRESCO_ADMINISTRATORS",
+    "members": [
+      "admin",
+      "phampton"
+    ],
+    "name": "GROUP_ALFRESCO_ADMINISTRATORS",
+    "groups": [],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "ALFRESCO_SEARCH_ADMINISTRATORS",
+    "members": [
+      "admin"
+    ],
+    "name": "GROUP_ALFRESCO_SEARCH_ADMINISTRATORS",
+    "groups": [],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "EMAIL_CONTRIBUTORS",
+    "members": [
+      "admin"
+    ],
+    "name": "GROUP_EMAIL_CONTRIBUTORS",
+    "groups": [],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "***Goldcore 3D Fabrication Ltd.***",
+    "members": [],
+    "name": "GROUP_GOLDCORE",
+    "groups": [
+      {
+        "displayName": "Engineering",
+        "members": [],
+        "name": "GROUP_ENGINEERING",
+        "groups": [
+          {
+            "displayName": "Documentation",
+            "members": [
+              "gblackcap",
+              "gogg",
+              "ibluejohn"
+            ],
+            "name": "GROUP_DOCUMENTATION",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Engineering Management",
+            "members": [
+              "jclockson"
+            ],
+            "name": "GROUP_ENGINEERING_MANAGEMENT",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "QA Team",
+            "members": [
+              "dtockley",
+              "hturvy",
+              "imort",
+              "moats",
+              "vtugelbend"
+            ],
+            "name": "GROUP_QA_TEAM",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "R_AND_D",
+            "members": [
+              "cchrysoprase",
+              "cdun",
+              "ddregs",
+              "gglooper",
+              "hgoatfounder",
+              "jclockson",
+              "jdrum",
+              "ldechumsfanleigh",
+              "mgarlick",
+              "pcuddy",
+              "tgroat"
+            ],
+            "name": "GROUP_R_AND_D",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Technical Support",
+            "members": [
+              "emargaret",
+              "etreason",
+              "gwhemper",
+              "jblouse",
+              "jogg",
+              "lquirm",
+              "lweatherwax",
+              "mbent",
+              "mtwoflower",
+              "mvonlipwig",
+              "ntulip",
+              "ovonchriek",
+              "rpalm",
+              "sahmed",
+              "tlikely"
+            ],
+            "name": "GROUP_TECH_SUPPORT",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          }
+        ],
+        "zones": [
+          "APP.DEFAULT",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "Finance and Administration",
+        "members": [],
+        "name": "GROUP_F_AND_A",
+        "groups": [
+          {
+            "displayName": "Accounts",
+            "members": [
+              "bloveknot",
+              "bstronginthearm",
+              "learwig"
+            ],
+            "name": "GROUP_ACCOUNTS",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Compliance",
+            "members": [
+              "brincewind",
+              "hking",
+              "kdarktan",
+              "nnobbs",
+              "sbucket",
+              "wpoons"
+            ],
+            "name": "GROUP_COMPLIANCE",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Executives",
+            "members": [
+              "aironfoundersson",
+              "elittlebottom",
+              "esmith",
+              "etreason",
+              "hvetinari",
+              "jclockson",
+              "mridcully",
+              "pstibbons",
+              "tluggage"
+            ],
+            "name": "GROUP_EXECUTIVES",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Human Resources",
+            "members": [
+              "fpump"
+            ],
+            "name": "GROUP_HR_TEAM",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Legal Staff ",
+            "members": [
+              "eweatherwax"
+            ],
+            "name": "GROUP_LEGAL",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Operations",
+            "members": [
+              "anitt",
+              "atacticus",
+              "esmith",
+              "htick",
+              "mstohelit"
+            ],
+            "name": "GROUP_OPERATIONS",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          }
+        ],
+        "zones": [
+          "APP.DEFAULT",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "Manufacturing ",
+        "members": [],
+        "name": "GROUP_MANUFACTURING",
+        "groups": [
+          {
+            "displayName": "Production",
+            "members": [
+              "aweemad",
+              "dwillikins",
+              "lwarbeck",
+              "twithel"
+            ],
+            "name": "GROUP_PRODUCTION",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          }
+        ],
+        "zones": [
+          "APP.DEFAULT",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "Marketing",
+        "members": [],
+        "name": "GROUP_MARKETING",
+        "groups": [
+          {
+            "displayName": "Events Team",
+            "members": [
+              "ecake",
+              "fcolon",
+              "jbeans",
+              "ltze",
+              "taching",
+              "wdeworde"
+            ],
+            "name": "GROUP_EVENTS_TEAM",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Field Marketing",
+            "members": [
+              "ecake",
+              "fcolon",
+              "jbeans",
+              "ltze",
+              "taching",
+              "wdeworde"
+            ],
+            "name": "GROUP_FIELD_MARKETING",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Marketing Management",
+            "members": [
+              "avonuberwald",
+              "jbeans",
+              "jteatime",
+              "ltze",
+              "mridcully",
+              "phampton",
+              "taching"
+            ],
+            "name": "GROUP_MARKETING_MANAGEMENT",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Media Team",
+            "members": [
+              "avonuberwald",
+              "wplinge"
+            ],
+            "name": "GROUP_MEDIA_TEAM",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Partner Management",
+            "members": [
+              "edeath",
+              "ldetritus"
+            ],
+            "name": "GROUP_PARTNER_MANAGEMENT",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Product Marketing",
+            "members": [
+              "phampton",
+              "svimes",
+              "svonhumpeding"
+            ],
+            "name": "GROUP_PRODUCT_MARKETING",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Web Team",
+            "members": [
+              "asideways",
+              "idibbler",
+              "jteatime"
+            ],
+            "name": "GROUP_WEB_TEAM",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          }
+        ],
+        "zones": [
+          "APP.DEFAULT",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "WW Sales",
+        "members": [],
+        "name": "GROUP_SALES",
+        "groups": [
+          {
+            "displayName": "APAC Sales",
+            "members": [
+              "tluggage"
+            ],
+            "name": "GROUP_APAC_SALES",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "EMEA Sales",
+            "members": [
+              "adearheart",
+              "ahancock",
+              "ddownspout",
+              "dhubbub",
+              "jgoatberger",
+              "jhix",
+              "pgristle",
+              "pstibbons",
+              "rdechumsfanleigh",
+              "rdrumknott",
+              "shaddock"
+            ],
+            "name": "GROUP_EMEA_SALES",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "Sales Management",
+            "members": [
+              "elittlebottom",
+              "pstibbons",
+              "tluggage",
+              "wsonky"
+            ],
+            "name": "GROUP_SALES_MANAGEMENT",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          },
+          {
+            "displayName": "US Sales",
+            "members": [
+              "elancre",
+              "elittlebottom",
+              "esaturday",
+              "ethursley",
+              "gsugarbean",
+              "imaccalariat",
+              "iping",
+              "jlawn",
+              "jnettle",
+              "kkelirehenna",
+              "llewton",
+              "lludd",
+              "lslant",
+              "ltin-wheedle",
+              "rrust",
+              "rshoe",
+              "showler",
+              "sswires"
+            ],
+            "name": "GROUP_US_SALES",
+            "groups": [],
+            "zones": [
+              "APP.DEFAULT",
+              "AUTH.ALF"
+            ]
+          }
+        ],
+        "zones": [
+          "APP.DEFAULT",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "RECORD_CONTRIBUTORS",
+    "members": [
+      "admin"
+    ],
+    "name": "GROUP_RECORD_CONTRIBUTORS",
+    "groups": [],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "SITE_ADMINISTRATORS",
+    "members": [
+      "admin"
+    ],
+    "name": "GROUP_SITE_ADMINISTRATORS",
+    "groups": [],
+    "zones": [
+      "APP.DEFAULT",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_2014-company-rebranding",
+    "members": [],
+    "name": "GROUP_site_2014-company-rebranding",
+    "groups": [
+      {
+        "displayName": "site_2014-company-rebranding_SiteCollaborator",
+        "members": [],
+        "name": "GROUP_site_2014-company-rebranding_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_2014-company-rebranding_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_2014-company-rebranding_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_2014-company-rebranding_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_2014-company-rebranding_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_2014-company-rebranding_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_2014-company-rebranding_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_brand-awareness-campaign",
+    "members": [],
+    "name": "GROUP_site_brand-awareness-campaign",
+    "groups": [
+      {
+        "displayName": "site_brand-awareness-campaign_SiteCollaborator",
+        "members": [],
+        "name": "GROUP_site_brand-awareness-campaign_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_brand-awareness-campaign_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_brand-awareness-campaign_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_brand-awareness-campaign_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_brand-awareness-campaign_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_brand-awareness-campaign_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_brand-awareness-campaign_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_company-reports",
+    "members": [],
+    "name": "GROUP_site_company-reports",
+    "groups": [
+      {
+        "displayName": "site_company-reports_SiteCollaborator",
+        "members": [
+          "aironfoundersson",
+          "eweatherwax",
+          "hvetinari"
+        ],
+        "name": "GROUP_site_company-reports_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_company-reports_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_company-reports_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_company-reports_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_company-reports_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_company-reports_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_company-reports_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_contracts",
+    "members": [],
+    "name": "GROUP_site_contracts",
+    "groups": [
+      {
+        "displayName": "site_contracts_SiteCollaborator",
+        "members": [
+          "brincewind",
+          "hking",
+          "kdarktan",
+          "nnobbs",
+          "sbucket",
+          "wpoons"
+        ],
+        "name": "GROUP_site_contracts_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_contracts_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_contracts_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_contracts_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_contracts_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_contracts_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_contracts_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_customer-service-case-files",
+    "members": [],
+    "name": "GROUP_site_customer-service-case-files",
+    "groups": [
+      {
+        "displayName": "site_customer-service-case-files_SiteCollaborator",
+        "members": [
+          "emargaret",
+          "etreason",
+          "gwhemper",
+          "jblouse",
+          "jogg",
+          "lquirm",
+          "lweatherwax",
+          "mbent",
+          "mtwoflower",
+          "mvonlipwig",
+          "ntulip",
+          "ovonchriek",
+          "rpalm",
+          "sahmed",
+          "tlikely"
+        ],
+        "name": "GROUP_site_customer-service-case-files_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_customer-service-case-files_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_customer-service-case-files_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_customer-service-case-files_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_customer-service-case-files_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_customer-service-case-files_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_customer-service-case-files_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_engineering-development",
+    "members": [],
+    "name": "GROUP_site_engineering-development",
+    "groups": [
+      {
+        "displayName": "site_engineering-development_SiteCollaborator",
+        "members": [
+          "cdun",
+          "dtockley",
+          "emargaret",
+          "etreason",
+          "gblackcap",
+          "gglooper",
+          "gogg",
+          "hgoatfounder",
+          "htick",
+          "hturvy",
+          "imort",
+          "jblouse",
+          "jclockson",
+          "jdrum",
+          "ldechumsfanleigh",
+          "lquirm",
+          "mbent",
+          "mgarlick",
+          "mtwoflower",
+          "ovonchriek",
+          "rpalm",
+          "sahmed",
+          "tgroat"
+        ],
+        "name": "GROUP_site_engineering-development_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_engineering-development_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_engineering-development_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_engineering-development_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_engineering-development_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_engineering-development_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_engineering-development_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_global-sales-enablement",
+    "members": [],
+    "name": "GROUP_site_global-sales-enablement",
+    "groups": [
+      {
+        "displayName": "site_global-sales-enablement_SiteCollaborator",
+        "members": [
+          "elittlebottom",
+          "pstibbons",
+          "svimes",
+          "svonhumpeding",
+          "tluggage"
+        ],
+        "name": "GROUP_site_global-sales-enablement_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_global-sales-enablement_SiteConsumer",
+        "members": [
+          "adearheart",
+          "ahancock",
+          "ddownspout",
+          "dhubbub",
+          "elancre",
+          "esaturday",
+          "ethursley",
+          "gsugarbean",
+          "imaccalariat",
+          "iping",
+          "jgoatberger",
+          "jhix",
+          "jlawn",
+          "jnettle",
+          "kkelirehenna",
+          "llewton",
+          "lludd",
+          "lslant",
+          "ltin-wheedle",
+          "pgristle",
+          "rdechumsfanleigh",
+          "rdrumknott",
+          "rrust",
+          "rshoe",
+          "shaddock",
+          "showler",
+          "sswires"
+        ],
+        "name": "GROUP_site_global-sales-enablement_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_global-sales-enablement_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_global-sales-enablement_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_global-sales-enablement_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_global-sales-enablement_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_hr-files",
+    "members": [],
+    "name": "GROUP_site_hr-files",
+    "groups": [
+      {
+        "displayName": "site_hr-files_SiteCollaborator",
+        "members": [
+          "aironfoundersson",
+          "eweatherwax",
+          "hvetinari"
+        ],
+        "name": "GROUP_site_hr-files_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_hr-files_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_hr-files_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_hr-files_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_hr-files_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_hr-files_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_hr-files_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_marketing",
+    "members": [],
+    "name": "GROUP_site_marketing",
+    "groups": [
+      {
+        "displayName": "site_marketing_SiteCollaborator",
+        "members": [
+          "asideways",
+          "edeath",
+          "idibbler",
+          "jbeans",
+          "jteatime",
+          "ldetritus",
+          "ltze",
+          "phampton",
+          "svimes",
+          "svonhumpeding",
+          "taching"
+        ],
+        "name": "GROUP_site_marketing_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_marketing_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_marketing_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_marketing_SiteContributor",
+        "members": [
+          "avonuberwald",
+          "ecake",
+          "fcolon",
+          "wdeworde",
+          "wplinge"
+        ],
+        "name": "GROUP_site_marketing_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_marketing_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_marketing_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_marketing-image-gallery",
+    "members": [],
+    "name": "GROUP_site_marketing-image-gallery",
+    "groups": [
+      {
+        "displayName": "site_marketing-image-gallery_SiteCollaborator",
+        "members": [
+          "asideways",
+          "edeath",
+          "idibbler",
+          "jbeans",
+          "jteatime",
+          "ldetritus",
+          "ltze",
+          "phampton",
+          "svimes",
+          "svonhumpeding",
+          "taching"
+        ],
+        "name": "GROUP_site_marketing-image-gallery_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_marketing-image-gallery_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_marketing-image-gallery_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_marketing-image-gallery_SiteContributor",
+        "members": [
+          "avonuberwald",
+          "ecake",
+          "fcolon",
+          "wdeworde",
+          "wplinge"
+        ],
+        "name": "GROUP_site_marketing-image-gallery_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_marketing-image-gallery_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_marketing-image-gallery_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_rm",
+    "members": [],
+    "name": "GROUP_site_rm",
+    "groups": [
+      {
+        "displayName": "site_rm_SiteCollaborator",
+        "members": [
+          "aironfoundersson",
+          "brincewind",
+          "hking",
+          "kdarktan"
+        ],
+        "name": "GROUP_site_rm_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_rm_SiteConsumer",
+        "members": [
+          "nnobbs",
+          "sbucket"
+        ],
+        "name": "GROUP_site_rm_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_rm_SiteContributor",
+        "members": [
+          "elittlebottom",
+          "esmith",
+          "hvetinari",
+          "mridcully"
+        ],
+        "name": "GROUP_site_rm_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_rm_SiteManager",
+        "members": [
+          "admin",
+          "wpoons"
+        ],
+        "name": "GROUP_site_rm_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  },
+  {
+    "displayName": "site_sales-operations",
+    "members": [],
+    "name": "GROUP_site_sales-operations",
+    "groups": [
+      {
+        "displayName": "site_sales-operations_SiteCollaborator",
+        "members": [],
+        "name": "GROUP_site_sales-operations_SiteCollaborator",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_sales-operations_SiteConsumer",
+        "members": [],
+        "name": "GROUP_site_sales-operations_SiteConsumer",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_sales-operations_SiteContributor",
+        "members": [],
+        "name": "GROUP_site_sales-operations_SiteContributor",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      },
+      {
+        "displayName": "site_sales-operations_SiteManager",
+        "members": [
+          "admin"
+        ],
+        "name": "GROUP_site_sales-operations_SiteManager",
+        "groups": [],
+        "zones": [
+          "APP.SHARE",
+          "AUTH.ALF"
+        ]
+      }
+    ],
+    "zones": [
+      "APP.SHARE",
+      "AUTH.ALF"
+    ]
+  }
+]
