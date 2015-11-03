@@ -18,23 +18,6 @@
 -->
 <beans>
     
-   	<bean id="webscript.org.alfresco.devops.exporters.peopleusersgroupacpexporter.get" class="org.alfresco.devops.exporters.PeopleUsersGroupAcpExporter" parent="webscript">
-      <property name="mimetypeService" ref="MimetypeService"/>
-      <property name="exporterService" ref="ExporterService"/>
-      <property name="authorityService" ref="AuthorityService"/>
-      <property name="authenticationContextManager" ref="Authentication"/>
-      <property name="personService" ref="PersonService"/>
-    </bean>
-    
-    
-    <bean id="webscript.org.alfresco.devops.exporters.rm-site-export.get" class="org.alfresco.repo.web.scripts.site.RMSiteExportGet" parent="webscript">
-      <property name="siteService" ref="SiteService"/>
-      <property name="mimetypeService" ref="MimetypeService"/>
-      <property name="exporterService" ref="ExporterService"/>
-      <property name="authorityService" ref="AuthorityService"/>
-      <property name="authenticationContextManager" ref="Authentication"/>
-   </bean>
-   
    	<bean id="patch.siteLoadPatch.generic" abstract="true" parent="basePatch">
 		<property name="description"><value>patch.siteLoadPatch.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>

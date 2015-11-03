@@ -45,6 +45,12 @@
 			<version>${project.version}</version>
 			<type>amp</type>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>alfresco-demo-data-exporter-repo-amp</artifactId>
+			<version>${project.version}</version>
+			<type>amp</type>
+		</dependency>
 		<!-- Uncomment if you are using SPP (SharePoint Protocol Support) for Online 
 			Edit etc -->
 		<!-- <dependency> <groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-spp</artifactId> 
@@ -91,6 +97,11 @@
 						<overlay>
 							<groupId>${project.groupId}</groupId>
 							<artifactId>alfresco-demo-data-repo-amp</artifactId>
+							<type>amp</type>
+						</overlay>
+						<overlay>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>alfresco-demo-data-exporter-repo-amp</artifactId>
 							<type>amp</type>
 						</overlay>
 						<!-- Uncomment if you are using SPP -->

@@ -1,5 +1,6 @@
-<!-- 
-    Licensed to the Apache Software Foundation (ASF) under one or more
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one or more
 	contributor license agreements.  See the NOTICE file distributed with
 	this work for additional information regarding copyright ownership.
 	The ASF licenses this file to You under the Apache License, Version 2.0
@@ -13,5 +14,13 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
- -->
- Test jsp. Change me! 
+	
+-->
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+    <!-- This is filtered by Maven at build time, so that module name is single sourced. -->
+    <import resource="classpath:alfresco/module/${project.artifactId}/context/service-context.xml" />
+
+</beans>

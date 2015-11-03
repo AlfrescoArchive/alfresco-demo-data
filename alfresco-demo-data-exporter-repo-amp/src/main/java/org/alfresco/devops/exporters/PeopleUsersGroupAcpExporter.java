@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import org.alfresco.devops.util.Constants;
+import org.alfresco.devops.exporter.util.Constants;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.content.MimetypeMap;

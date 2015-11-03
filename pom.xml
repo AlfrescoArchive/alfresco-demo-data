@@ -81,6 +81,7 @@
 	</profiles>
 	<modules>
 		<module>alfresco-demo-data-repo-amp</module>
+		<module>alfresco-demo-data-exporter-repo-amp</module>
 		<module>alfresco-demo-data-share-amp</module>
 		<module>repo</module>
 		<module>solr-config</module>
