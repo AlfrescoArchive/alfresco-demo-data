@@ -30,7 +30,7 @@
 			in the 'share-amp' module -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>share-amp</artifactId>
+			<artifactId>alfresco-demo-data-share-amp</artifactId>
 			<version>${project.version}</version>
 			<type>amp</type>
 		</dependency>
@@ -74,7 +74,7 @@
 						<!-- Add / sort your AMPs here -->
 						<overlay>
 							<groupId>${project.groupId}</groupId>
-							<artifactId>share-amp</artifactId>
+							<artifactId>alfresco-demo-data-share-amp</artifactId>
 							<type>amp</type>
 						</overlay>
 											<!-- Uncomment if you are using RM module -->
