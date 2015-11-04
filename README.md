@@ -5,6 +5,11 @@ This module (Alfresco Repository AMP) loads some sample sites, users and groups 
 
 The project allows you to run Alfresco locally and create your content; following the steps below you will be able to simply export your data, update the project and (re)generate the AMP with the updated data that needs to be bootstrapped.
 
+The module is composed by two Alfresco repo AMP:
+
+- **alfresco-demo-data-repo-amp**: (*IMPORTER*) to import data - install this just where custom data have to be loaded
+- **alfresco-demo-data-exporter-repo-amp**: (*EXPORTER*) to export Users/Groups and RM sites - install this just where data have to be exported
+
 Prerequisites
 ---
 - [Alfresco Knowledge](http://docs.alfresco.com/5.0/concepts/system-about.html)
@@ -46,6 +51,12 @@ And a number of users and groups listed here:
 
 Updating content
 ---
+
+In order to make any change on the importer amp it is possible to either:
+
+- Download the project, perform the necessary changes there and and run ***mvn package*** to create a new AMP
+- Download the AMP, unzip it, perform the necessary changes, zip it, rename the extenstion .amp
+
 Updating/creating new content is available in two different ways:
 
 - *Dynamic way* (No much configuration needed)
@@ -186,8 +197,6 @@ curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > a
     </bean>
 ```
 
-
-
 Release
 ---
 The release process will create the AMP artifact and upload it to Alfresco Internal Nexus; you can change `pom.xml` settings to use your own Maven Repository.
@@ -227,8 +236,8 @@ They use the [BeanDefinitionRegistryPostProcessor](http://docs.spring.io/spring/
 - Beans for standard import are authomatically loaded before the dynamic ones regardless of the order on the xml context file, no way to change this behaviour at the moment
 
 #### Export Data
-To export authorities or RM-Sites the demo-data amp should be used in your Alfresco instance.
-***IMPORTANT: before applying it remove all the existing Sites and Authorities from the AMP otherwise they will be loaded at bootstrap.***
+To export authorities or RM-Sites the **alfresco-demo-data-export-repo-amp** AMP should be used in your Alfresco instance.
+
 
 #### More about the Authorities Exporter
 The url of the webscript is:
@@ -239,11 +248,11 @@ The url of the webscript is:
 
 In the url you can set:
 
-- usersToExport: comma separated list of users to export, if not present all the users will be exported
-- groupsToExport: comma separated list of groups to export, if not present all the groups will be exported
-- excludeSiteGroups: boolean (TRUE/FALSE), determines whether to exclude or not Site Groups
-- groupsToExclude: comma separated list of groups to export, if not present all the groups will be exported. IGNORED if groupsToExport is present
-- usersToExclude: comma separated list of users to export, if not present all the users will be exported. IGNORED if usersToExport is present
+- **usersToExport**: comma separated list of users to export, if not present all the users will be exported
+- **groupsToExport**: comma separated list of groups to export, if not present all the groups will be exported
+- **excludeSiteGroups**: boolean (TRUE/FALSE), determines whether to exclude or not Site Groups
+- **groupsToExclude**: comma separated list of groups to export, if not present all the groups will be exported. IGNORED if groupsToExport is present
+- **usersToExclude**: comma separated list of users to export, if not present all the users will be exported. IGNORED if usersToExport is present
 
 ####org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webscript.org.alfresco.devops.exporters.rm-site-export.get' defined in class path resource [alfresco/module/repo-amp/context/service-context.xml]: Instantiation of bean failed; nested exception is java.lang.NoSuchFieldError: r$sfields
 This exception seems to be caused by SpringLoaded, so if this exception is hit when running the SDK please remove the Spring Loaded agent

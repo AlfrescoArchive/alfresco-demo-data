@@ -20,11 +20,14 @@ public class ResourcesResolver {
 		final Resource[] resources = resourcePatternResolver.getResources(path);
 		Set<String> res = new HashSet<String>();
 		for (final Resource resource : resources) {
-			
 			final URL url = resource.getURL();
-			int index = url.toString().indexOf(Constants.MODULE_PATH);
-			String internalFilePath = url.toString().substring(index);
-			res.add(internalFilePath);
+			if(url!=null){
+				int index = getIndex(url.toString());
+				if(index>=0){
+					String internalFilePath = url.toString().substring(index);
+					res.add(internalFilePath);
+				}
+			}
 		}
 		return res;
 	}
@@ -37,9 +40,17 @@ public class ResourcesResolver {
 		else{
 			return false;
 		}
-		
+	}
+	
+	private int getIndex(String url){
+		if(url.indexOf(Constants.MODULE_PATH)>0){
+			return url.indexOf(Constants.MODULE_PATH);
+		}
+		else if(url.indexOf(Constants.EXTENSION_PATH)>0){
+			return url.indexOf(Constants.EXTENSION_PATH);
+		}
+		else return -1;
 	}
 
-	
 
 }

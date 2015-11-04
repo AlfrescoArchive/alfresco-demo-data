@@ -48,8 +48,5 @@
     
     
     <bean id="resourcesResolver" class="org.alfresco.devops.services.ResourcesResolver"/>
-	
-
-    
     
 </beans>

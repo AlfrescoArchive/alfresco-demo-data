@@ -52,7 +52,6 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 	public static final String PROPERTIES_USERS = "users";
 	public static final String PROPERTIES_PEOPLE = "people";
 	public static final String PROPERTIES_GROUPS = "groups";
-
 	public static final String PROPERTY_LOCATION = "location";
 
 	private static final Map<String,String> DEFAULT_PATHS = new HashMap<String, String>();

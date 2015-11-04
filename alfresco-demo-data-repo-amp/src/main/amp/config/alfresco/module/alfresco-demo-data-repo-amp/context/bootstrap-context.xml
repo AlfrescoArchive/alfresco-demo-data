@@ -5,7 +5,9 @@
           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 
-	<bean id="sitePatchLoaderPostProcessor" class="org.alfresco.devops.services.SitePatchLoaderPostProcessor">
+	<!--  DYNAMIC IMPORT -->
+
+	<bean class="org.alfresco.devops.services.SitePatchLoaderPostProcessor">
 		<property name="disabled"><value>false</value></property>
 		<property name="resourcesResolver" ref="resourcesResolver"/>
 		<property name="parentName" value="patch.siteLoadPatch.generic"/>
@@ -14,7 +16,7 @@
 		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp"/>
 	</bean>
 	
-	<bean id="authoritiesLoaderPostProcessor" class="org.alfresco.devops.services.AuthoritiesPatchLoaderPostProcessor">
+	<bean class="org.alfresco.devops.services.AuthoritiesPatchLoaderPostProcessor">
 		<property name="disabled"><value>false</value></property>
 		<property name="resourcesResolver" ref="resourcesResolver"/>
 		<property name="parentName" value="patch.authoritiesPatch.generic"/>
@@ -26,6 +28,9 @@
 	</bean>
    
    
+   <!--  EXAMPLES of standard imports: -->
+
+
 <!-- 	<bean id="patch.siteLoadPatch.companyRebranding" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" parent="patch.siteLoadPatch.generic"> -->
 <!--         <property name="id"><value>patch.siteLoadPatch.companyRebranding</value></property> -->
 <!--         <property name="disabled"><value>${companyRebranding.site.disabled}</value></property> -->
