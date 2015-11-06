@@ -5,9 +5,11 @@ This module (Alfresco Repository AMP) loads some sample sites, users and groups 
 
 The project allows you to run Alfresco locally and create your content; following the steps below you will be able to simply export your data, update the project and (re)generate the AMP with the updated data that needs to be bootstrapped.
 
+**IMPORTANT: this module MUST be used with an EMPTY repository.**
+
 The module is composed by two Alfresco repo AMP:
 
-- **alfresco-demo-data-repo-amp**: (*IMPORTER*) to import data - install this just where custom data have to be loaded
+- **alfresco-demo-data-repo-amp**: (*DEMO DATA IMPORTER*) to import data - install this just where custom data have to be loaded
 - **alfresco-demo-data-exporter-repo-amp**: (*EXPORTER*) to export Users/Groups and RM sites - install this just where data have to be exported
 
 Prerequisites
@@ -62,7 +64,9 @@ Updating/creating new content is available in two different ways:
 - *Dynamic way* (No much configuration needed)
 - *Standard way* (Some Spring xml configuration need)
 
-Let's have a look at them:
+For normal use the Dynamic Way will be enough to start a sample demo data.
+
+Let's have a look at them in more details:
 
 ### Dynamic way
 --
@@ -75,7 +79,7 @@ Let's have a look at them:
 curl -u admin:admin http://localhost:8080/alfresco/s/api/sites/$SITE_NAME/export > site-export.zip
 ```
 - Unzip the export file
-- Create a folder into **demo-data/repo-amp/src/main/amp/config/alfresco/module/repo-amp/bootstrap/dynamic/sites**  with the site name (it has to be the exact same shortname used by the Share url)
+- Create a folder into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/dynamic/sites**  with the site name (it has to be the exact same shortname used by the Share url)
 - Move the **Contents.acp** into the previously created folder (Other ACPs are not needed)
 - No other configuration needed
 
@@ -87,7 +91,7 @@ curl -u admin:admin http://localhost:8080/alfresco/s/api/sites/$SITE_NAME/export
 curl -u admin:admin http://localhost:8080/alfresco/s/api/rm-site/rm/export > rm-site-export.zip
 ```
 - Unzip the export file
-- Move the **Contents.acp** into **demo-data/repo-amp/src/main/amp/config/alfresco/module/repo-amp/bootstrap/dynamic/sites/rm** (Other ACPs are not needed)
+- Move the **Contents.acp** into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/dynamic/sites/rm** (Other ACPs are not needed)
 - No other configuration needed
 
 ##### Add Authorities
@@ -97,7 +101,7 @@ curl -u admin:admin http://localhost:8080/alfresco/s/api/rm-site/rm/export > rm-
 curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > authorities-export.zip
 ```
 - Unzip the export file
-- Move the **People.acp**,**Users.acp**,**Groups.json** into **demo-data/repo-amp/src/main/amp/config/alfresco/module/repo-amp/bootstrap/dynamic/authorities**
+- Move the **People.acp**,**Users.acp**,**Groups.json** into **alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/dynamic/authorities**
 - No other configuration needed
                                                                                                                               
 ### Standard way
@@ -111,7 +115,7 @@ curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > a
 curl -u admin:admin http://localhost:8080/alfresco/s/api/sites/$SITE_NAME/export > site-export.zip
 ```
 - Unzip the export file
-- Create a folder into **demo-data/repo-amp/src/main/amp/config/alfresco/module/repo-amp/bootstrap/sites/standard/**  with the site name (it has to be the exact same shortname used by the Share url)
+- Create a folder into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/sites/standard/**  with the site name (it has to be the exact same shortname used by the Share url)
 - Move the **Contents.acp** into the previously created folder (Other ACPs are not needed)
 - Create a Spring Bean into repo-amp/src/main/amp/config/alfresco/module/repo-amp/context/bootstrap-context.xml similar to the following example
 
@@ -140,7 +144,7 @@ curl -u admin:admin http://localhost:8080/alfresco/s/api/sites/$SITE_NAME/export
 curl -u admin:admin http://localhost:8080/alfresco/s/api/rm-site/rm/export > rm-site-export.zip
 ```
 - Unzip the export file
-- Move the **Contents.acp** into **demo-data/repo-amp/src/main/amp/config/alfresco/module/repo-amp/bootstrap/standard/sites/rm** (Other ACPs are not needed)
+- Move the **Contents.acp** into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/standard/sites/rm** (Other ACPs are not needed)
 - Create a Spring Bean into repo-amp/src/main/amp/config/alfresco/module/repo-amp/context/bootstrap-context.xml similar to the following example
 
 ```
@@ -168,7 +172,7 @@ curl -u admin:admin http://localhost:8080/alfresco/s/api/rm-site/rm/export > rm-
 curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > authorities-export.zip
 ```
 - Unzip the export file
-- Move the **People.acp**,**Users.acp**,**Groups.json** into **demo-data/repo-amp/src/main/amp/config/alfresco/module/repo-amp/bootstrap/standard/authorities**
+- Move the **People.acp**,**Users.acp**,**Groups.json** into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/standard/authorities**
 - Create a Spring Bean into repo-amp/src/main/amp/config/alfresco/module/repo-amp/context/bootstrap-context.xml similar to the following example
 
 ```
@@ -196,6 +200,7 @@ curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > a
         </property>
     </bean>
 ```
+
 
 Release
 ---
