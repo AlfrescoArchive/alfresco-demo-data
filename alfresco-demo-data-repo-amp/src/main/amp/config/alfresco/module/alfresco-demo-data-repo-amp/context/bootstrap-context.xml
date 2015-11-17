@@ -14,8 +14,6 @@
 		</property>
 	</bean>
 
-	<bean id="patch.exampleJavaScript" class="java.lang.String" />
-
 	<bean id="patch.import.demodata.javascript" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" parent="basePatch">
 		<property name="id">
 			<value>patch.importDemoDataJavaScript</value>
