@@ -1,0 +1,793 @@
+<alfresco-config>
+
+           <!-- Document Library config section -->
+		   <config evaluator="string-compare" condition="DocumentLibrary" replace="true">
+        
+              <metadata-templates>
+                 <template id="default">
+                    <line index="10" id="date">{date}{size}{dm:marketingdoc_category Category}{dm:marketingdoc_usage Usage}{dm:status Status}</line>
+                    <!-- <line index="80" id="marketing">{dm_marketingdoc_type}</line> -->
+                 </template>
+              </metadata-templates>
+        
+              <!--
+                 Used by the "Manage Aspects" action
+        
+                 For custom aspects, remember to also add the relevant i18n string(s)
+                    cm_myaspect=My Aspect
+              -->
+              <aspects>
+                 <!-- Aspects that a user can see -->
+                 <visible>
+                    <aspect label="Product" label-id="Product" name="dm:product" />
+                    <aspect label="Customer" label-id="Customer" name="dm:customer" />
+                    <aspect name="dm:supplier" />
+                    <aspect name="dm:employee" />
+                    <aspect name="dm:docstatus" />                  
+                    <aspect name="cm:generalclassifiable" />
+                    <aspect name="cm:complianceable" />
+                    <aspect name="cm:dublincore" />
+                    <aspect name="cm:effectivity" />
+                    <aspect name="cm:summarizable" />
+                    <aspect name="cm:versionable" />
+                    <aspect name="cm:templatable" />
+                    <aspect name="cm:emailed" />
+                    <aspect name="emailserver:aliasable" />
+                    <aspect name="cm:taggable" />
+                    <aspect name="app:inlineeditable" />
+                    <aspect name="cm:geographic" />
+                    <aspect name="exif:exif" />
+                    <aspect name="audio:audio" />
+                    <aspect name="cm:indexControl" />
+                    <aspect name="dp:restrictable" />
+                </visible>
+        
+              </aspects>
+
+              <!--
+                 Used by the "Change Type" action
+
+                 Define valid subtypes using the following example:
+                    <type name="cm:content">
+                       <subtype name="cm:mysubtype" />
+                    </type>
+        
+                 Remember to also add the relevant i18n string(s):
+                    cm_mysubtype=My SubType
+              -->
+              <types>
+                 <type name="cm:content">
+                 <!-- Add in Custom SubTypes -->
+                 	<subtype name="dm:marketingdoc" />
+            			<subtype name="dm:casefile" />
+            			<subtype name="dm:contract" />
+            			<subtype name="dm:invoice" />
+            			<subtype name="dm:issuelog" />
+            			<subtype name="dm:meetingnotes" />
+            			<subtype name="dm:po" />
+            			<subtype name="dm:proposal" />
+                                <subtype name="dm:report" />
+            			<subtype name="dm:sop" />
+                    		<!-- End Custom SubTypes -->
+                 </type>
+        
+                 <type name="cm:folder">
+                 </type>
+         
+                 <type name="trx:transferTarget">
+                    <subtype name="trx:fileTransferTarget" />
+                 </type>
+              </types>
+        
+           </config>
+        
+        <!-- ================= -->
+        <!-- Custom Form Start --> 
+        <!-- ================= -->
+        
+        <!-- dm:marketingdoc type -->
+           <config evaluator="node-type" condition="dm:marketingdoc" replace="true">
+              <forms>
+                 <!-- Default form configuration for the dm:marketingdoc type -->
+                 <form>
+                    <field-visibility>
+                    
+              	       <!-- Custom attributes -->
+              	       <show id="dm:marketingdoc_category" />
+              	       <show id="dm:marketingdoc_region" />
+              	       <show id="dm:marketingdoc_usage" />
+                       <show id="dm:marketingdoc_buyingstage" />
+                       <show id="dm:marketingdoc_published_date" />
+                          
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />
+                       
+                       <!-- cm:dublincore aspect -->
+                       <show id="cm:publisher"/>
+                       <show id="cm:contributor"/>
+                       <show id="cm:type"/>
+                       <show id="cm:identifier"/>
+                       <show id="cm:dcsource"/>
+                       <show id="cm:coverage"/>
+                       <show id="cm:rights"/>
+                       <show id="cm:subject"/>
+                       
+                       <!-- cm:complianceable aspect -->
+                       <show id="cm:removeAfter" />
+                       
+                       <!-- cm:effectivity aspect -->
+                       <show id="cm:from"/>
+                       <show id="cm:to"/>
+                       
+                       <!--  cm:summarizable aspect -->
+                       <show id="cm:summary" />
+                       
+                       <!-- cm:translatable aspect -->
+                       <show id="cm:translations" />
+                       
+                       <!-- cm:localizable aspect -->
+                       <show id="cm:locale" />
+                       
+                       <!-- cm:ownable aspect -->
+                       <show id="cm:owner" />
+                       
+                       <!-- cm:attachable aspect -->
+                       <show id="cm:attachments" />
+                       
+                       <!-- cm:emailed aspect -->
+                       <show id="cm:originator" />
+                       <show id="cm:addressee" />
+                       <show id="cm:addressees" />
+                       <show id="cm:sentdate" />
+                       <show id="cm:subjectline" />
+                       
+                       <!-- exif:exif aspect -->
+                       <show id="exif:dateTimeOriginal" />
+                       <show id="exif:pixelXDimension" />
+                       <show id="exif:pixelYDimension" />
+                       <show id="exif:exposureTime" />
+                       <show id="exif:fNumber" />
+                       <show id="exif:flash" />
+                       <show id="exif:focalLength" />
+                       <show id="exif:isoSpeedRatings" />
+                       <show id="exif:manufacturer" />
+                       <show id="exif:model" />
+                       <show id="exif:software" />
+                       <show id="exif:orientation" />
+                       <show id="exif:xResolution" />
+                       <show id="exif:yResolution" />
+                       <show id="exif:resolutionUnit" />
+                       
+                       <!-- cm:geographic aspect -->
+                       <show id="cm:latitude" />
+                       <show id="cm:longitude" />
+                    </field-visibility>
+                    <appearance>  
+                       <!-- Custom Fields -->
+                       <!-- <control template="/org/alfresco/components/form/controls/dynamic-selectmany.ftl" /> -->
+                       <set template="/org/alfresco/components/form/3-column-set.ftl" appearance="title" label-id="Marketing Details" id="marketingdoc"/>
+                       <field set="marketingdoc" label-id="Marketing Document Category" id="dm:marketingdoc_category" />
+                       <field set="marketingdoc" label-id="Region" id="dm:marketingdoc_region" />
+                       <field set="marketingdoc" label-id="Intended Usage" id="dm:marketingdoc_usage" />
+                       <field set="marketingdoc" label-id="Buying Stage" id="dm:marketingdoc_buyingstage" />
+                       <field set="marketingdoc" label-id="Publishing Date" id="dm:marketingdoc_published_date">
+                          <control template="/org/alfresco/components/form/controls/date.ftl">
+                             <control-param name="showTime">false</control-param>
+                             <control-param name="submitTime">false</control-param>
+                          </control>
+                       </field>
+                       <!-- Standard Fields -->
+                       <field id="cm:title">
+                          <control template="/org/alfresco/components/form/controls/textfield.ftl" />
+                       </field>
+                       <field id="cm:description">
+                          <control>
+                             <control-param name="activateLinks">true</control-param>
+                          </control>
+                       </field>
+                       <field id="mimetype">
+                          <control template="/org/alfresco/components/form/controls/mimetype.ftl" />
+                       </field>
+                       <field id="size">
+                          <control template="/org/alfresco/components/form/controls/size.ftl" />
+                       </field>
+                       <field id="cm:taggable">
+                          <control>
+                             <control-param name="compactMode">true</control-param>
+                             <control-param name="params">aspect=cm:taggable</control-param>
+                             <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                             <control-param name="createNewItemIcon">tag</control-param>
+                          </control>
+                       </field>
+                       <field id="cm:categories">
+                          <control>
+                             <control-param name="compactMode">true</control-param>
+                          </control>
+                       </field>
+                       <field id="cm:originator" read-only="true" />
+                       <field id="cm:addressee" read-only="true" />
+                       <field id="cm:addressees" read-only="true" />
+                       <field id="cm:sentdate" read-only="true" />
+                       <field id="cm:subjectline" read-only="true" />
+                    </appearance>
+                 </form>
+        
+                 <!-- Document Library pop-up Edit Metadata form -->
+                 <form id="doclib-simple-metadata">
+                    <field-visibility>
+        
+                       <!-- Custom attributes -->
+              	       <show id="dm:marketingdoc_category" />
+                       <show id="dm:marketingdoc_solution" />
+                       <show id="dm:marketingdoc_usecase" />              			   
+                       <show id="dm:marketingdoc_region" />			   
+            	       <show id="dm:marketingdoc_usage" />
+            	       <show id="dm:marketingdoc_buyingstage" />
+            	       <show id="dm:marketingdoc_published_date" />
+
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />
+                    </field-visibility>
+                    <edit-form template="../documentlibrary/forms/doclib-simple-metadata.ftl" />
+                    <appearance>
+                       <!-- Custom Fields -->
+                       <set template="/org/alfresco/components/form/2-column-set.ftl" appearance="title" label-id="Marketing Details" id="marketingdoc"/>
+                       <field set="marketingdoc" label-id="Marketing Document Category" id="dm:marketingdoc_category" />
+                       <!-- <field set="marketingdoc" label-id="Product Focus" id="dm:marketingdoc_product" /> -->
+                       <field set="marketingdoc" label-id="Solution" id="dm:marketingdoc_solution" />                      
+                       <field set="marketingdoc" label-id="Use Case" id="dm:marketingdoc_usecase">     
+                         <control template="/org/alfresco/components/form/controls/selectone.ftl">
+                             <control-param name="style">width: 265px</control-param>
+                         </control>
+                       </field>
+                       <field set="marketingdoc" label-id="Region" id="dm:marketingdoc_region" />
+                       <field set="marketingdoc" label-id="Intended Usage" id="dm:marketingdoc_usage" />
+                       <field set="marketingdoc" label-id="Buying Stage" id="dm:marketingdoc_buyingstage" />
+                       <field set="marketingdoc" label-id="Publishing Date" id="dm:marketingdoc_published_date">                                 
+                          <control template="/org/alfresco/components/form/controls/date.ftl">
+                             <control-param name="showTime">false</control-param>
+                             <control-param name="submitTime">false</control-param>
+                          </control>
+                       </field>
+        
+                       <!-- Standard Fields -->
+                       <field id="cm:title">
+                          <control template="/org/alfresco/components/form/controls/textfield.ftl" />
+                       </field>
+                       <field id="cm:description">
+                          <control>
+                             <control-param name="activateLinks">true</control-param>
+                          </control>
+                       </field>
+                       <field id="cm:taggable">
+                          <control>
+                             <control-param name="compactMode">true</control-param>
+                             <control-param name="params">aspect=cm:taggable</control-param>
+                             <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+                             <control-param name="createNewItemIcon">tag</control-param>
+                          </control>
+                       </field>
+                       <field id="cm:categories">
+                          <control>
+                             <control-param name="compactMode">true</control-param>
+                          </control>
+                       </field>
+                    </appearance>
+                 </form>
+                 
+                 <!-- Document Library Inline Edit form -->
+                 <form id="doclib-inline-edit">
+                    <field-visibility>
+                       <!-- Custom attributes -->
+                       <show id="dm:marketingdoc_category" />
+                       <show id="dm:marketingdoc_solution" />
+                       <show id="dm:marketingdoc_usecase" />                                              
+             	       <show id="dm:marketingdoc_region" />
+               	       <show id="dm:marketingdoc_usage" />
+                       <show id="dm:marketingdoc_stage" />
+               	       <show id="dm:marketingdoc_published_date" />
+
+                       <!-- Standard attributes -->            
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="cm:content" force="true" />
+                    </field-visibility>
+                    <appearance>
+                       <!-- Custom Fields -->
+                       <set template="/org/alfresco/components/form/3-column-set.ftl" appearance="title" label-id="Marketing Details" id="marketingdoc"/>
+                       <field set="marketingdoc" label-id="Marketing Document Type" id="dm:marketingdoc_category" />
+                       <!-- <field set="marketingdoc" label-id="Product Focus" id="dm:marketingdoc_product" /> -->
+                       <field set="marketingdoc" label-id="Solution" id="dm:marketingdoc_solution" />                       
+                       <field set="marketingdoc" label-id="Use Case" id="dm:marketingdoc_usecase">  
+                         <control template="/org/alfresco/components/form/controls/selectone.ftl">
+                             <control-param name="style">width: 265px</control-param>
+                         </control>
+                       </field>                                            
+                       <field set="marketingdoc" label-id="Region" id="dm:marketingdoc_region" />
+                       <field set="marketingdoc" label-id="Intended Usage" id="dm:marketingdoc_usage" />
+                       <field set="marketingdoc" label-id="Buying Stage" id="dm:marketingdoc_buyingstage" />
+                       <field set="marketingdoc" label-id="Publishing Date" id="dm:marketingdoc_published_date">
+                          <control template="/org/alfresco/components/form/controls/date.ftl">
+                             <control-param name="showTime">false</control-param>
+                             <control-param name="submitTime">false</control-param>
+                          </control>
+                       </field>                  
+        
+                       <!-- Standard Fields -->
+                       <field id="cm:title">
+                          <control template="/org/alfresco/components/form/controls/textfield.ftl" />
+                       </field>
+                       <field id="cm:content">
+                          <control>
+                             <control-param name="editorAppearance">explorer</control-param>
+                             <control-param name="forceEditor">true</control-param>
+                          </control>
+                       </field>
+                    </appearance>
+                 </form>
+              </forms>
+           </config>
+           
+           
+
+        <!-- dm:contract type -->
+           <config evaluator="node-type" condition="dm:contract">
+              <forms>
+                 <!-- Default form configuration for the dm:contract type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:contractid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+
+        <!-- dm:sop type -->
+           <config evaluator="node-type" condition="dm:sop">
+              <forms>
+                 <!-- Default form configuration for the dm:sop type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:sopid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+           
+        <!-- dm:report type -->
+           <config evaluator="node-type" condition="dm:report">
+              <forms>
+                 <!-- Default form configuration for the dm:report type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:reportid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+
+        <!-- dm:casefile type -->
+           <config evaluator="node-type" condition="dm:casefile">
+              <forms>
+                 <!-- Default form configuration for the dm:casefile type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:caseid" />
+                      <show id="dm:caseclosed" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+
+        <!-- dm:issuelog type -->
+           <config evaluator="node-type" condition="dm:issuelog">
+              <forms>
+                 <!-- Default form configuration for the dm:issuelog type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:issueid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+
+         <!-- dm:proposal type -->
+           <config evaluator="node-type" condition="dm:proposal">
+              <forms>
+                 <!-- Default form configuration for the dm:proposal type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:proposalid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+           
+         <!-- dm:proposal type -->
+           <config evaluator="node-type" condition="dm:proposal">
+              <forms>
+                 <!-- Default form configuration for the dm:proposal type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:proposalid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+
+         <!-- dm:proposal type -->
+           <config evaluator="node-type" condition="dm:meetingnotes">
+              <forms>
+                 <!-- Default form configuration for the dm:meetingnotes type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:meetingid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+           
+         <!-- dm:invoice type -->
+           <config evaluator="node-type" condition="dm:invoice">
+              <forms>
+                 <!-- Default form configuration for the dm:invoice type -->
+                 <form>
+                    <field-visibility>
+                      <show id="dm:invoiceid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+           
+         <!-- dm:po type -->
+           <config evaluator="node-type" condition="dm:po">
+              <forms>
+                 <!-- Default form configuration for the dm:po type -->
+                 <form>
+                    <field-visibility>
+                       <show id="dm:poid" />
+                       <!-- Standard attributes -->
+                       <show id="cm:name" />
+                       <show id="cm:title" force="true" />
+                       <show id="cm:description" force="true" />
+                       <show id="mimetype" />
+                       <show id="cm:author" force="true" />
+                       <show id="size" for-mode="view" />
+                       <show id="cm:creator" for-mode="view" />
+                       <show id="cm:created" for-mode="view" />
+                       <show id="cm:modifier" for-mode="view" />
+                       <show id="cm:modified" for-mode="view" />
+                       
+                       <!-- tags and categories -->
+                       <show id="cm:taggable" for-mode="edit" force="true" />
+                       <show id="cm:categories" />                      
+                    </field-visibility>
+                 </form>
+              </forms>
+           </config>
+           
+
+
+           <config evaluator="aspect" condition="dm:product">
+               <forms>
+                   <form>           
+                        <field-visibility>                      
+                          <show id="dm:component" />
+                          <show id="dm:construction_method" />
+                          <show id="dm:material" />                         
+                       </field-visibility>
+                       <appearance>
+                          <set template="/org/alfresco/components/form/3-column-set.ftl" appearance="title" label-id="Product Info" id="productinfo"/>
+                          <field set="productinfo" label-id="Component" id="dm:component">
+                            <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                               <control-param name="style">width:258px</control-param>
+                            </control>
+                          </field>
+                          <field set="productinfo" label-id="Construction Method" id="dm:construction_method">
+                            <control template="/org/alfresco/components/form/controls/selectone.ftl">
+                               <control-param name="style">width:258px</control-param>
+                            </control>
+                          </field>
+                          <field set="productinfo" label-id="Material" id="dm:material" />
+                       </appearance>
+                   </form>
+               </forms>
+           </config>
+
+           <config evaluator="aspect" condition="dm:customer">
+               <forms>
+                   <form>      
+                        <field-visibility>                      
+                          <!-- Standard attributes -->
+                          <show id="dm:customer_name" />
+                          <show id="dm:industry" />
+                          <show id="dm:country" />                          
+                          <show id="dm:region" />                                                    
+                        </field-visibility>                                                
+                       <appearance>
+                          <set template="/org/alfresco/components/form/3-column-set.ftl" appearance="title" label-id="Customer Info" id="customerinfo"/>
+                          <field set="customerinfo" label-id="Customer Name" id="dm:customer_name">
+                           <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                               <control-param name="style">width: 256px</control-param>
+                           </control>                            
+                          </field>
+                          <field set="customerinfo" label-id="Industry" id="dm:industry" />
+                          <field set="customerinfo" label-id="Country" id="dm:country" />
+                          <field set="customerinfo" label-id="Region" id="dm:region" />
+                       </appearance>
+                   </form>
+               </forms>
+           </config>
+           
+        <!-- dm:supplier aspect -->
+           <config evaluator="aspect" condition="dm:supplier">
+               <forms>
+                   <form>
+                        <field-visibility>
+                          <show id="dm:suppliername" />
+                          <show id="dm:supplierid" />
+                          <show id="dm:suppliercontact" />                                                   
+                       </field-visibility>
+                   </form>
+               </forms>
+           </config>
+
+        <!-- dm:employee aspect -->
+           <config evaluator="aspect" condition="dm:employee">
+               <forms>
+                   <form>
+                        <field-visibility>
+                          <show id="dm:employeename" />
+                          <show id="dm:employeeid" />
+                       </field-visibility>
+                   </form>
+               </forms>
+           </config>
+           
+        <!-- dm:docstatus aspect -->
+           <config evaluator="aspect" condition="dm:docstatus">
+               <forms>
+                   <form>
+                        <field-visibility>
+                          <show id="dm:status" />
+                       </field-visibility>
+                   </form>
+               </forms>
+           </config>
+
+           <!-- Form Config for exif aspect -->
+           <config evaluator="aspect" condition="exif:exif">
+               <forms>
+                   <form>
+                       <appearance>
+                          <set template="/org/alfresco/components/form/3-column-set.ftl" appearance="title" label-id="EXIF Image Metadata" id="exifmetadata"/>
+                          <field set="exifmetadata" label-id="Date and Time" id="exif:dateTimeOriginal" />
+                          <field set="exifmetadata" label-id="Image Width" id="exif:pixelXDimension" />
+                          <field set="exifmetadata" label-id="Image Height" id="exif:pixelYDimension" />
+                          <field set="exifmetadata" label-id="Exposure Time" id="exif:exposureTime" />               
+                          <field set="exifmetadata" label-id="F Number" id="exif:fNumber" />                              
+                          <field set="exifmetadata" label-id="Flash Activated" id="exif:flash" />                                             
+                          <field set="exifmetadata" label-id="Focal Length" id="exif:focalLength" />
+                          <field set="exifmetadata" label-id="ISO Speed" id="exif:isoSpeedRatings">
+                                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                                       <control-param name="style">width: 20px</control-param>
+                                   </control>
+                          </field>                  
+                          <field set="exifmetadata" label-id="Camera Manufacturer" id="exif:manufacturer">
+                                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                                       <control-param name="style">width: 20px</control-param>
+                                   </control>
+                          </field>                                    
+                          <field set="exifmetadata" label-id="Camera Model" id="exif:model">
+                                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                                       <control-param name="style">width: 20px</control-param>
+                                   </control>
+                          </field>                                    
+                          <field set="exifmetadata" label-id="Camera Software" id="exif:software">
+                                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                                       <control-param name="style">width: 20px</control-param>
+                                   </control>
+                          </field>                                    
+                          <field set="exifmetadata" label-id="Orientation" id="exif:orientation" />
+                          <field set="exifmetadata" label-id="Horizontal Resolution" id="exif:xResolution" />
+                          <field set="exifmetadata" label-id="Vertical Resolution" id="exif:yResolution" />               
+                          <field set="exifmetadata" label-id="Resolution Unit" id="exif:resolutionUnit">
+                                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                                       <control-param name="style">width: 20px</control-param>
+                                   </control>
+                          </field>     
+                       </appearance>
+                   </form>
+               </forms>
+           </config>   
+        
+           
+        
+        <!-- =================== -->
+        <!-- Custom Search Start -->
+        <!-- =================== -->
+        
+          <!-- Advanced Search Configuration -->
+           <config evaluator="string-compare" condition="AdvancedSearch">
+              <advanced-search>
+                 <forms>
+                    <form label="Find Marketing Documents [type]" description="Search for all marketing documents.">dm:marketingdoc</form>            
+                 </forms>
+              </advanced-search>
+           </config>
+        
+        
+           <!-- dm:marketingdoc type (search form) -->
+           <config evaluator="model-type" condition="dm:marketingdoc">
+              <forms>
+                 <form id="search">
+                    <field-visibility>
+                       <show id="dm:marketingdoc_category" force="true"/>
+                       <show id="dm:industry" force="true" />
+                       <show id="dm:region" force="true" />
+                    </field-visibility>                       
+                    <appearance>
+                       <set template="/org/alfresco/components/form/2-column-set.ftl" appearance="title" label-id="Marketing Documents Search" id="marketingdocsearch"/>
+                       <field set="marketingdocsearch" label-id="Marketing Document Category" id="dm:marketingdoc_category" />
+                       <field set="marketingdocsearch" label-id="Industry" id="dm:industry" />
+                       <field set="marketingdocsearch" label-id="Region" id="dm:region" />
+                    </appearance>
+                 </form>
+              </forms>
+           </config>
+
+</alfresco-config>

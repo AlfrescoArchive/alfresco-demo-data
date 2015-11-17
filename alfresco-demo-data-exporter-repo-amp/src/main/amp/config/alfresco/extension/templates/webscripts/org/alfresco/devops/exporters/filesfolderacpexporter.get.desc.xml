@@ -2,8 +2,8 @@
   <shortname>Export People,Users,Groups</shortname>
   <description>
   <![CDATA[
-  Exports a zip containing the ACPs of groups, users and people]]></description>
-  <url>/api/people-groups/export?usersToExport={usersToExport}&amp;groupsToExport={groupsToExport}&amp;excludeSiteGroups={excludeSiteGroups}&amp;groupsToExclude={groupsToExclude}&amp;usersToExclude={usersToExclude}</url>
+  Exports an ACP containing the folder]]></description>
+  <url>/api/file-folder/export?path={path}&amp;crawlSelf={crawlSelf}&amp;crawlChildNodes={crawlChildNodes}&amp;crawlContent={crawlContent}&amp;crawlAssociations={crawlAssociations}</url>
   <format default="html">argument</format>
   <authentication>admin</authentication>
   <transaction allow="readonly">required</transaction>

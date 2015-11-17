@@ -4,72 +4,180 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
+	
+		<!-- Bootstrap model -->
+	<bean id="marketingModel_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+		<property name="models">
+			<list>
+				<value>alfresco/module/${project.artifactId}/bootstrap/standard/models/marketingModel.xml</value>
+			</list>
+		</property>
+	</bean>
 
-	<!--  DYNAMIC IMPORT -->
+	<bean id="patch.exampleJavaScript" class="java.lang.String" />
+
+	<bean id="patch.import.demodata.javascript" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" parent="basePatch">
+		<property name="id">
+			<value>patch.importDemoDataJavaScript</value>
+		</property>
+		<property name="description">
+			<value>patch.exampleJavaScript.description</value>
+		</property>
+		<property name="fixesFromSchema">
+			<value>0</value>
+		</property>
+		<property name="fixesToSchema">
+			<value>${version.schema}</value>
+		</property>
+		<property name="targetSchema">
+			<value>10000</value>
+		</property>
+		<property name="importerBootstrap">
+			<ref bean="spacesBootstrap" />
+		</property>
+		<property name="bootstrapView">
+			<props>
+				<prop key="uuidBinding">REPLACE_EXISTING</prop>
+				<prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.scripts.childname}</prop>
+				<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/javascripts/custom-scripts.acp</prop>
+				<prop key="messages">alfresco/messages/bootstrap-spaces</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!-- DYNAMIC IMPORT -->
 
 	<bean class="org.alfresco.devops.services.SitePatchLoaderPostProcessor">
-		<property name="disabled"><value>false</value></property>
-		<property name="resourcesResolver" ref="resourcesResolver"/>
-		<property name="parentName" value="patch.siteLoadPatch.generic"/>
-		<property name="patchId" value="patch.siteLoadPatch.demoData"/>
+		<property name="disabled">
+			<value>false</value>
+		</property>
+		<property name="resourcesResolver" ref="resourcesResolver" />
+		<property name="parentName" value="patch.siteLoadPatch.generic" />
+		<property name="patchId" value="patch.siteLoadPatch.demoData" />
 		<property name="beanId" value="patch.siteLoadPatch." />
-		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp"/>
+		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp" />
 	</bean>
-	
+
 	<bean class="org.alfresco.devops.services.AuthoritiesPatchLoaderPostProcessor">
-		<property name="disabled"><value>false</value></property>
-		<property name="resourcesResolver" ref="resourcesResolver"/>
-		<property name="parentName" value="patch.authoritiesPatch.generic"/>
-		<property name="patchId" value="patch.groupsUsersPeople.demoData"/>
+		<property name="disabled">
+			<value>false</value>
+		</property>
+		<property name="resourcesResolver" ref="resourcesResolver" />
+		<property name="parentName" value="patch.authoritiesPatch.generic" />
+		<property name="patchId" value="patch.groupsUsersPeople.demoData" />
 		<property name="beanId" value="patch.authorityLoadPatch.demoData" />
-		<property name="usersLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp"/>
-		<property name="peopleLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp"/>
-		<property name="groupsLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json"/>
+		<property name="usersLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp" />
+		<property name="peopleLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp" />
+		<property name="groupsLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json" />
 	</bean>
-   
-   
-   <!--  EXAMPLES of standard imports: -->
 
 
-<!-- 	<bean id="patch.siteLoadPatch.companyRebranding" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" parent="patch.siteLoadPatch.generic"> -->
-<!--         <property name="id"><value>patch.siteLoadPatch.companyRebranding</value></property> -->
-<!--         <property name="disabled"><value>${companyRebranding.site.disabled}</value></property> -->
+
+<!-- 	    For importing whole sites -->
+<!--     <bean id="patch.rmsiteLoadPatch" class="org.alfresco.repo.admin.patch.impl.RMSiteLoadPatch" parent="basePatch"> -->
+<!--         <property name="id"><value>patch.siteLoadPatch.rm</value></property> -->
+<!--         <property name="description"><value>patch.siteLoadPatch.description</value></property> -->
+<!--         <property name="fixesFromSchema"><value>0</value></property> -->
+<!--         <property name="fixesToSchema"><value>${version.schema}</value></property> -->
+<!--         <property name="targetSchema"><value>10000</value></property> -->
+<!--         <property name="disabled"><value>false</value></property> -->
+<!--         <property name="dependsOn" > -->
+<!--             <list> -->
+<!--                 <ref bean="patch.updateDmPermissions" /> -->
+<!--             </list> -->
+<!--         </property> -->
+<!--         <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" /> -->
+<!--         <property name="usersBootstrap" ref="siteLoadBootstrap-Users" /> -->
+<!--         <property name="siteService" ref="siteService" /> -->
+<!--         <property name="descriptorService" ref="descriptorComponent" /> -->
+<!--         <property name="authorityService" ref="authorityService" /> -->
+<!--         <property name="behaviourFilter" ref="policyBehaviourFilter" /> -->
+<!--         <property name="dictionaryDAO" ref="dictionaryDAO"/> -->
 <!--         <property name="siteName"> -->
-<!--             <value>2014-company-rebranding</value> -->
+<!--             <value>rm</value> -->
 <!--         </property> -->
 <!--         <property name="bootstrapViews"> -->
 <!--             <map> -->
 <!--                 <entry key="contents"> -->
-<!--                     <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/2014-company-rebranding/Contents.acp</prop></props> -->
+<!--                     <props> -->
+<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/rm/Contents.acp</prop> -->
+<!--                     </props> -->
 <!--                 </entry> -->
 <!--             </map> -->
 <!--         </property> -->
 <!--     </bean> -->
- 
-	
-<!--    <bean id="patch.groupsUsersPeople.demoData" class="org.alfresco.devops.importers.UsersGroupsImporterPatch" parent="patch.authoritiesPatch.generic"> -->
-<!--         <property name="id"><value>patch.groupsUsersPeople.demoData</value></property> -->
-<!--         <property name="disabled"><value>${groupsUsersPeople.demoData.disabled}</value></property> -->
+
+<!-- 	<bean id="patch.rmsiteLoadPatch" class="org.alfresco.repo.admin.patch.impl.RMSiteLoadPatch2" parent="module.baseComponent" depends-on="dictionaryRepositoryBootstrap"> -->
+<!-- 	 	<property name="nodeService" ref="nodeService" /> -->
+<!--       	<property name="modulePatchExecuter" ref="rm.modulePatchExecuter" /> -->
+<!--       	<property name="recordContributorsGroupBootstrapComponent" ref="recordContributorsGroupBootstrapComponent"/> -->
+<!--       	<property name="moduleId" value="${project.artifactId}"/> -->
+<!--       	<property name="name" value="${project.artifactId}_bootstrapRMSite"/> -->
+<!--       	<property name="description" value="Bootstrap records management data"/> -->
+<!--       	<property name="sinceVersion" value="0.3"/> -->
+<!--       	<property name="appliesFromVersion" value="0.3"/> -->
+<!--         <property name="disabled"><value>false</value></property> -->
+<!--         <property name="siteService" ref="siteService" /> -->
+<!--         <property name="behaviourFilter" ref="policyBehaviourFilter" /> -->
+<!--         <property name="importer" ref="spacesBootstrap"/> -->
+<!--         <property name="siteName"> -->
+<!--             <value>rm</value> -->
+<!--         </property> -->
 <!--         <property name="bootstrapViews"> -->
-<!--             <map> -->
-<!--                 <entry key="users"> -->
-<!--                     <props> -->
-<!-- 						<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/Users.acp</prop> -->
-<!--                     </props> -->
-<!--                 </entry> -->
-<!--                 <entry key="people"> -->
-<!--                     <props> -->
-<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/People.acp</prop> -->
-<!--                     </props> -->
-<!--                 </entry> -->
-<!--                 <entry key="groups"> -->
-<!--                     <props> -->
-<!--                         <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/Groups.json</prop> -->
-<!--                     </props> -->
-<!--                 </entry> -->
-<!--             </map> -->
+<!--             <list> -->
+<!--             	<props> -->
+<!--                		<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/rm/Contents.acp</prop> -->
+<!--                  </props> -->
+<!--             </list> -->
 <!--         </property> -->
 <!--     </bean> -->
+
+
+	<!-- EXAMPLES of standard imports: -->
+
+
+	<!-- <bean id="patch.siteLoadPatch.companyRebranding" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" 
+		parent="patch.siteLoadPatch.generic"> -->
+	<!-- <property name="id"><value>patch.siteLoadPatch.companyRebranding</value></property> -->
+	<!-- <property name="disabled"><value>${companyRebranding.site.disabled}</value></property> -->
+	<!-- <property name="siteName"> -->
+	<!-- <value>2014-company-rebranding</value> -->
+	<!-- </property> -->
+	<!-- <property name="bootstrapViews"> -->
+	<!-- <map> -->
+	<!-- <entry key="contents"> -->
+	<!-- <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/sites/2014-company-rebranding/Contents.acp</prop></props> -->
+	<!-- </entry> -->
+	<!-- </map> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+
+	<!-- <bean id="patch.groupsUsersPeople.demoData" class="org.alfresco.devops.importers.UsersGroupsImporterPatch" 
+		parent="patch.authoritiesPatch.generic"> -->
+	<!-- <property name="id"><value>patch.groupsUsersPeople.demoData</value></property> -->
+	<!-- <property name="disabled"><value>${groupsUsersPeople.demoData.disabled}</value></property> -->
+	<!-- <property name="bootstrapViews"> -->
+	<!-- <map> -->
+	<!-- <entry key="users"> -->
+	<!-- <props> -->
+	<!-- <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/Users.acp</prop> -->
+	<!-- </props> -->
+	<!-- </entry> -->
+	<!-- <entry key="people"> -->
+	<!-- <props> -->
+	<!-- <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/People.acp</prop> -->
+	<!-- </props> -->
+	<!-- </entry> -->
+	<!-- <entry key="groups"> -->
+	<!-- <props> -->
+	<!-- <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/authorities/Groups.json</prop> -->
+	<!-- </props> -->
+	<!-- </entry> -->
+	<!-- </map> -->
+	<!-- </property> -->
+	<!-- </bean> -->
 
 
 </beans>

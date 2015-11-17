@@ -37,6 +37,7 @@
 			<artifactId>alfresco-rm</artifactId>
 			<version>${alfresco.rm.version}</version>
 			<classifier>classes</classifier>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

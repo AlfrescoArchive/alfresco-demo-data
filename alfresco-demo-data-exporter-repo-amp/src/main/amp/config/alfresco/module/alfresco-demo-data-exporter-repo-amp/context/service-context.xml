@@ -27,12 +27,20 @@
     </bean>
     
     
-    <bean id="webscript.org.alfresco.devops.exporters.rm-site-export.get" class="org.alfresco.repo.web.scripts.site.RMSiteExportGet" parent="webscript">
-      <property name="siteService" ref="SiteService"/>
+<!--     <bean id="webscript.org.alfresco.devops.exporters.rm-site-export.get" class="org.alfresco.repo.web.scripts.site.RMSiteExportGet" parent="webscript"> -->
+<!--       <property name="siteService" ref="SiteService"/> -->
+<!--       <property name="mimetypeService" ref="MimetypeService"/> -->
+<!--       <property name="exporterService" ref="ExporterService"/> -->
+<!--       <property name="authorityService" ref="AuthorityService"/> -->
+<!--       <property name="authenticationContextManager" ref="Authentication"/> -->
+<!--    </bean> -->
+   
+   <bean id="webscript.org.alfresco.devops.exporters.filesfolderacpexporter.get" class="org.alfresco.devops.exporters.FileFolderAcpExporter" parent="webscript">
       <property name="mimetypeService" ref="MimetypeService"/>
       <property name="exporterService" ref="ExporterService"/>
-      <property name="authorityService" ref="AuthorityService"/>
-      <property name="authenticationContextManager" ref="Authentication"/>
+      <property name="repositoryHelper" ref="repositoryHelper"/>
+      <property name="fileFolderService" ref="FileFolderService"/>
+      <property name="nodeService" ref="NodeService" />
    </bean>
    
 </beans>

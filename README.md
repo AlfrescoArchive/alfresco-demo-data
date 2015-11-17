@@ -33,25 +33,24 @@ Once the Alfresco SDK is running is possible to access it through the URL [http:
 
 By default the Alfresco Demo Data will create the following **Share Sites**:
 
-- `2014-company-rebranding`
-- `brand-awereness-compaign`
-- `company-reports`
-- `contracts`
-- `customer-service-case-files`
-- `engineering-development`
-- `global-sales-enablment`
-- `hr-files`
-- `marketing`
-- `marketing-image-gallery`
+- `accounting`
+- `engineering-projects`
+- `executive-team`
+- `hr-team`
+- `marketing-site`
 - `rm (Records-Management)`
-- `sales-operation`
+- `sales-contracts`
+- `sales-enablement`
+- `social-media`
+- `support-case-files`
+
 
 And a number of users and groups listed here:
 
 - [Users](http://localhost:8080/share/page/console/admin-console/users#state=panel%3Dsearch%26search%3D%255C*)
 - [Groups] (http://localhost:8080/share/page/console/admin-console/groups#state=panel%3Dsearch%26refresh%3Dfalse)
 
-Updating content
+Sites & Authorities Update
 ---
 
 In order to make any change on the importer amp it is possible to either:
@@ -71,7 +70,7 @@ Let's have a look at them in more details:
 ### Dynamic way
 --
 
-##### Add a new Site (non RM)
+##### Add a new Site
 
 - It is first necessary to export the site from an existing Alfresco instance using the already existing [site-export Rest API](http://docs.alfresco.com/community/references/RESTful-SiteSite-exportGet.html) with admin user credentials
 
@@ -84,15 +83,6 @@ curl -u admin:admin http://localhost:8080/alfresco/s/api/sites/$SITE_NAME/export
 - No other configuration needed
 
 
-##### Add a new RM Site
-- It is first necessary to export the RM site from an existing Alfresco instance using a custom RM site-export Rest API (included in this repo-amp) with admin user credentials
-
-```
-curl -u admin:admin http://localhost:8080/alfresco/s/api/rm-site/rm/export > rm-site-export.zip
-```
-- Unzip the export file
-- Move the **Contents.acp** into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/dynamic/sites/rm** (Other ACPs are not needed)
-- No other configuration needed
 
 ##### Add Authorities
 - It is first necessary to export the authorities from an existing Alfresco instance using a custom Authorities export Rest API (included in this repo-amp) with admin user credentials
@@ -107,7 +97,7 @@ curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > a
 ### Standard way
 --
 
-##### Add a new Site (non RM)
+##### Add a new Site
 
 - It is first necessary to export the site from an existing Alfresco instance using the already existing [site-export Rest API](http://docs.alfresco.com/community/references/RESTful-SiteSite-exportGet.html) with admin user credentials
 
@@ -137,32 +127,6 @@ curl -u admin:admin http://localhost:8080/alfresco/s/api/sites/$SITE_NAME/export
 ```
 - **Note:** replace every occurance of 'mysite' with the real site shortname
 
-##### Add a new RM Site
-- It is first necessary to export the RM site from an existing Alfresco instance using a custom RM site-export Rest API (included in this repo-amp) with admin user credentials
-
-```
-curl -u admin:admin http://localhost:8080/alfresco/s/api/rm-site/rm/export > rm-site-export.zip
-```
-- Unzip the export file
-- Move the **Contents.acp** into **demo-data/alfresco-demo-data-repo-amp/src/main/amp/config/alfresco/module/alfresco-demo-data-repo-amp/bootstrap/standard/sites/rm** (Other ACPs are not needed)
-- Create a Spring Bean into repo-amp/src/main/amp/config/alfresco/module/repo-amp/context/bootstrap-context.xml similar to the following example
-
-```
-	<bean id="patch.siteLoadPatch.rm" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" parent="patch.siteLoadPatch.generic">
-        <property name="id"><value>patch.siteLoadPatch.rm</value></property>
-        <property name="disabled"><value>false</value></property>
-        <property name="siteName">
-            <value>rm</value>
-        </property>
-        <property name="bootstrapViews">
-            <map>
-                <entry key="contents">
-                    <props><prop key="location">alfresco/module/${project.artifactId}/bootstrap/sites/standard/rm/Contents.acp</prop></props>
-                </entry>
-            </map>
-        </property>
-    </bean>
-```
 
 
 ##### Add Authorities
@@ -199,6 +163,65 @@ curl -u admin:admin localhost:8080/alfresco/service/api/people-groups/export > a
             </map>
         </property>
     </bean>
+```
+
+Repo Folders Update
+---
+Using the *alfresco-demo-data-exporter-repo-amp* it is possible to export folders inside the **Company Home**.
+
+The url to export a folder is
+
+```
+http://<host>:<port>/alfresco/service/api/file-folder/export?path=/Data Dictionary/Scripts/custom-scripts
+```
+
+This will download an ACP with the folder and its content
+
+The full url of the webscript is:
+
+```
+<url>/api/file-folder/export?path={path}&crawlSelf={crawlSelf}&crawlChildNodes={crawlChildNodes}&crawlContent={crawlContent}&crawlAssociations={crawlAssociations}</url>
+```
+
+So it is possible to set:
+
+- **path**: path of the folder/file to export
+- **crawlSelf**: (true/false) whether to include the element passed in the path or not (default: true)
+- **crawlChildNodes**: (true/false) whether to include the child nodes of the element passed in the path or not (default: true)
+- **crawlContent**: (true/false) whether to include the contents or not (default: true)
+- **crawlAssociations**: (true/false) whether to include the associations or not (default: true)
+
+To import the ACP into your repo, place it into the bootrap folder of the AMP and create a bean inside the bootrap-context.xml such as:
+
+```
+<bean id="patch.import.demodata.javascript" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" parent="basePatch">
+		<property name="id">
+			<value>patch.importDemoDataJavaScript</value>
+		</property>
+		<property name="description">
+			<value>patch.exampleJavaScript.description</value>
+		</property>
+		<property name="fixesFromSchema">
+			<value>0</value>
+		</property>
+		<property name="fixesToSchema">
+			<value>${version.schema}</value>
+		</property>
+		<property name="targetSchema">
+			<value>10000</value>
+		</property>
+		<property name="importerBootstrap">
+			<ref bean="spacesBootstrap" />
+		</property>
+		<property name="bootstrapView">
+			<props>
+				<prop key="uuidBinding">REPLACE_EXISTING</prop>
+				<prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.scripts.childname}</prop>
+				<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/javascripts/custom-scripts.acp</prop>
+				<prop key="messages">alfresco/messages/bootstrap-spaces</prop>
+			</props>
+		</property>
+	</bean>
 ```
 
 

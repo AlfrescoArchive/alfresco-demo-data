@@ -309,7 +309,10 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 
 
 		for(String member:membersList){
-			if(!containedUsers.contains(member) && personService.personExists(member)){
+			if(!personService.personExists(member)){
+				logger.warn("Member "+member+" does not exist in the repo - cannot be added to group "+name);
+			}
+			else if(!containedUsers.contains(member)){
 				//add authority if not there already and if exists
 				authorityService.addAuthority(name, member);
 			}
