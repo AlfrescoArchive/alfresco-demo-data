@@ -18,12 +18,18 @@ public final class Constants {
 	public static final String SITENAME = "siteName";
 	public static final String MODULE_PATH="alfresco/module";
 	public static final String EXTENSION_PATH="alfresco/extension";
-
-
-
-
-
 	
+	public static final String AUTHORITIES_BEAN_ID = "patch.demoData.authorities";
+	public static final String SITES_BEAN_ID = "patch.demoData.sites.";
+	public static final String RM_FIX_BEAN_ID = "patch.demoData.rmFix";
+	
+	public static final String AUTHORITIES_PATCH_ID = "patch.demoData.authorities";
+	public static final String SITES_PATCH_ID = "patch.demoData.sites.";
+	public static final String RM_FIX_PATCH_ID = "patch.demoData.rmFix";
+
+	public static final String AUTHORITIES_PARENT_BEAN = "patch.authoritiesPatch.generic";
+	public static final String SITES_PARENT_BEAN = "patch.siteLoadPatch.generic";
+	public static final String RM_FIX_PARENT_BEAN = "patch.abstract.fixRMSite";
 
 
 	private Constants(){

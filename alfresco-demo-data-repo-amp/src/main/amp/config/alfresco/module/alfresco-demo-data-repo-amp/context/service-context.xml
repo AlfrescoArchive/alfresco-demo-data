@@ -34,7 +34,7 @@
     
     
      <bean id="patch.authoritiesPatch.generic" abstract="true" parent="basePatch">
-		<property name="description"><value>patch.siteLoadPatch.description</value></property>
+		<property name="description"><value>patch.authorities.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>
 		<property name="fixesToSchema"><value>${version.schema}</value></property>
 		<property name="targetSchema"><value>10000</value></property>
@@ -46,6 +46,13 @@
         <property name="personService" ref="PersonService"/>
       </bean>
     
+    <bean id="patch.abstract.fixRMSite" abstract="true" parent="basePatch">
+        <property name="id"><value>patch.fixRMSite</value></property>
+        <property name="description"><value>patch.RMSite.description</value></property>
+        <property name="fixesFromSchema"><value>0</value></property>
+        <property name="fixesToSchema"><value>${version.schema}</value></property>
+        <property name="targetSchema"><value>10000</value></property>
+    </bean>
     
     <bean id="resourcesResolver" class="org.alfresco.devops.services.ResourcesResolver"/>
     

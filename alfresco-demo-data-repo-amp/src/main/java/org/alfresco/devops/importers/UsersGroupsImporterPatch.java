@@ -32,6 +32,9 @@ import org.alfresco.devops.util.Constants;
 import org.alfresco.error.AlfrescoRuntimeException;
 import org.alfresco.repo.admin.patch.AbstractPatch;
 import org.alfresco.repo.importer.ImporterBootstrap;
+import org.alfresco.repo.security.authentication.AuthenticationUtil;
+import org.alfresco.repo.security.authentication.AuthenticationUtil.RunAsWork;
+import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.cmr.security.PersonService;
@@ -44,15 +47,19 @@ import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.extensions.surf.util.I18NUtil;
 
 
-public class UsersGroupsImporterPatch extends AbstractPatch
-{
+public class UsersGroupsImporterPatch extends AbstractPatch implements ApplicationListener<ContextRefreshedEvent>{
+
 	public static final String PROPERTIES_USERS = "users";
 	public static final String PROPERTIES_PEOPLE = "people";
 	public static final String PROPERTIES_GROUPS = "groups";
 	public static final String PROPERTY_LOCATION = "location";
+	private boolean onContextRefreshedEvent=false;
+
 
 	private static final Map<String,String> DEFAULT_PATHS = new HashMap<String, String>();
 	static {
@@ -80,6 +87,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 	{
 		// We do need to run in our own transaction
 		setRequiresTransaction(true);
+		onContextRefreshedEvent=false;
 	}
 
 
@@ -136,6 +144,9 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 	@Override
 	protected String applyInternal() throws Exception
 	{
+		if(!onContextRefreshedEvent){
+			return "Users will be loaded later";
+		}
 		if (isDisabled()) 
 		{
 			if (logger.isDebugEnabled())
@@ -290,7 +301,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 			logger.debug("Updating authority: "+name);
 			Set<String> zonesToAdd = new HashSet<String>();
 			Set<String> existingZones = authorityService.getAuthorityZones(name);
-			
+
 			for(String currentZone:zonesList){
 				if(!existingZones.contains(currentZone)){
 					zonesToAdd.add(currentZone);
@@ -335,6 +346,37 @@ public class UsersGroupsImporterPatch extends AbstractPatch
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
 	}
+
+
+	@Override
+	public void onApplicationEvent(ContextRefreshedEvent event) {
+		// TODO Auto-generated method stub
+
+		onContextRefreshedEvent=true;
+		
+        AuthenticationUtil.runAsSystem(new RunAsWork<Void>()
+        {
+            @Override 
+            public Void doWork() throws Exception
+            {
+            	try {
+        			RetryingTransactionCallback<String> txnWork = new RetryingTransactionCallback<String>(){
+        				public String execute() throws Exception
+        				{
+        					return applyInternal();
+        				}
+        			};
+        			transactionService.getRetryingTransactionHelper().doInTransaction(txnWork, false);
+        		} catch (Exception e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+                return null;
+            }
+        });
+
+	}
+
 
 
 

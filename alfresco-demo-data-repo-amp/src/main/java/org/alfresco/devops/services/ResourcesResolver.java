@@ -13,7 +13,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 public class ResourcesResolver {
 
 
-	
+
 	private final ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 
 	public Set<String> resolveResourcesFromAMP(String path) throws IOException {
@@ -21,18 +21,16 @@ public class ResourcesResolver {
 		Set<String> res = new HashSet<String>();
 		for (final Resource resource : resources) {
 			final URL url = resource.getURL();
-			if(url!=null){
-				int index = getIndex(url.toString());
-				if(index>=0){
-					String internalFilePath = url.toString().substring(index);
-					res.add(internalFilePath);
-				}
+			int index = getIndex(url.toString());
+			if(index>=0){
+				String internalFilePath = url.toString().substring(index);
+				res.add(internalFilePath);
 			}
 		}
 		return res;
 	}
-	
-	
+
+
 	public boolean existsResource(String path) throws IOException {
 		final Resource resource = resourcePatternResolver.getResource(path);
 		if(resource!=null && resource.exists())
@@ -41,7 +39,7 @@ public class ResourcesResolver {
 			return false;
 		}
 	}
-	
+
 	private int getIndex(String url){
 		if(url.indexOf(Constants.MODULE_PATH)>0){
 			return url.indexOf(Constants.MODULE_PATH);
