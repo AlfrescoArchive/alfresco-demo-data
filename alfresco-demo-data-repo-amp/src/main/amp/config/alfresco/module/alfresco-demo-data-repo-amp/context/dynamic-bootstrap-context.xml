@@ -4,18 +4,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-
+<!--
 	<bean class="org.alfresco.devops.services.DynamicBootstrapPatchPostProcessor">
 		<property name="resourcesResolver" ref="resourcesResolver" />
 		<property name="sitesDisabled"><value>false</value></property>
 		<property name="rmFixDisabled"><value>false</value></property>
 		<property name="authoritiesDisabled"><value>false</value></property>
+
+
 		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp" />
+
 		<property name="usersLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp" />
 		<property name="peopleLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp" />
 		<property name="groupsLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json" />
 	</bean>
 
-
+-->
 
 </beans>

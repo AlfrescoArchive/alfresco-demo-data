@@ -33,12 +33,15 @@
 		</dependency>
 		<!-- Demonstrating the dependency / installation of the repo AMP developed 
 			in the 'repo-amp' module -->
+		<!--
 		<dependency>
 			<groupId>${alfresco.groupId}</groupId>
 			<artifactId>alfresco-rm</artifactId>
 			<version>${alfresco.rm.version}</version>
 			<type>amp</type>
 		</dependency>
+		-->
+		<!--
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>alfresco-demo-data-repo-amp</artifactId>
@@ -51,6 +54,7 @@
 			<version>${project.version}</version>
 			<type>amp</type>
 		</dependency>
+		-->
 		<!-- Uncomment if you are using SPP (SharePoint Protocol Support) for Online 
 			Edit etc -->
 		<!-- <dependency> <groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-spp</artifactId> 
@@ -88,12 +92,15 @@
 							<!-- To allow inclusion of META-INF -->
 							<excludes />
 						</overlay>
+						<!--
 						<overlay>
 							<groupId>${alfresco.groupId}</groupId>
 							<artifactId>alfresco-rm</artifactId>
 							<type>amp</type>
 						</overlay>
+						-->
 						<!-- Add / sort your AMPs here -->
+						<!--
 						<overlay>
 							<groupId>${project.groupId}</groupId>
 							<artifactId>alfresco-demo-data-repo-amp</artifactId>
@@ -104,6 +111,7 @@
 							<artifactId>alfresco-demo-data-exporter-repo-amp</artifactId>
 							<type>amp</type>
 						</overlay>
+						-->
 						<!-- Uncomment if you are using SPP -->
 						<!-- <overlay> <groupId>${alfresco.groupId}</groupId> <artifactId>alfresco-spp</artifactId> 
 							<type>amp</type> </overlay> -->

@@ -24,7 +24,7 @@
 			<id>run</id>
 
 			<properties>
-				<alfresco.solr.dir>${project.parent.basedir}/${alfresco.data.location}/solr4</alfresco.solr.dir>
+				<alfresco.solr.dir>${alfresco.data.location}/solr4</alfresco.solr.dir>
 				<alfresco.solr.home.dir>${alfresco.solr.dir}/config</alfresco.solr.home.dir>
 				<alfresco.solr.data.dir>${alfresco.solr.dir}/data</alfresco.solr.data.dir>
 			</properties>
@@ -50,6 +50,9 @@
 							<skip>true</skip>
 						</configuration>
 					</plugin>
+					<!-- Run goal unpack and unzip the content of the downloaded default solr-config.zip file into the
+                         alfresco-maven-sdk2-test/alf_data_dev/solr4/config directory
+                         (The solr-config.zip is brought in via the dependency section) -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-dependency-plugin</artifactId>
@@ -76,8 +79,8 @@
 						</executions>
 					</plugin>
 
-					<!-- For windows paths, convert single \ to / for the ${alfresco.solr.data.dir} 
-						path, by default it will be c:\bla\, we need forward slash or double backslash. -->
+					<!-- For windows paths, convert single \ to / for the ${alfresco.solr.data.dir} path,
+                         by default it will be c:\bla\, we need forward slash or double backslash. -->
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>build-helper-maven-plugin</artifactId>
@@ -100,8 +103,8 @@
 					</plugin>
 
 
-					<!-- Run the goal replace and update configuration files for the Solr 
-						cores to reflect our build structure -->
+					<!-- Run the goal replace and update configuration files for the
+                         Solr cores to reflect our build structure -->
 					<plugin>
 						<groupId>com.google.code.maven-replacer-plugin</groupId>
 						<artifactId>replacer</artifactId>
@@ -127,6 +130,7 @@
 								</replacement>
 							</replacements>
 						</configuration>
+
 					</plugin>
 				</plugins>
 			</build>
