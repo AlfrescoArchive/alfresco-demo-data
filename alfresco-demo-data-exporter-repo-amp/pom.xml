@@ -32,6 +32,7 @@
 		</dependency>
 		<!-- Uncomment if you are using RM (Records Management) module, brings 
 			in RM related classes -->
+		<!--
 		<dependency>
 			<groupId>${alfresco.groupId}</groupId>
 			<artifactId>alfresco-rm</artifactId>
@@ -39,6 +40,7 @@
 			<classifier>classes</classifier>
 			<scope>provided</scope>
 		</dependency>
+		-->
 
 		<dependency>
 			<groupId>org.alfresco</groupId>
