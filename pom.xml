@@ -78,6 +78,14 @@
 		</plugins>
 	</build>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>alfresco-ea-repo</id>
+			<name>Alfresco 5.1 EA Repository</name>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/5.1-EA/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<profiles>
 		<profile>
 			<id>run</id>

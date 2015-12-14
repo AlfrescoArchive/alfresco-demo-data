@@ -38,6 +38,7 @@ import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransacti
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.cmr.security.PersonService;
+import org.alfresco.service.cmr.site.SiteService;
 import org.alfresco.service.cmr.view.ImporterBinding.UUID_BINDING;
 import org.alfresco.service.descriptor.Descriptor;
 import org.alfresco.service.descriptor.DescriptorService;
@@ -73,6 +74,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 
 	private AuthorityService authorityService;
 	private DescriptorService descriptorService;
+	private SiteService siteService;
 
 	private ImporterBootstrap spacesBootstrap;
 	private ImporterBootstrap usersBootstrap;
@@ -231,7 +233,6 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 			}
 		}
 
-
 		return "Users/Groups loaded";
 	}
 
@@ -256,45 +257,29 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 
 	private void createOrUpdateGroup(JSONObject group) throws JSONException {
 		String name = (String) group.get(Constants.GROUP_NAME);
-		String displayName = (String) group.get(Constants.GROUP_DISPLAYNAME) != null ? (String) group.get(Constants.GROUP_DISPLAYNAME) : name;
 
+		String displayName = (String) group.get(Constants.GROUP_DISPLAYNAME) != null ? (String) group.get(Constants.GROUP_DISPLAYNAME) : name;
 		JSONArray zones = (JSONArray) group.get(Constants.GROUP_ZONES);
 		JSONArray subgroups = (JSONArray) group.get(Constants.GROUP_SUBGROUPS);
 		JSONArray members = (JSONArray) group.get(Constants.GROUP_MEMBERS);
 
-		Set<String> zonesList = new HashSet<String>();     
-		if (zones != null) {
-			int len = zones.size();
-			for (int j=0;j<len;j++){
-				if(zones.get(j)!=null){
-					zonesList.add(zones.get(j).toString());
-				}
-			} 
-		}
-
-		Set<JSONObject> subgroupsList = new HashSet<JSONObject>();     
-		if (subgroups != null) { 
-			int len = subgroups.size();
-			for (int j=0;j<len;j++){ 
-				if(subgroups.get(j)!=null){
-					subgroupsList.add((JSONObject)subgroups.get(j));
-				}
-			} 
-		}
-
-		Set<String> membersList = new HashSet<String>();     
-		if (members != null) {
-			int len = members.size();
-			for (int j=0;j<len;j++){
-				if(members.get(j)!=null){
-					membersList.add(members.get(j).toString());
-				}
-			} 
-		}
+		Set<String> zonesList = getStringSetFromJArray(zones);
+		Set<JSONObject> subgroupsList = getJObjetSetFromJArray(subgroups);
+		Set<String> membersList = getStringSetFromJArray(members);
 
 
 		if(!authorityService.authorityExists(name)){
+//			is it a site group?
+//			if(name.startsWith(Constants.GROUP_SITE)){
+//				String siteName = siteService.resolveSite(name);
+//				logger.debug("siteService.getSite(siteName): "+siteService.getSite(siteName));
+//				if(siteService.getSite(siteName)==null){
+//					return;
+//				}
+//			}
+			// remove 'GROUP_'
 			String replacename = name.substring(6);
+			
 			logger.debug("Creating authority: "+replacename);
 			authorityService.createAuthority(AuthorityType.GROUP, replacename, displayName, zonesList);
 		}else{
@@ -315,10 +300,11 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 			authorityService.setAuthorityDisplayName(name, displayName);
 		}
 
+
 		Set<String> containedGroups = authorityService.getContainedAuthorities(AuthorityType.GROUP, name, true);
 		Set<String> containedUsers = authorityService.getContainedAuthorities(AuthorityType.USER, name, true);
 
-
+		
 		for(String member:membersList){
 			if(!personService.personExists(member)){
 				logger.warn("Member "+member+" does not exist in the repo - cannot be added to group "+name);
@@ -338,8 +324,35 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 				authorityService.addAuthority(name, subgroupName);
 			}
 		}
+		
+	}
 
 
+	private Set<JSONObject> getJObjetSetFromJArray(JSONArray subgroups) {
+		Set<JSONObject> subgroupsList = new HashSet<JSONObject>();     
+		if (subgroups != null) { 
+			int len = subgroups.size();
+			for (int j=0;j<len;j++){ 
+				if(subgroups.get(j)!=null){
+					subgroupsList.add((JSONObject)subgroups.get(j));
+				}
+			} 
+		}
+		return subgroupsList;
+	}
+
+
+	private Set<String> getStringSetFromJArray(JSONArray zones) {
+		Set<String> zonesList = new HashSet<String>();     
+		if (zones != null) {
+			int len = zones.size();
+			for (int j=0;j<len;j++){
+				if(zones.get(j)!=null){
+					zonesList.add(zones.get(j).toString());
+				}
+			} 
+		}
+		return zonesList;
 	}
 
 
@@ -375,6 +388,11 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
             }
         });
 
+	}
+
+
+	public void setSiteService(SiteService siteService) {
+		this.siteService = siteService;
 	}
 
 

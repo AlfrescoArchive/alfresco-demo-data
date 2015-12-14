@@ -19,14 +19,14 @@
 <beans>
     
    	<bean id="patch.siteLoadPatch.generic" abstract="true" parent="basePatch">
-		<property name="description"><value>patch.siteLoadPatch.description</value></property>
+		<property name="description"><value>patch.demoDataSiteLoadPatch.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>
 		<property name="fixesToSchema"><value>${version.schema}</value></property>
 		<property name="targetSchema"><value>10000</value></property>
 		<property name="dependsOn"><list><ref bean="patch.updateDmPermissions" /></list></property>
         <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" />
         <property name="usersBootstrap" ref="siteLoadBootstrap-Users" />
-        <property name="siteService" ref="siteService" />
+        <property name="siteService" ref="SiteService" />
         <property name="descriptorService" ref="descriptorComponent" />
         <property name="authorityService" ref="authorityService" />
         <property name="behaviourFilter" ref="policyBehaviourFilter" />
@@ -44,6 +44,7 @@
         <property name="descriptorService" ref="descriptorComponent" />
         <property name="authorityService" ref="authorityService" />
         <property name="personService" ref="PersonService"/>
+        <property name="siteService" ref="SiteService" />
       </bean>
     
     <bean id="patch.abstract.fixRMSite" abstract="true" parent="basePatch">

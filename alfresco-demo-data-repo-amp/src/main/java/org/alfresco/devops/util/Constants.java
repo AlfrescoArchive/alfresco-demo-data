@@ -18,6 +18,7 @@ public final class Constants {
 	public static final String SITENAME = "siteName";
 	public static final String MODULE_PATH="alfresco/module";
 	public static final String EXTENSION_PATH="alfresco/extension";
+	public static final String GROUP_SITE = "GROUP_site_";
 	
 	public static final String AUTHORITIES_BEAN_ID = "patch.demoData.authorities";
 	public static final String SITES_BEAN_ID = "patch.demoData.sites.";

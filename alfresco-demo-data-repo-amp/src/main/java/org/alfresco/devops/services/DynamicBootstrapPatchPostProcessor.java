@@ -25,6 +25,7 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 
 	private Boolean sitesDisabled = false;
 	private Boolean authoritiesDisabled = false;
+	private Boolean rmSiteImportDisabled=false;
 	private Boolean rmFixDisabled = false;
 
 	private String sitesContentLocation;
@@ -45,7 +46,10 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 				Set<String> acps = resourcesResolver.resolveResourcesFromAMP(sitesContentLocation);
 				for(String acp:acps){
 					String siteName = getSiteNameFromAcp(acp);
-					if(!siteName.isEmpty()){
+					if(siteName.equalsIgnoreCase("RM") && rmSiteImportDisabled){
+						continue;
+					}
+					if(!siteName.isEmpty() ){
 						BeanDefinitionBuilder beanDefinition = getSiteBeanDefinition(acp, siteName);
 						registry.registerBeanDefinition(Constants.SITES_BEAN_ID+siteName, beanDefinition.getBeanDefinition() );
 					}
@@ -182,6 +186,10 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 
 	public void setGroupsLocation(String groupsLocation) {
 		this.groupsLocation = groupsLocation;
+	}
+
+	public void setRmSiteImportDisabled(Boolean rmSiteImportDisabled) {
+		this.rmSiteImportDisabled = rmSiteImportDisabled;
 	}
 
 
