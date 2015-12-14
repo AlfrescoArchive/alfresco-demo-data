@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.devops</groupId>
 	<artifactId>alfresco-demo-data</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.4-SNAPSHOT</version>
 	<name>Alfresco Repository and Share Quickstart with database and an embedded Tomcat runner.</name>
 	<description>This All-in-One project allows to manage all the components involved in Alfresco development (Repo, Share, Solr4, AMPs) in one project
     </description>
@@ -42,6 +42,7 @@
 		<!-- <app.log.root.level>WARN</app.log.root.level> -->
 		<!-- <env>local</env> -->
 		<share.client.url>http://localhost:8080/share</share.client.url>
+		<maven.release.plugin.version>2.5.1</maven.release.plugin.version>
 	</properties>
 
 	<repositories>
@@ -68,6 +69,11 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven.release.plugin.version}</version>
+			</plugin>
+			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>yuicompressor-maven-plugin</artifactId>
 			</plugin>
@@ -76,6 +82,7 @@
 				<artifactId>alfresco-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
 	</build>
 
 	<pluginRepositories>
