@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.devops</groupId>
 	<artifactId>alfresco-demo-data</artifactId>
-	<version>0.4-SNAPSHOT</version>
+	<version>0.4</version>
 	<name>Alfresco Repository and Share Quickstart with database and an embedded Tomcat runner.</name>
 	<description>This All-in-One project allows to manage all the components involved in Alfresco development (Repo, Share, Solr4, AMPs) in one project
     </description>
@@ -20,7 +19,7 @@
 		<connection>scm:git:git@github.com:maoo/alfresco-demo-data.git</connection>
 		<url>scm:git:git@github.com:maoo/alfresco-demo-data.git</url>
 		<developerConnection>scm:git:git@github.com:maoo/alfresco-demo-data.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>alfresco-demo-data-0.4</tag>
 	</scm>
 
 	<distributionManagement>
