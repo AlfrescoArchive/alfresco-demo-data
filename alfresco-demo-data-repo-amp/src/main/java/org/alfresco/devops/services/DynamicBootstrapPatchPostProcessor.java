@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.alfresco.devops.importers.PostSiteLoadPatch;
 import org.alfresco.devops.importers.RMSitePatch;
+import org.alfresco.devops.importers.UsersGroupsImporterPatchOLD;
 import org.alfresco.devops.importers.UsersGroupsImporterPatch;
 import org.alfresco.devops.util.Constants;
 import org.apache.commons.logging.Log;

@@ -1,1629 +1,1377 @@
 [
-  {
-    "displayName": "ALFRESCO_ADMINISTRATORS",
-    "members": [
-      "admin",
-      "phampton"
-    ],
-    "name": "GROUP_ALFRESCO_ADMINISTRATORS",
-    "groups": [],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "ALFRESCO_SEARCH_ADMINISTRATORS",
-    "members": [
-      "admin"
-    ],
-    "name": "GROUP_ALFRESCO_SEARCH_ADMINISTRATORS",
-    "groups": [],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "All 3D GoldCore",
-    "members": [
-      "adearheart",
-      "ahancock",
-      "aironfoundersson",
-      "anitt",
-      "asideways",
-      "atacticus",
-      "avonuberwald",
-      "aweemad",
-      "bloveknot",
-      "brincewind",
-      "bstronginthearm",
-      "cchrysoprase",
-      "cdun",
-      "ddownspout",
-      "ddregs",
-      "dhubbub",
-      "dtockley",
-      "dwillikins",
-      "ecake",
-      "edeath",
-      "elancre",
-      "elittlebottom",
-      "emargaret",
-      "esaturday",
-      "esmith",
-      "ethursley",
-      "etreason",
-      "eweatherwax",
-      "ewinlof",
-      "fcolon",
-      "fpump",
-      "gblackcap",
-      "gglooper",
-      "gogg",
-      "gsugarbean",
-      "gwhemper",
-      "hgoatfounder",
-      "hking",
-      "htick",
-      "hturvy",
-      "hvetinari",
-      "ibluejohn",
-      "idibbler",
-      "imaccalariat",
-      "imort",
-      "iping",
-      "jbarrez",
-      "jbeans",
-      "jblouse",
-      "jclockson",
-      "jdrum",
-      "jgoatberger",
-      "jhix",
-      "jlawn",
-      "jnettle",
-      "jogg",
-      "jteatime",
-      "kdarktan",
-      "kkelirehenna",
-      "ldechumsfanleigh",
-      "ldetritus",
-      "learwig",
-      "llewton",
-      "lludd",
-      "lquirm",
-      "lslant",
-      "ltin-wheedle",
-      "ltze",
-      "lwarbeck",
-      "lweatherwax",
-      "mbent",
-      "mfarman",
-      "mgarlick",
-      "moats",
-      "mridcully",
-      "mstohelit",
-      "mtwoflower",
-      "mvonlipwig",
-      "nnobbs",
-      "ntulip",
-      "ovonchriek",
-      "pcuddy",
-      "pgristle",
-      "phampton",
-      "pstibbons",
-      "rdechumsfanleigh",
-      "rdrumknott",
-      "rpalm",
-      "rrust",
-      "rshoe",
-      "sahmed",
-      "sbucket",
-      "shaddock",
-      "showler",
-      "sswires",
-      "svimes",
-      "svonhumpeding",
-      "taching",
-      "tgroat",
-      "tlikely",
-      "tluggage",
-      "trademakers",
-      "twithel",
-      "vtugelbend",
-      "wdeworde",
-      "wplinge",
-      "wpoons",
-      "wsonky"
-    ],
-    "name": "GROUP_All 3D GoldCore",
-    "groups": [],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.EXT.ldap1"
-    ]
-  },
-  {
-    "displayName": "All Records Management Roles",
-    "members": [],
-    "name": "GROUP_AllRolese6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-    "groups": [
-      {
-        "displayName": "Records Management Administrator",
-        "members": [
-          "admin",
-          "phampton"
-        ],
-        "name": "GROUP_Administratore6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-        "groups": [],
-        "zones": [
-          "APP.RM",
-          "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-        ]
-      },
-      {
-        "displayName": "Records Management Power User",
-        "members": [],
-        "name": "GROUP_PowerUsere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-        "groups": [],
-        "zones": [
-          "APP.RM",
-          "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-        ]
-      },
-      {
-        "displayName": "Records Management Manager",
-        "members": [],
-        "name": "GROUP_RecordsManagere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-        "groups": [],
-        "zones": [
-          "APP.RM",
-          "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-        ]
-      },
-      {
-        "displayName": "Records Management Security Officer",
-        "members": [],
-        "name": "GROUP_SecurityOfficere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-        "groups": [],
-        "zones": [
-          "APP.RM",
-          "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-        ]
-      },
-      {
-        "displayName": "Records Management User",
-        "members": [],
-        "name": "GROUP_Usere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-        "groups": [],
-        "zones": [
-          "APP.RM",
-          "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.RM"
-    ]
-  },
-  {
-    "displayName": "EMAIL_CONTRIBUTORS",
-    "members": [
-      "admin"
-    ],
-    "name": "GROUP_EMAIL_CONTRIBUTORS",
-    "groups": [],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "Engineering",
-    "members": [],
-    "name": "GROUP_Engineering",
-    "groups": [
-      {
-        "displayName": "Documentation",
-        "members": [
-          "gblackcap",
-          "gogg",
-          "ibluejohn"
-        ],
-        "name": "GROUP_Documentation",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Engineering Leads",
-        "members": [
-          "jclockson"
-        ],
-        "name": "GROUP_Engineering Leads",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Engineering Team",
-        "members": [
-          "ewinlof",
-          "jbarrez",
-          "mfarman",
-          "trademakers"
-        ],
-        "name": "GROUP_Engineering Team",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "QA Team",
-        "members": [
-          "dtockley",
-          "hturvy",
-          "imort",
-          "moats",
-          "vtugelbend"
-        ],
-        "name": "GROUP_QA Team",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Research \u0026 Development",
-        "members": [
-          "cchrysoprase",
-          "cdun",
-          "ddregs",
-          "gglooper",
-          "hgoatfounder",
-          "jclockson",
-          "jdrum",
-          "ldechumsfanleigh",
-          "mgarlick",
-          "pcuddy",
-          "tgroat"
-        ],
-        "name": "GROUP_Research \u0026 Development",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Technical Support",
-        "members": [
-          "emargaret",
-          "etreason",
-          "gwhemper",
-          "jblouse",
-          "jogg",
-          "lquirm",
-          "lweatherwax",
-          "mbent",
-          "mtwoflower",
-          "mvonlipwig",
-          "ntulip",
-          "ovonchriek",
-          "rpalm",
-          "sahmed",
-          "tlikely"
-        ],
-        "name": "GROUP_Technical Support",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.EXT.ldap1"
-    ]
-  },
-  {
-    "displayName": "In-Place Readers",
-    "members": [
-      "phampton"
-    ],
-    "name": "GROUP_ExtendedReaderse6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-    "groups": [
-      {
-        "displayName": "site_sales-contracts_SiteCollaborator",
-        "members": [
-          "brincewind",
-          "hking",
-          "kdarktan",
-          "nnobbs",
-          "sbucket",
-          "wpoons"
-        ],
-        "name": "GROUP_site_sales-contracts_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_sales-contracts_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_sales-contracts_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_sales-contracts_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteCollaborator",
-        "members": [
-          "emargaret",
-          "etreason",
-          "gwhemper",
-          "jblouse",
-          "jogg",
-          "lquirm",
-          "lweatherwax",
-          "mbent",
-          "mtwoflower",
-          "mvonlipwig",
-          "ntulip",
-          "ovonchriek",
-          "rpalm",
-          "sahmed",
-          "tlikely"
-        ],
-        "name": "GROUP_site_support-case-files_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_support-case-files_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_support-case-files_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_support-case-files_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.RM",
-      "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-    ]
-  },
-  {
-    "displayName": "In-Place Writers",
-    "members": [
-      "phampton"
-    ],
-    "name": "GROUP_ExtendedWriterse6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
-    "groups": [
-      {
-        "displayName": "site_sales-contracts_SiteCollaborator",
-        "members": [
-          "brincewind",
-          "hking",
-          "kdarktan",
-          "nnobbs",
-          "sbucket",
-          "wpoons"
-        ],
-        "name": "GROUP_site_sales-contracts_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_sales-contracts_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteCollaborator",
-        "members": [
-          "emargaret",
-          "etreason",
-          "gwhemper",
-          "jblouse",
-          "jogg",
-          "lquirm",
-          "lweatherwax",
-          "mbent",
-          "mtwoflower",
-          "mvonlipwig",
-          "ntulip",
-          "ovonchriek",
-          "rpalm",
-          "sahmed",
-          "tlikely"
-        ],
-        "name": "GROUP_site_support-case-files_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_support-case-files_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.RM",
-      "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
-    ]
-  },
-  {
-    "displayName": "Finance and Admin",
-    "members": [],
-    "name": "GROUP_Finance and Admin",
-    "groups": [
-      {
-        "displayName": "Accounts",
-        "members": [
-          "bloveknot",
-          "bstronginthearm",
-          "learwig"
-        ],
-        "name": "GROUP_Accounts",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Compliance",
-        "members": [
-          "brincewind",
-          "hking",
-          "kdarktan",
-          "nnobbs",
-          "sbucket",
-          "wpoons"
-        ],
-        "name": "GROUP_Compliance",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Executives",
-        "members": [
-          "aironfoundersson",
-          "elittlebottom",
-          "esmith",
-          "etreason",
-          "hvetinari",
-          "jclockson",
-          "mridcully",
-          "pstibbons",
-          "tluggage"
-        ],
-        "name": "GROUP_Executives",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Human Resources",
-        "members": [
-          "fpump"
-        ],
-        "name": "GROUP_Human Resources",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "IT Operations",
-        "members": [
-          "anitt",
-          "atacticus",
-          "esmith",
-          "htick",
-          "mstohelit"
-        ],
-        "name": "GROUP_IT Operations",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Legal Staff",
-        "members": [
-          "eweatherwax"
-        ],
-        "name": "GROUP_Legal Staff",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.EXT.ldap1"
-    ]
-  },
-  {
-    "displayName": "Manufacturing",
-    "members": [],
-    "name": "GROUP_Manufacturing",
-    "groups": [
-      {
-        "displayName": "Production",
-        "members": [
-          "aweemad",
-          "dwillikins",
-          "lwarbeck",
-          "twithel"
-        ],
-        "name": "GROUP_Production",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.EXT.ldap1"
-    ]
-  },
-  {
-    "displayName": "Marketing",
-    "members": [],
-    "name": "GROUP_Marketing",
-    "groups": [
-      {
-        "displayName": "Events Team",
-        "members": [
-          "ecake",
-          "fcolon",
-          "jbeans",
-          "ltze",
-          "taching",
-          "wdeworde"
-        ],
-        "name": "GROUP_Events Team",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Field Marketing",
-        "members": [
-          "ecake",
-          "fcolon",
-          "jbeans",
-          "ltze",
-          "taching",
-          "wdeworde"
-        ],
-        "name": "GROUP_Field Marketing",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Marketing Leads",
-        "members": [
-          "avonuberwald",
-          "jbeans",
-          "jteatime",
-          "ltze",
-          "mridcully",
-          "phampton",
-          "taching"
-        ],
-        "name": "GROUP_Marketing Leads",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Media Team",
-        "members": [
-          "avonuberwald",
-          "wplinge"
-        ],
-        "name": "GROUP_Media Team",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Partner Management",
-        "members": [
-          "edeath",
-          "ldetritus"
-        ],
-        "name": "GROUP_Partner Management",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Product Marketing",
-        "members": [
-          "phampton",
-          "svimes",
-          "svonhumpeding"
-        ],
-        "name": "GROUP_Product Marketing",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Web Team",
-        "members": [
-          "asideways",
-          "idibbler",
-          "jteatime"
-        ],
-        "name": "GROUP_Web Team",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.EXT.ldap1"
-    ]
-  },
-  {
-    "displayName": "RECORD_CONTRIBUTORS",
-    "members": [
-      "admin"
-    ],
-    "name": "GROUP_RECORD_CONTRIBUTORS",
-    "groups": [],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "SITE_ADMINISTRATORS",
-    "members": [
-      "admin"
-    ],
-    "name": "GROUP_SITE_ADMINISTRATORS",
-    "groups": [],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "WW Sales",
-    "members": [],
-    "name": "GROUP_WW Sales",
-    "groups": [
-      {
-        "displayName": "APAC Sales",
-        "members": [
-          "tluggage"
-        ],
-        "name": "GROUP_APAC Sales",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "EMEA Sales",
-        "members": [
-          "adearheart",
-          "ahancock",
-          "ddownspout",
-          "dhubbub",
-          "jgoatberger",
-          "jhix",
-          "pgristle",
-          "pstibbons",
-          "rdechumsfanleigh",
-          "rdrumknott",
-          "shaddock"
-        ],
-        "name": "GROUP_EMEA Sales",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "Sales Management",
-        "members": [
-          "elittlebottom",
-          "pstibbons",
-          "tluggage",
-          "wsonky"
-        ],
-        "name": "GROUP_Sales Management",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      },
-      {
-        "displayName": "US Sales",
-        "members": [
-          "elancre",
-          "elittlebottom",
-          "esaturday",
-          "ethursley",
-          "gsugarbean",
-          "imaccalariat",
-          "iping",
-          "jlawn",
-          "jnettle",
-          "kkelirehenna",
-          "llewton",
-          "lludd",
-          "lslant",
-          "ltin-wheedle",
-          "rrust",
-          "rshoe",
-          "showler",
-          "sswires"
-        ],
-        "name": "GROUP_US Sales",
-        "groups": [],
-        "zones": [
-          "APP.DEFAULT",
-          "AUTH.EXT.ldap1"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.DEFAULT",
-      "AUTH.EXT.ldap1"
-    ]
-  },
-  {
-    "displayName": "site_accounting",
-    "members": [],
-    "name": "GROUP_site_accounting",
-    "groups": [
-      {
-        "displayName": "site_accounting_SiteCollaborator",
-        "members": [
-          "aironfoundersson",
-          "etreason",
-          "eweatherwax",
-          "fpump",
-          "hvetinari",
-          "jclockson",
-          "learwig"
-        ],
-        "name": "GROUP_site_accounting_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_accounting_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_accounting_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_accounting_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_accounting_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_accounting_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_accounting_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_engineering-projects",
-    "members": [],
-    "name": "GROUP_site_engineering-projects",
-    "groups": [
-      {
-        "displayName": "site_engineering-projects_SiteCollaborator",
-        "members": [
-          "cdun",
-          "dtockley",
-          "emargaret",
-          "etreason",
-          "gblackcap",
-          "gglooper",
-          "gogg",
-          "hgoatfounder",
-          "htick",
-          "hturvy",
-          "imort",
-          "jblouse",
-          "jclockson",
-          "jdrum",
-          "ldechumsfanleigh",
-          "lquirm",
-          "mbent",
-          "mgarlick",
-          "mtwoflower",
-          "ovonchriek",
-          "rpalm",
-          "sahmed",
-          "tgroat"
-        ],
-        "name": "GROUP_site_engineering-projects_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_engineering-projects_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_engineering-projects_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_engineering-projects_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_engineering-projects_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_engineering-projects_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_engineering-projects_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_executive-team",
-    "members": [],
-    "name": "GROUP_site_executive-team",
-    "groups": [
-      {
-        "displayName": "site_executive-team_SiteCollaborator",
-        "members": [
-          "aironfoundersson",
-          "eweatherwax",
-          "hvetinari"
-        ],
-        "name": "GROUP_site_executive-team_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_executive-team_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_executive-team_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_executive-team_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_executive-team_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_executive-team_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_executive-team_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_hr-team",
-    "members": [],
-    "name": "GROUP_site_hr-team",
-    "groups": [
-      {
-        "displayName": "site_hr-team_SiteCollaborator",
-        "members": [
-          "aironfoundersson",
-          "eweatherwax",
-          "hvetinari"
-        ],
-        "name": "GROUP_site_hr-team_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_hr-team_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_hr-team_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_hr-team_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_hr-team_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_hr-team_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_hr-team_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_marketing-site",
-    "members": [],
-    "name": "GROUP_site_marketing-site",
-    "groups": [
-      {
-        "displayName": "site_marketing-site_SiteCollaborator",
-        "members": [
-          "asideways",
-          "edeath",
-          "idibbler",
-          "jbeans",
-          "jteatime",
-          "ldetritus",
-          "ltze",
-          "phampton",
-          "svimes",
-          "svonhumpeding",
-          "taching"
-        ],
-        "name": "GROUP_site_marketing-site_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_marketing-site_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_marketing-site_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_marketing-site_SiteContributor",
-        "members": [
-          "avonuberwald",
-          "ecake",
-          "fcolon",
-          "wdeworde",
-          "wplinge"
-        ],
-        "name": "GROUP_site_marketing-site_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_marketing-site_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_marketing-site_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_rm",
-    "members": [],
-    "name": "GROUP_site_rm",
-    "groups": [
-      {
-        "displayName": "site_rm_SiteCollaborator",
-        "members": [
-          "aironfoundersson",
-          "brincewind",
-          "hking",
-          "kdarktan"
-        ],
-        "name": "GROUP_site_rm_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_rm_SiteConsumer",
-        "members": [
-          "nnobbs",
-          "sbucket"
-        ],
-        "name": "GROUP_site_rm_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_rm_SiteContributor",
-        "members": [
-          "elittlebottom",
-          "esmith",
-          "hvetinari",
-          "mridcully"
-        ],
-        "name": "GROUP_site_rm_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_rm_SiteManager",
-        "members": [
-          "phampton",
-          "wpoons"
-        ],
-        "name": "GROUP_site_rm_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_sales-contracts",
-    "members": [],
-    "name": "GROUP_site_sales-contracts",
-    "groups": [
-      {
-        "displayName": "site_sales-contracts_SiteCollaborator",
-        "members": [
-          "brincewind",
-          "hking",
-          "kdarktan",
-          "nnobbs",
-          "sbucket",
-          "wpoons"
-        ],
-        "name": "GROUP_site_sales-contracts_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_sales-contracts_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_sales-contracts_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-contracts_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_sales-contracts_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_sales-enablement",
-    "members": [],
-    "name": "GROUP_site_sales-enablement",
-    "groups": [
-      {
-        "displayName": "site_sales-enablement_SiteCollaborator",
-        "members": [
-          "elittlebottom",
-          "pstibbons",
-          "svimes",
-          "svonhumpeding",
-          "tluggage"
-        ],
-        "name": "GROUP_site_sales-enablement_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-enablement_SiteConsumer",
-        "members": [
-          "adearheart",
-          "ahancock",
-          "ddownspout",
-          "dhubbub",
-          "elancre",
-          "esaturday",
-          "ethursley",
-          "gsugarbean",
-          "imaccalariat",
-          "iping",
-          "jgoatberger",
-          "jhix",
-          "jlawn",
-          "jnettle",
-          "kkelirehenna",
-          "llewton",
-          "lludd",
-          "lslant",
-          "ltin-wheedle",
-          "pgristle",
-          "rdechumsfanleigh",
-          "rdrumknott",
-          "rrust",
-          "rshoe",
-          "shaddock",
-          "showler",
-          "sswires"
-        ],
-        "name": "GROUP_site_sales-enablement_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-enablement_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_sales-enablement_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_sales-enablement_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_sales-enablement_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_social-media",
-    "members": [],
-    "name": "GROUP_site_social-media",
-    "groups": [
-      {
-        "displayName": "site_social-media_SiteCollaborator",
-        "members": [
-          "asideways",
-          "edeath",
-          "idibbler",
-          "jbeans",
-          "jteatime",
-          "ldetritus",
-          "ltze",
-          "phampton",
-          "svimes",
-          "svonhumpeding",
-          "taching"
-        ],
-        "name": "GROUP_site_social-media_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_social-media_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_social-media_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_social-media_SiteContributor",
-        "members": [
-          "avonuberwald",
-          "ecake",
-          "fcolon",
-          "wdeworde",
-          "wplinge"
-        ],
-        "name": "GROUP_site_social-media_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_social-media_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_social-media_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_support-case-files",
-    "members": [],
-    "name": "GROUP_site_support-case-files",
-    "groups": [
-      {
-        "displayName": "site_support-case-files_SiteCollaborator",
-        "members": [
-          "emargaret",
-          "etreason",
-          "gwhemper",
-          "jblouse",
-          "jogg",
-          "lquirm",
-          "lweatherwax",
-          "mbent",
-          "mtwoflower",
-          "mvonlipwig",
-          "ntulip",
-          "ovonchriek",
-          "rpalm",
-          "sahmed",
-          "tlikely"
-        ],
-        "name": "GROUP_site_support-case-files_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_support-case-files_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_support-case-files_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_support-case-files_SiteManager",
-        "members": [
-          "phampton"
-        ],
-        "name": "GROUP_site_support-case-files_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  },
-  {
-    "displayName": "site_swsdp",
-    "members": [],
-    "name": "GROUP_site_swsdp",
-    "groups": [
-      {
-        "displayName": "site_swsdp_SiteCollaborator",
-        "members": [
-          "abeecher"
-        ],
-        "name": "GROUP_site_swsdp_SiteCollaborator",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_swsdp_SiteConsumer",
-        "members": [],
-        "name": "GROUP_site_swsdp_SiteConsumer",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_swsdp_SiteContributor",
-        "members": [],
-        "name": "GROUP_site_swsdp_SiteContributor",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      },
-      {
-        "displayName": "site_swsdp_SiteManager",
-        "members": [
-          "admin",
-          "mjackson",
-          "phampton"
-        ],
-        "name": "GROUP_site_swsdp_SiteManager",
-        "groups": [],
-        "zones": [
-          "APP.SHARE",
-          "AUTH.ALF"
-        ]
-      }
-    ],
-    "zones": [
-      "APP.SHARE",
-      "AUTH.ALF"
-    ]
-  }
+   {
+      "displayName":"ALFRESCO_ADMINISTRATORS",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_ALFRESCO_ADMINISTRATORS",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"EMAIL_CONTRIBUTORS",
+      "members":[
+         "admin"
+      ],
+      "name":"GROUP_EMAIL_CONTRIBUTORS",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"SITE_ADMINISTRATORS",
+      "members":[
+         "admin"
+      ],
+      "name":"GROUP_SITE_ADMINISTRATORS",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"ALFRESCO_SEARCH_ADMINISTRATORS",
+      "members":[
+         "admin"
+      ],
+      "name":"GROUP_ALFRESCO_SEARCH_ADMINISTRATORS",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"ALFRESCO_MODEL_ADMINISTRATORS",
+      "members":[
+         "admin"
+      ],
+      "name":"GROUP_ALFRESCO_MODEL_ADMINISTRATORS",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_swsdp",
+      "name":"GROUP_site_swsdp",
+      "groups":[
+         "GROUP_site_swsdp_SiteCollaborator",
+         "GROUP_site_swsdp_SiteConsumer",
+         "GROUP_site_swsdp_SiteContributor",
+         "GROUP_site_swsdp_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_swsdp_SiteManager",
+      "members":[
+         "admin",
+         "mjackson",
+         "phampton"
+      ],
+      "name":"GROUP_site_swsdp_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_swsdp_SiteCollaborator",
+      "members":[
+         "abeecher"
+      ],
+      "name":"GROUP_site_swsdp_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_swsdp_SiteContributor",
+      "name":"GROUP_site_swsdp_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_swsdp_SiteConsumer",
+      "name":"GROUP_site_swsdp_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_executive-team",
+      "name":"GROUP_site_executive-team",
+      "groups":[
+         "GROUP_site_executive-team_SiteCollaborator",
+         "GROUP_site_executive-team_SiteConsumer",
+         "GROUP_site_executive-team_SiteContributor",
+         "GROUP_site_executive-team_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_executive-team_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_executive-team_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_executive-team_SiteCollaborator",
+      "members":[
+         "aironfoundersson",
+         "eweatherwax",
+         "hvetinari"
+      ],
+      "name":"GROUP_site_executive-team_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_executive-team_SiteContributor",
+      "name":"GROUP_site_executive-team_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_executive-team_SiteConsumer",
+      "name":"GROUP_site_executive-team_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_accounting",
+      "name":"GROUP_site_accounting",
+      "groups":[
+         "GROUP_site_accounting_SiteCollaborator",
+         "GROUP_site_accounting_SiteConsumer",
+         "GROUP_site_accounting_SiteContributor",
+         "GROUP_site_accounting_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_accounting_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_accounting_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_accounting_SiteCollaborator",
+      "members":[
+         "aironfoundersson",
+         "etreason",
+         "eweatherwax",
+         "fpump",
+         "hvetinari",
+         "jclockson",
+         "learwig"
+      ],
+      "name":"GROUP_site_accounting_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_accounting_SiteContributor",
+      "name":"GROUP_site_accounting_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_accounting_SiteConsumer",
+      "name":"GROUP_site_accounting_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_engineering-projects",
+      "name":"GROUP_site_engineering-projects",
+      "groups":[
+         "GROUP_site_engineering-projects_SiteCollaborator",
+         "GROUP_site_engineering-projects_SiteConsumer",
+         "GROUP_site_engineering-projects_SiteContributor",
+         "GROUP_site_engineering-projects_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_engineering-projects_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_engineering-projects_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_engineering-projects_SiteCollaborator",
+      "members":[
+         "cdun",
+         "dtockley",
+         "emargaret",
+         "etreason",
+         "gblackcap",
+         "gglooper",
+         "gogg",
+         "hgoatfounder",
+         "htick",
+         "hturvy",
+         "imort",
+         "jblouse",
+         "jclockson",
+         "jdrum",
+         "ldechumsfanleigh",
+         "lquirm",
+         "mbent",
+         "mgarlick",
+         "mtwoflower",
+         "ovonchriek",
+         "rpalm",
+         "sahmed",
+         "tgroat"
+      ],
+      "name":"GROUP_site_engineering-projects_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_engineering-projects_SiteContributor",
+      "name":"GROUP_site_engineering-projects_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_engineering-projects_SiteConsumer",
+      "name":"GROUP_site_engineering-projects_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_hr-team",
+      "name":"GROUP_site_hr-team",
+      "groups":[
+         "GROUP_site_hr-team_SiteCollaborator",
+         "GROUP_site_hr-team_SiteConsumer",
+         "GROUP_site_hr-team_SiteContributor",
+         "GROUP_site_hr-team_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_hr-team_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_hr-team_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_hr-team_SiteCollaborator",
+      "members":[
+         "aironfoundersson",
+         "eweatherwax",
+         "hvetinari"
+      ],
+      "name":"GROUP_site_hr-team_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_hr-team_SiteContributor",
+      "name":"GROUP_site_hr-team_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_hr-team_SiteConsumer",
+      "name":"GROUP_site_hr-team_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_marketing-site",
+      "name":"GROUP_site_marketing-site",
+      "groups":[
+         "GROUP_site_marketing-site_SiteCollaborator",
+         "GROUP_site_marketing-site_SiteConsumer",
+         "GROUP_site_marketing-site_SiteContributor",
+         "GROUP_site_marketing-site_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_marketing-site_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_marketing-site_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_marketing-site_SiteCollaborator",
+      "members":[
+         "asideways",
+         "edeath",
+         "idibbler",
+         "jbeans",
+         "jteatime",
+         "ldetritus",
+         "ltze",
+         "phampton",
+         "svimes",
+         "svonhumpeding",
+         "taching"
+      ],
+      "name":"GROUP_site_marketing-site_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_marketing-site_SiteContributor",
+      "members":[
+         "avonuberwald",
+         "ecake",
+         "fcolon",
+         "wdeworde",
+         "wplinge"
+      ],
+      "name":"GROUP_site_marketing-site_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_marketing-site_SiteConsumer",
+      "name":"GROUP_site_marketing-site_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-enablement",
+      "name":"GROUP_site_sales-enablement",
+      "groups":[
+         "GROUP_site_sales-enablement_SiteCollaborator",
+         "GROUP_site_sales-enablement_SiteConsumer",
+         "GROUP_site_sales-enablement_SiteContributor",
+         "GROUP_site_sales-enablement_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-enablement_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_sales-enablement_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-enablement_SiteCollaborator",
+      "members":[
+         "elittlebottom",
+         "pstibbons",
+         "svimes",
+         "svonhumpeding",
+         "tluggage"
+      ],
+      "name":"GROUP_site_sales-enablement_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-enablement_SiteContributor",
+      "name":"GROUP_site_sales-enablement_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-enablement_SiteConsumer",
+      "members":[
+         "adearheart",
+         "ahancock",
+         "ddownspout",
+         "dhubbub",
+         "elancre",
+         "esaturday",
+         "ethursley",
+         "gsugarbean",
+         "imaccalariat",
+         "iping",
+         "jgoatberger",
+         "jhix",
+         "jlawn",
+         "jnettle",
+         "kkelirehenna",
+         "llewton",
+         "lludd",
+         "lslant",
+         "ltin-wheedle",
+         "pgristle",
+         "rdechumsfanleigh",
+         "rdrumknott",
+         "rrust",
+         "rshoe",
+         "shaddock",
+         "showler",
+         "sswires"
+      ],
+      "name":"GROUP_site_sales-enablement_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_support-case-files",
+      "name":"GROUP_site_support-case-files",
+      "groups":[
+         "GROUP_site_support-case-files_SiteCollaborator",
+         "GROUP_site_support-case-files_SiteConsumer",
+         "GROUP_site_support-case-files_SiteContributor",
+         "GROUP_site_support-case-files_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_support-case-files_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_support-case-files_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_support-case-files_SiteCollaborator",
+      "members":[
+         "emargaret",
+         "etreason",
+         "gwhemper",
+         "jblouse",
+         "jogg",
+         "lquirm",
+         "lweatherwax",
+         "mbent",
+         "mtwoflower",
+         "mvonlipwig",
+         "ntulip",
+         "ovonchriek",
+         "rpalm",
+         "sahmed",
+         "tlikely"
+      ],
+      "name":"GROUP_site_support-case-files_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_support-case-files_SiteContributor",
+      "name":"GROUP_site_support-case-files_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_support-case-files_SiteConsumer",
+      "name":"GROUP_site_support-case-files_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-contracts",
+      "name":"GROUP_site_sales-contracts",
+      "groups":[
+         "GROUP_site_sales-contracts_SiteCollaborator",
+         "GROUP_site_sales-contracts_SiteConsumer",
+         "GROUP_site_sales-contracts_SiteContributor",
+         "GROUP_site_sales-contracts_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-contracts_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_sales-contracts_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-contracts_SiteCollaborator",
+      "members":[
+         "brincewind",
+         "hking",
+         "kdarktan",
+         "nnobbs",
+         "sbucket",
+         "wpoons"
+      ],
+      "name":"GROUP_site_sales-contracts_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-contracts_SiteContributor",
+      "name":"GROUP_site_sales-contracts_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_sales-contracts_SiteConsumer",
+      "name":"GROUP_site_sales-contracts_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_social-media",
+      "name":"GROUP_site_social-media",
+      "groups":[
+         "GROUP_site_social-media_SiteCollaborator",
+         "GROUP_site_social-media_SiteConsumer",
+         "GROUP_site_social-media_SiteContributor",
+         "GROUP_site_social-media_SiteManager"
+      ],
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_social-media_SiteManager",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_site_social-media_SiteManager",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_social-media_SiteCollaborator",
+      "members":[
+         "asideways",
+         "edeath",
+         "idibbler",
+         "jbeans",
+         "jteatime",
+         "ldetritus",
+         "ltze",
+         "phampton",
+         "svimes",
+         "svonhumpeding",
+         "taching"
+      ],
+      "name":"GROUP_site_social-media_SiteCollaborator",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_social-media_SiteContributor",
+      "members":[
+         "avonuberwald",
+         "ecake",
+         "fcolon",
+         "wdeworde",
+         "wplinge"
+      ],
+      "name":"GROUP_site_social-media_SiteContributor",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"site_social-media_SiteConsumer",
+      "name":"GROUP_site_social-media_SiteConsumer",
+      "zones":[
+         "APP.SHARE",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"All 3D GoldCore",
+      "members":[
+         "adearheart",
+         "ahancock",
+         "aironfoundersson",
+         "anitt",
+         "asideways",
+         "atacticus",
+         "avonuberwald",
+         "aweemad",
+         "bloveknot",
+         "brincewind",
+         "bstronginthearm",
+         "cchrysoprase",
+         "cdun",
+         "ddownspout",
+         "ddregs",
+         "dhubbub",
+         "dtockley",
+         "dwillikins",
+         "ecake",
+         "edeath",
+         "elancre",
+         "elittlebottom",
+         "emargaret",
+         "esaturday",
+         "esmith",
+         "ethursley",
+         "etreason",
+         "eweatherwax",
+         "ewinlof",
+         "fcolon",
+         "fpump",
+         "gblackcap",
+         "gglooper",
+         "gogg",
+         "gsugarbean",
+         "gwhemper",
+         "hgoatfounder",
+         "hking",
+         "htick",
+         "hturvy",
+         "hvetinari",
+         "ibluejohn",
+         "idibbler",
+         "imaccalariat",
+         "imort",
+         "iping",
+         "jbarrez",
+         "jbeans",
+         "jblouse",
+         "jclockson",
+         "jdrum",
+         "jgoatberger",
+         "jhix",
+         "jlawn",
+         "jnettle",
+         "jogg",
+         "jteatime",
+         "kdarktan",
+         "kkelirehenna",
+         "ldechumsfanleigh",
+         "ldetritus",
+         "learwig",
+         "llewton",
+         "lludd",
+         "lquirm",
+         "lslant",
+         "ltin-wheedle",
+         "ltze",
+         "lwarbeck",
+         "lweatherwax",
+         "mbent",
+         "mfarman",
+         "mgarlick",
+         "moats",
+         "mridcully",
+         "mstohelit",
+         "mtwoflower",
+         "mvonlipwig",
+         "nnobbs",
+         "ntulip",
+         "ovonchriek",
+         "pcuddy",
+         "pgristle",
+         "phampton",
+         "pstibbons",
+         "rdechumsfanleigh",
+         "rdrumknott",
+         "rpalm",
+         "rrust",
+         "rshoe",
+         "sahmed",
+         "sbucket",
+         "shaddock",
+         "showler",
+         "sswires",
+         "svimes",
+         "svonhumpeding",
+         "taching",
+         "tgroat",
+         "tlikely",
+         "tluggage",
+         "trademakers",
+         "twithel",
+         "vtugelbend",
+         "wdeworde",
+         "wplinge",
+         "wpoons",
+         "wsonky"
+      ],
+      "name":"GROUP_All 3D GoldCore",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"All Records Management Roles",
+      "name":"GROUP_AllRolese6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "groups":[
+         "GROUP_Administratore6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+         "GROUP_PowerUsere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+         "GROUP_RecordsManagere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+         "GROUP_SecurityOfficere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+         "GROUP_Usere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ],
+      "zones":[
+         "APP.RM"
+      ]
+   },
+   {
+      "displayName":"Records Management User",
+      "name":"GROUP_Usere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"Records Management Power User",
+      "name":"GROUP_PowerUsere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"Records Management Administrator",
+      "members":[
+         "admin",
+         "phampton"
+      ],
+      "name":"GROUP_Administratore6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"Records Management Manager",
+      "name":"GROUP_RecordsManagere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"Records Management Security Officer",
+      "name":"GROUP_SecurityOfficere6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"Engineering",
+      "name":"GROUP_Engineering",
+      "groups":[
+         "GROUP_Documentation",
+         "GROUP_Engineering Leads",
+         "GROUP_Engineering Team",
+         "GROUP_QA Team",
+         "GROUP_Research & Development",
+         "GROUP_Technical Support"
+      ],
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"QA Team",
+      "members":[
+         "dtockley",
+         "hturvy",
+         "imort",
+         "moats",
+         "vtugelbend"
+      ],
+      "name":"GROUP_QA Team",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Engineering Leads",
+      "members":[
+         "jclockson"
+      ],
+      "name":"GROUP_Engineering Leads",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Documentation",
+      "members":[
+         "gblackcap",
+         "gogg",
+         "ibluejohn"
+      ],
+      "name":"GROUP_Documentation",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Technical Support",
+      "members":[
+         "emargaret",
+         "etreason",
+         "gwhemper",
+         "jblouse",
+         "jogg",
+         "lquirm",
+         "lweatherwax",
+         "mbent",
+         "mtwoflower",
+         "mvonlipwig",
+         "ntulip",
+         "ovonchriek",
+         "rpalm",
+         "sahmed",
+         "tlikely"
+      ],
+      "name":"GROUP_Technical Support",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Research & Development",
+      "members":[
+         "cchrysoprase",
+         "cdun",
+         "ddregs",
+         "gglooper",
+         "hgoatfounder",
+         "jclockson",
+         "jdrum",
+         "ldechumsfanleigh",
+         "mgarlick",
+         "pcuddy",
+         "tgroat"
+      ],
+      "name":"GROUP_Research & Development",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Engineering Team",
+      "members":[
+         "ewinlof",
+         "jbarrez",
+         "mfarman",
+         "trademakers"
+      ],
+      "name":"GROUP_Engineering Team",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"In-Place Readers",
+      "members":[
+         "phampton"
+      ],
+      "name":"GROUP_ExtendedReaderse6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "groups":[
+         "GROUP_site_sales-contracts_SiteCollaborator",
+         "GROUP_site_sales-contracts_SiteConsumer",
+         "GROUP_site_sales-contracts_SiteContributor",
+         "GROUP_site_sales-contracts_SiteManager",
+         "GROUP_site_support-case-files_SiteCollaborator",
+         "GROUP_site_support-case-files_SiteConsumer",
+         "GROUP_site_support-case-files_SiteContributor",
+         "GROUP_site_support-case-files_SiteManager"
+      ],
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"In-Place Writers",
+      "members":[
+         "phampton"
+      ],
+      "name":"GROUP_ExtendedWriterse6f52f22-76c9-4f9f-a9dd-b2f32808fa3e",
+      "groups":[
+         "GROUP_site_sales-contracts_SiteCollaborator",
+         "GROUP_site_sales-contracts_SiteManager",
+         "GROUP_site_support-case-files_SiteCollaborator",
+         "GROUP_site_support-case-files_SiteManager"
+      ],
+      "zones":[
+         "APP.RM",
+         "rmRoleZonee6f52f22-76c9-4f9f-a9dd-b2f32808fa3e"
+      ]
+   },
+   {
+      "displayName":"Finance and Admin",
+      "name":"GROUP_Finance and Admin",
+      "groups":[
+         "GROUP_Accounts",
+         "GROUP_Compliance",
+         "GROUP_Executives",
+         "GROUP_Human Resources",
+         "GROUP_IT Operations",
+         "GROUP_Legal Staff"
+      ],
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Compliance",
+      "members":[
+         "brincewind",
+         "hking",
+         "kdarktan",
+         "nnobbs",
+         "sbucket",
+         "wpoons"
+      ],
+      "name":"GROUP_Compliance",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Legal Staff",
+      "members":[
+         "eweatherwax"
+      ],
+      "name":"GROUP_Legal Staff",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Human Resources",
+      "members":[
+         "fpump"
+      ],
+      "name":"GROUP_Human Resources",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Accounts",
+      "members":[
+         "bloveknot",
+         "bstronginthearm",
+         "learwig"
+      ],
+      "name":"GROUP_Accounts",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"IT Operations",
+      "members":[
+         "anitt",
+         "atacticus",
+         "esmith",
+         "htick",
+         "mstohelit"
+      ],
+      "name":"GROUP_IT Operations",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Executives",
+      "members":[
+         "aironfoundersson",
+         "elittlebottom",
+         "esmith",
+         "etreason",
+         "hvetinari",
+         "jclockson",
+         "mridcully",
+         "pstibbons",
+         "tluggage"
+      ],
+      "name":"GROUP_Executives",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Manufacturing",
+      "name":"GROUP_Manufacturing",
+      "groups":[
+         "GROUP_Production"
+      ],
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Production",
+      "members":[
+         "aweemad",
+         "dwillikins",
+         "lwarbeck",
+         "twithel"
+      ],
+      "name":"GROUP_Production",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Marketing",
+      "name":"GROUP_Marketing",
+      "groups":[
+         "GROUP_Events Team",
+         "GROUP_Field Marketing",
+         "GROUP_Marketing Leads",
+         "GROUP_Media Team",
+         "GROUP_Partner Management",
+         "GROUP_Product Marketing",
+         "GROUP_Web Team"
+      ],
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Media Team",
+      "members":[
+         "avonuberwald",
+         "wplinge"
+      ],
+      "name":"GROUP_Media Team",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Product Marketing",
+      "members":[
+         "phampton",
+         "svimes",
+         "svonhumpeding"
+      ],
+      "name":"GROUP_Product Marketing",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Field Marketing",
+      "members":[
+         "ecake",
+         "fcolon",
+         "jbeans",
+         "ltze",
+         "taching",
+         "wdeworde"
+      ],
+      "name":"GROUP_Field Marketing",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Marketing Leads",
+      "members":[
+         "avonuberwald",
+         "jbeans",
+         "jteatime",
+         "ltze",
+         "mridcully",
+         "phampton",
+         "taching"
+      ],
+      "name":"GROUP_Marketing Leads",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Partner Management",
+      "members":[
+         "edeath",
+         "ldetritus"
+      ],
+      "name":"GROUP_Partner Management",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Events Team",
+      "members":[
+         "ecake",
+         "fcolon",
+         "jbeans",
+         "ltze",
+         "taching",
+         "wdeworde"
+      ],
+      "name":"GROUP_Events Team",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Web Team",
+      "members":[
+         "asideways",
+         "idibbler",
+         "jteatime"
+      ],
+      "name":"GROUP_Web Team",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"RECORD_CONTRIBUTORS",
+      "members":[
+         "admin"
+      ],
+      "name":"GROUP_RECORD_CONTRIBUTORS",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.ALF"
+      ]
+   },
+   {
+      "displayName":"WW Sales",
+      "name":"GROUP_WW Sales",
+      "groups":[
+         "GROUP_APAC Sales",
+         "GROUP_EMEA Sales",
+         "GROUP_Sales Management",
+         "GROUP_US Sales"
+      ],
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"APAC Sales",
+      "members":[
+         "tluggage"
+      ],
+      "name":"GROUP_APAC Sales",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"EMEA Sales",
+      "members":[
+         "adearheart",
+         "ahancock",
+         "ddownspout",
+         "dhubbub",
+         "jgoatberger",
+         "jhix",
+         "pgristle",
+         "pstibbons",
+         "rdechumsfanleigh",
+         "rdrumknott",
+         "shaddock"
+      ],
+      "name":"GROUP_EMEA Sales",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"Sales Management",
+      "members":[
+         "elittlebottom",
+         "pstibbons",
+         "tluggage",
+         "wsonky"
+      ],
+      "name":"GROUP_Sales Management",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   },
+   {
+      "displayName":"US Sales",
+      "members":[
+         "elancre",
+         "elittlebottom",
+         "esaturday",
+         "ethursley",
+         "gsugarbean",
+         "imaccalariat",
+         "iping",
+         "jlawn",
+         "jnettle",
+         "kkelirehenna",
+         "llewton",
+         "lludd",
+         "lslant",
+         "ltin-wheedle",
+         "rrust",
+         "rshoe",
+         "showler",
+         "sswires"
+      ],
+      "name":"GROUP_US Sales",
+      "zones":[
+         "APP.DEFAULT",
+         "AUTH.EXT.ldap1"
+      ]
+   }
 ]

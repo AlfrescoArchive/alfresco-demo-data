@@ -23,7 +23,9 @@ public class PostSiteLoadPatch extends SiteLoadPatch implements ApplicationListe
 	@Override
 	protected String applyInternal() throws Exception
 	{
+		logger.debug("applyInternal");
 		if(onContextRefreshedEvent){
+			logger.debug("onContextRefreshedEvent");
 			return super.applyInternal();
 		}
 		else{
@@ -34,6 +36,7 @@ public class PostSiteLoadPatch extends SiteLoadPatch implements ApplicationListe
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
+		logger.debug("onApplicationEvent");
 		onContextRefreshedEvent=true;
 		RetryingTransactionCallback<String> txnWork = new RetryingTransactionCallback<String>(){
 			public String execute() throws Exception

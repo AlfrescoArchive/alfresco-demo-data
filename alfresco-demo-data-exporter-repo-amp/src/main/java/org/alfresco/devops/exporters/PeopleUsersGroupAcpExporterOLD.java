@@ -20,7 +20,6 @@ import org.alfresco.repo.content.MimetypeMap;
 import org.alfresco.repo.exporter.ACPExportPackageHandler;
 import org.alfresco.repo.management.subsystems.ChildApplicationContextManager;
 import org.alfresco.repo.security.authentication.RepositoryAuthenticationDao;
-import org.alfresco.repo.security.authority.AuthorityInfo;
 import org.alfresco.service.cmr.repository.MimetypeService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.security.AuthorityService;
@@ -47,7 +46,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
+@Deprecated
+public class PeopleUsersGroupAcpExporterOLD extends AbstractWebScript{
 
 	private ExporterService exporterService;
 	private MimetypeService mimetypeService;
@@ -56,7 +56,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private ChildApplicationContextManager authenticationContextManager;
 
 
-	private static Log logger = LogFactory.getLog(PeopleUsersGroupAcpExporter.class);
+	private static Log logger = LogFactory.getLog(PeopleUsersGroupAcpExporterOLD.class);
 
 
 	private static final List<String> USERS_NOT_TO_EXPORT = Arrays.asList(new String[] { "guest","admin" });
@@ -296,23 +296,17 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	{
 		JSONArray rootGroupList = new JSONArray();
 
-		PagingRequest paging = new PagingRequest(10000);
-        PagingResults<AuthorityInfo> groups = authorityService.getAuthoritiesInfo(AuthorityType.GROUP, null, null, null, true, paging);
+		Set<String> rootAuthorities = authorityService.getAllRootAuthorities(AuthorityType.GROUP);
+		for(String rootAuthority :rootAuthorities ){
+			if(includeGroup(rootAuthority)){
+				rootGroupList.put(createRecursiveGroupObject(rootAuthority));
+			}
+		}
+		PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, "UTF-8"));
 
-        List<AuthorityInfo> groupInfo = groups.getPage();
-        for(AuthorityInfo ai : groupInfo){
-        	if(includeGroup(ai.getAuthorityName())){
-				rootGroupList.put(createGroupObject(ai));
-        	}
-        }
+		String prettyJsonString = prettifyJsonString(rootGroupList.toString());
 
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, "UTF-8"));
-
-        //		String prettyJsonString = prettifyJsonString(rootGroupList.toString());
-
-		out.print(rootGroupList.toString());
-		//		out.print(prettyJsonString);
-
+		out.print(prettyJsonString);
 		out.close();
 	}
 
@@ -326,36 +320,31 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		return prettyJsonString;
 	}
 
-	private JSONObject createGroupObject(AuthorityInfo group) throws JSONException{
+	private JSONObject createRecursiveGroupObject(String group) throws JSONException{
 
 		logger.debug("EXPORTING GROUP "+group);
 		
 		JSONObject jgroup = new JSONObject();
 		JSONArray jsubgroups = new JSONArray();
 
-		String displayName = group.getAuthorityDisplayName();
-		String name = group.getAuthorityName();
-		JSONArray zones = createZones(authorityService.getAuthorityZones(name));
-		JSONArray members =createMembers(authorityService.getContainedAuthorities(AuthorityType.USER, name, true));
+		String displayName = authorityService.getAuthorityDisplayName(group);
+		JSONArray zones = createZones(authorityService.getAuthorityZones(group));
+		JSONArray members =createMembers(authorityService.getContainedAuthorities(AuthorityType.USER, group, true));
 		
-		Set<String> containedGroups =authorityService.getContainedAuthorities(AuthorityType.GROUP, name, true);
+		Set<String> containedGroups =authorityService.getContainedAuthorities(AuthorityType.GROUP, group, true);
 
 		for(String containedGroup : containedGroups){
 			if(includeGroup(containedGroup)){
-				jsubgroups.put(containedGroup);
+				jsubgroups.put(createRecursiveGroupObject(containedGroup));
 			}
 		}
 
-		jgroup.put(Constants.GROUP_NAME, group.getAuthorityName());
+		jgroup.put(Constants.GROUP_NAME, group);
 		jgroup.put(Constants.GROUP_DISPLAYNAME, displayName);
 		jgroup.put(Constants.GROUP_ZONES, zones);
-		if(members.length()>0){
-			jgroup.put(Constants.GROUP_MEMBERS, members);
-		}
-		if(jsubgroups.length()>0){
-			jgroup.put(Constants.GROUP_SUBGROUPS, jsubgroups);
-		}
-		
+		jgroup.put(Constants.GROUP_MEMBERS, members);
+		jgroup.put(Constants.GROUP_SUBGROUPS, jsubgroups);
+
 		return jgroup;
 
 	}

@@ -18,6 +18,7 @@
  */
 package org.alfresco.devops.importers;
 
+
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import org.alfresco.repo.importer.ImporterBootstrap;
 import org.alfresco.repo.security.authentication.AuthenticationUtil;
 import org.alfresco.repo.security.authentication.AuthenticationUtil.RunAsWork;
 import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
+import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.cmr.security.PersonService;
@@ -52,8 +54,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.extensions.surf.util.I18NUtil;
 
-
-public class UsersGroupsImporterPatch extends AbstractPatch implements ApplicationListener<ContextRefreshedEvent>{
+@Deprecated
+public class UsersGroupsImporterPatchOLD extends AbstractPatch implements ApplicationListener<ContextRefreshedEvent>{
 
 	public static final String PROPERTIES_USERS = "users";
 	public static final String PROPERTIES_PEOPLE = "people";
@@ -70,7 +72,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 
 	private static final String MSG_NO_BOOTSTRAP_VIEWS_GIVEN = "patch.siteLoadPatch.noBootstrapViews";
 
-	private static final Log logger = LogFactory.getLog(UsersGroupsImporterPatch.class);
+	private static final Log logger = LogFactory.getLog(UsersGroupsImporterPatchOLD.class);
 
 	private AuthorityService authorityService;
 	private DescriptorService descriptorService;
@@ -85,7 +87,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 
 	private Boolean disabled = false;
 
-	public UsersGroupsImporterPatch()
+	public UsersGroupsImporterPatchOLD()
 	{
 		// We do need to run in our own transaction
 		setRequiresTransaction(true);
@@ -146,7 +148,10 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 	@Override
 	protected String applyInternal() throws Exception
 	{
+		logger.debug("applyInternal");
+
 		if(!onContextRefreshedEvent){
+			logger.debug("!onContextRefreshedEvent");
 			return "Users will be loaded later";
 		}
 		if (isDisabled()) 
@@ -158,11 +163,13 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 			return "Load of groups/users is disabled.";
 		}
 
+		logger.debug("onContextRefreshedEvent");
 		return applyInternalImpl();
 	}
 
 	private String applyInternalImpl() throws Exception
 	{
+		logger.debug("applyInternalImpl");
 		if(descriptorService != null)
 		{
 			// if the descriptor service is wired up only load at install time (and not on upgrade)
@@ -189,7 +196,7 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 		{
 			bootstrap.setAllowWrite(true);
 			bootstrap.setUseExistingStore(true);
-			bootstrap.setUuidBinding(UUID_BINDING.REPLACE_EXISTING);
+			bootstrap.setUuidBinding(UUID_BINDING.THROW_ON_COLLISION);
 		}
 
 		for(String type : DEFAULT_PATHS.keySet())
@@ -203,7 +210,6 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 				}
 			}
 		}
-
 		try{
 			if(bootstrapViews.containsKey(PROPERTIES_USERS))
 			{
@@ -244,55 +250,39 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 		try{
 			Object obj = parser.parse(new FileReader(groupFile));
 			JSONArray groups = (JSONArray)obj;
-			JSONArray includedGroups = new JSONArray();
-			
-			List<String> includedGroupsName = new ArrayList<String>();
 			for (int i = 0; i < groups.size(); i++) {
 				JSONObject group = (JSONObject) groups.get(i);
-				if(includeGroup(group)){
-
-					createOrUpdateRootGroup(group);
-					includedGroups.add(group);
-					includedGroupsName.add((String)group.get(Constants.GROUP_NAME));
-				}
-			}
-			
-			for (int i = 0; i < includedGroups.size(); i++) {
-				JSONObject group = (JSONObject) includedGroups.get(i);
-				associateSubGroups(group,includedGroupsName);
-				}
+				createOrUpdateGroup(group);
 			}
 
+		}
 		catch (Exception e) {
 			logger.error("Group-Import failed:",e);
 		}
 	}
 
-	private boolean includeGroup(JSONObject group){
-		String name = (String) group.get(Constants.GROUP_NAME);
-		//			is it a site group?
-		if(name.startsWith(Constants.GROUP_SITE)){
-			String siteName = siteService.resolveSite(name);
-			if(siteService.getSite(siteName)==null){
-				return false;
-			}
-		}
-		return true;
-	}
-
-
-	private void createOrUpdateRootGroup(JSONObject group) throws JSONException {
+	private void createOrUpdateGroup(JSONObject group) throws JSONException {
 		String name = (String) group.get(Constants.GROUP_NAME);
 
 		String displayName = (String) group.get(Constants.GROUP_DISPLAYNAME) != null ? (String) group.get(Constants.GROUP_DISPLAYNAME) : name;
 		JSONArray zones = (JSONArray) group.get(Constants.GROUP_ZONES);
+		JSONArray subgroups = (JSONArray) group.get(Constants.GROUP_SUBGROUPS);
 		JSONArray members = (JSONArray) group.get(Constants.GROUP_MEMBERS);
 
 		Set<String> zonesList = getStringSetFromJArray(zones);
+		Set<JSONObject> subgroupsList = getJObjetSetFromJArray(subgroups);
 		Set<String> membersList = getStringSetFromJArray(members);
 
 
 		if(!authorityService.authorityExists(name)){
+			//			is it a site group?
+			//			if(name.startsWith(Constants.GROUP_SITE)){
+			//				String siteName = siteService.resolveSite(name);
+			//				logger.debug("siteService.getSite(siteName): "+siteService.getSite(siteName));
+			//				if(siteService.getSite(siteName)==null){
+			//					return;
+			//				}
+			//			}
 			// remove 'GROUP_'
 			String replacename = name.substring(6);
 
@@ -316,6 +306,8 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 			authorityService.setAuthorityDisplayName(name, displayName);
 		}
 
+
+		Set<String> containedGroups = authorityService.getContainedAuthorities(AuthorityType.GROUP, name, true);
 		Set<String> containedUsers = authorityService.getContainedAuthorities(AuthorityType.USER, name, true);
 
 
@@ -329,40 +321,31 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 			}
 		}
 
-	}
-
-
-	private void associateSubGroups(JSONObject group,List<String> includedGroupsName) throws JSONException {
-		String name = (String) group.get(Constants.GROUP_NAME);
-		JSONArray subgroups = (JSONArray) group.get(Constants.GROUP_SUBGROUPS);
-
-		Set<String> subgroupsList = getStringSetFromJArray(subgroups);
-
-		Set<String> containedGroups = authorityService.getContainedAuthorities(AuthorityType.GROUP, name, true);
-
-		for(String subGroup:subgroupsList){
+		for(JSONObject subGroup:subgroupsList){
 			//create or update subgroup
-			if(subGroup!= null && !containedGroups.contains(subGroup) && includedGroupsName.contains(subGroup)){
+			createOrUpdateGroup(subGroup);
+			String subgroupName = (String)subGroup.get(Constants.GROUP_NAME);
+			if(subgroupName!= null && !containedGroups.contains(subgroupName)){
 				//adding authority
-				authorityService.addAuthority(name, subGroup);
+				authorityService.addAuthority(name, subgroupName);
 			}
 		}
 
 	}
 
 
-//	private Set<JSONObject> getJObjetSetFromJArray(JSONArray subgroups) {
-//		Set<JSONObject> subgroupsList = new HashSet<JSONObject>();     
-//		if (subgroups != null) { 
-//			int len = subgroups.size();
-//			for (int j=0;j<len;j++){ 
-//				if(subgroups.get(j)!=null){
-//					subgroupsList.add((JSONObject)subgroups.get(j));
-//				}
-//			} 
-//		}
-//		return subgroupsList;
-//	}
+	private Set<JSONObject> getJObjetSetFromJArray(JSONArray subgroups) {
+		Set<JSONObject> subgroupsList = new HashSet<JSONObject>();     
+		if (subgroups != null) { 
+			int len = subgroups.size();
+			for (int j=0;j<len;j++){ 
+				if(subgroups.get(j)!=null){
+					subgroupsList.add((JSONObject)subgroups.get(j));
+				}
+			} 
+		}
+		return subgroupsList;
+	}
 
 
 	private Set<String> getStringSetFromJArray(JSONArray zones) {
@@ -412,7 +395,6 @@ public class UsersGroupsImporterPatch extends AbstractPatch implements Applicati
 				});
 
 	}
-
 
 
 	public void setSiteService(SiteService siteService) {
