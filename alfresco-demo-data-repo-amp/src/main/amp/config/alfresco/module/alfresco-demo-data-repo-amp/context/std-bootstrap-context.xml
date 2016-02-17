@@ -1,45 +1,140 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<!-- <bean id="marketingModel_dictionaryBootstrap" parent="dictionaryModelBootstrap" 
+		depends-on="dictionaryBootstrap"> -->
+	<!-- <property name="models"> -->
+	<!-- <list> -->
+	<!-- <value>alfresco/module/${project.artifactId}/bootstrap/standard/models/marketingModel.xml</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+<!-- 	<bean id="patch.import.demodata.javascript" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" parent="basePatch"> -->
+<!-- 		<property name="id"> -->
+<!-- 			<value>patch.importDemoDataJavaScript</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="description"> -->
+<!-- 			<value>patch.exampleJavaScript.description</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="fixesFromSchema"> -->
+<!-- 			<value>0</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="fixesToSchema"> -->
+<!-- 			<value>${version.schema}</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="targetSchema"> -->
+<!-- 			<value>10000</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="importerBootstrap"> -->
+<!-- 			<ref bean="spacesBootstrap" /> -->
+<!-- 		</property> -->
+<!-- 		<property name="bootstrapView"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="uuidBinding">REPLACE_EXISTING</prop> -->
+<!-- 				<prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.scripts.childname}</prop> -->
+<!-- 				<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/javascripts/custom-scripts.acp</prop> -->
+<!-- 				<prop key="messages">alfresco/messages/bootstrap-spaces</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<!-- <bean id="patch.import.demodata.javascript2" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" 
+		parent="basePatch"> -->
+	<!-- <property name="id"> -->
+	<!-- <value>patch.importDemoDataVFJavaScript</value> -->
+	<!-- </property> -->
+	<!-- <property name="description"> -->
+	<!-- <value>patch.exampleJavaScript2.description</value> -->
+	<!-- </property> -->
+	<!-- <property name="fixesFromSchema"> -->
+	<!-- <value>0</value> -->
+	<!-- </property> -->
+	<!-- <property name="fixesToSchema"> -->
+	<!-- <value>${version.schema}</value> -->
+	<!-- </property> -->
+	<!-- <property name="targetSchema"> -->
+	<!-- <value>10000</value> -->
+	<!-- </property> -->
+	<!-- <property name="importerBootstrap"> -->
+	<!-- <ref bean="spacesBootstrap" /> -->
+	<!-- </property> -->
+	<!-- <property name="bootstrapView"> -->
+	<!-- <props> -->
+	<!-- <prop key="uuidBinding">REPLACE_EXISTING</prop> -->
+	<!-- <prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.scripts.childname}</prop> -->
+	<!-- <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/javascripts/vf-custom-scripts.acp</prop> -->
+	<!-- <prop key="messages">alfresco/messages/bootstrap-spaces</prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+<!-- 	<bean id="patch.import.demodata.testcmmodel" -->
+<!-- 		class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" -->
+<!-- 		parent="basePatch"> -->
+<!-- 		<property name="id"> -->
+<!-- 			<value>patch.testcmmodel</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="description"> -->
+<!-- 			<value>patch.exampleCCM.description</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="fixesFromSchema"> -->
+<!-- 			<value>0</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="fixesToSchema"> -->
+<!-- 			<value>${version.schema}</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="targetSchema"> -->
+<!-- 			<value>10000</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="importerBootstrap"> -->
+<!-- 			<ref bean="spacesBootstrap" /> -->
+<!-- 		</property> -->
+<!-- 		<property name="bootstrapView"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="uuidBinding">REPLACE_EXISTING</prop> -->
+<!-- 				<prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.models.childname} -->
+<!-- 				</prop> -->
+<!-- 				<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/cmm/claims_example.acp -->
+<!-- 				</prop> -->
+<!-- 				<prop key="messages">alfresco/messages/bootstrap-spaces</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
 
 	
-	<bean id="marketingModel_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
-		<property name="models">
-			<list>
-				<value>alfresco/module/${project.artifactId}/bootstrap/standard/models/marketingModel.xml</value>
-			</list>
-		</property>
-	</bean>
 
-	<bean id="patch.import.demodata.javascript" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" parent="basePatch">
-		<property name="id">
-			<value>patch.importDemoDataJavaScript</value>
-		</property>
-		<property name="description">
-			<value>patch.exampleJavaScript.description</value>
-		</property>
-		<property name="fixesFromSchema">
-			<value>0</value>
-		</property>
-		<property name="fixesToSchema">
-			<value>${version.schema}</value>
-		</property>
-		<property name="targetSchema">
-			<value>10000</value>
-		</property>
-		<property name="importerBootstrap">
-			<ref bean="spacesBootstrap" />
-		</property>
-		<property name="bootstrapView">
-			<props>
-				<prop key="uuidBinding">REPLACE_EXISTING</prop>
-				<prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.scripts.childname}</prop>
-				<prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/javascripts/custom-scripts.acp</prop>
-				<prop key="messages">alfresco/messages/bootstrap-spaces</prop>
-			</props>
-		</property>
-	</bean>
+	<!-- <bean id="patch.import.demodata.virtualFolder" class="org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch" 
+		parent="basePatch"> -->
+	<!-- <property name="id"> -->
+	<!-- <value>patch.virtualFolderTemplatesExample</value> -->
+	<!-- </property> -->
+	<!-- <property name="description"> -->
+	<!-- <value>patch.virtualFolderTemplatesExample.description</value> -->
+	<!-- </property> -->
+	<!-- <property name="fixesFromSchema"> -->
+	<!-- <value>0</value> -->
+	<!-- </property> -->
+	<!-- <property name="fixesToSchema"> -->
+	<!-- <value>${version.schema}</value> -->
+	<!-- </property> -->
+	<!-- <property name="targetSchema"> -->
+	<!-- <value>10000</value> -->
+	<!-- </property> -->
+	<!-- <property name="importerBootstrap"> -->
+	<!-- <ref bean="spacesBootstrap" /> -->
+	<!-- </property> -->
+	<!-- <property name="bootstrapView"> -->
+	<!-- <props> -->
+	<!-- <prop key="uuidBinding">REPLACE_EXISTING</prop> -->
+	<!-- <prop key="path">/${spaces.company_home.childname}/${spaces.dictionary.childname}/${spaces.virtualfolders.childname}</prop> -->
+	<!-- <prop key="location">alfresco/module/${project.artifactId}/bootstrap/standard/virtual-folder-templates/vft-example.acp</prop> -->
+	<!-- <prop key="messages">alfresco/messages/bootstrap-spaces</prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
 
 </beans>

@@ -17,12 +17,7 @@ public final class Constants {
 	public static final String CONTENTS = "contents";
 	public static final String SITENAME = "siteName";
 	public static final String MODULE_PATH="alfresco/module";
-
-
-
-
-
-	
+	public static final String UTF8="UTF-8";
 
 
 	private Constants(){

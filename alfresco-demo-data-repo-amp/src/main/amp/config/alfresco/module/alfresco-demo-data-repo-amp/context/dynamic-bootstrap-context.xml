@@ -1,21 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
 
-	<bean class="org.alfresco.devops.services.DynamicBootstrapPatchPostProcessor">
+<beans>
+
+	<bean id="dynamicBootstrap" class="org.alfresco.devops.services.DynamicBootstrapPatchPostProcessor" singleton="true">
 		<property name="resourcesResolver" ref="resourcesResolver" />
 		<property name="sitesDisabled"><value>false</value></property>
 		<property name="authoritiesDisabled"><value>false</value></property>
 		<property name="rmSiteImportDisabled"><value>true</value></property>
 		<property name="rmFixDisabled"><value>true</value></property>
-		<property name="sitesContentLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp" />
-		<property name="usersLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp" />
-		<property name="peopleLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp" />
-		<property name="groupsLocation" value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json" />
-	</bean>
+		<property name="modelsDisabled"><value>false</value></property>
+		<property name="repoDisabled"><value>false</value></property>
+		<property name="wfDisabled"><value>false</value></property>
+		<property name="updateGroups"><value>false</value></property>
+		
+		<property name="sitesContentLocation" 	value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp" />
+		
+		<property name="usersLocation" 			value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp" />
+		<property name="peopleLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp" />
+		<property name="groupsLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json" />
+		
+		<property name="modelsXmlLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/models/xml/*.xml" />
+		<property name="modelsLabelsLocation" 	value="alfresco/module/${project.artifactId}/bootstrap/dynamic/models/labels/*.properties" />
+		
+		<property name="repoLocation" 			value="alfresco/module/${project.artifactId}/bootstrap/dynamic/repo/**/*.acp" />
+		
+		<property name="wfDefinitionsLocation" 	value="alfresco/module/${project.artifactId}/bootstrap/dynamic/workflows/workflowDefinitions/*.*" />
+		<property name="wfModelsLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/workflows/models/*.xml" />
+		<property name="wfLabelsLocation"		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/workflows/labels/*.properties" />
 
+
+
+	</bean>
+	
+	
 
 
 </beans>

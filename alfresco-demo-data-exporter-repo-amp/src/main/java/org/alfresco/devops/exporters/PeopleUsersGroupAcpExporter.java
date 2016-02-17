@@ -83,8 +83,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 
 
 	@Override
-	public void execute(WebScriptRequest req, WebScriptResponse res)
-			throws IOException {
+	public void execute(WebScriptRequest req, WebScriptResponse res) throws IOException {
 
 
 		res.setContentType(MimetypeMap.MIMETYPE_ZIP);
@@ -172,8 +171,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 			mainZip.putNextEntry(new ZipEntry(GROUP_JSON));
 			doGroupsACPExport(outputForNesting);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Error generationg the group json",e);
 		}
 
 		mainZip.close();
@@ -306,16 +304,15 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
         	}
         }
 
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, "UTF-8"));
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, Constants.UTF8));
 
-        //		String prettyJsonString = prettifyJsonString(rootGroupList.toString());
+        //String prettyJsonString = prettifyJsonString(rootGroupList.toString());
 
 		out.print(rootGroupList.toString());
-		//		out.print(prettyJsonString);
+		//out.print(prettyJsonString);
 
 		out.close();
 	}
-
 
 
 	private String prettifyJsonString(String list1) {

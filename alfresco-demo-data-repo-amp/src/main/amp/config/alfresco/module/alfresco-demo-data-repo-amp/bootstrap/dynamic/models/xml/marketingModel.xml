@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="dm:marketingModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+<!-- File goes in shared/classes/alfresco/extension -->
+
+    <!-- Meta-data about the model -->
+    <description>Alfresco Marketing Model</description>
+    <author>Paul Hampton, Mike Farman, Jessica Cooper</author>
+    <version>1.0</version>
+
+    <!-- Imports are required to allow references to definitions in other models -->
+    <imports>
+        <!-- Import Alfresco Dictionary Definitions -->
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/content/1.0"  prefix="cm" />
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+
+    </imports>
+
+    <!-- Marketing Model Namespace -->
+    <namespaces>
+        <namespace uri="http://www.alfresco.org/model/marketingmodel/1.0" prefix="dm" />
+    </namespaces>
+
+    <!-- Custom Constraints -->
+
+	<constraints>
+
+		<constraint name="dm:docstatus_value" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+          <value>Draft</value>
+          <value>In Review</value>
+          <value>Approved</value>
+				</list>
+			</parameter>
+		</constraint>
+
+		<constraint name="dm:industry_optionlist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+          <value></value>
+          <value>Aerospace</value>
+          <value>Automotive</value>
+          <value>Construction</value>
+          <value>Dentistry</value>
+          <value>Electronics</value>
+          <value>Energy</value>
+          <value>Medical</value>
+          <value>Mining</value>
+          <value>Space</value>
+          <value>Other</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="dm:country_optionlist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+          <value></value>
+          <value>Australia</value>
+          <value>Belgium</value>
+          <value>Canada</value>
+          <value>France</value>
+          <value>Germany</value>
+          <value>Iceland</value>
+          <value>Italy</value>
+          <value>Japan</value>
+          <value>Luxembourg</value>
+          <value>Mexico</value>
+          <value>Netherlands</value>
+          <value>Norway</value>
+          <value>Slovakia</value>
+          <value>Spain</value>
+          <value>Sweden</value>
+          <value>Switzerland</value>
+          <value>United Kingdom</value>
+          <value>United States</value>
+				</list>
+			</parameter>
+		</constraint>
+
+		<constraint name="dm:marketingdoc_intendedusage_optionlist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+          <value>Internal</value>
+          <value>Public</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="dm:marketingdoc_buyingstage_optionlist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+				  <value></value>
+          <value>Early</value>
+          <value>Middle</value>
+          <value>Late</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="dm:marketingdoc_persona_optionlist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+				  <value></value>
+          <value>Executive</value>
+          <value>IT Manager (Buyer)</value>
+          <value>Developer</value>
+				</list>
+			</parameter>
+		</constraint>
+
+    <constraint name="dm:marketingdoc_category_optionlist" type="LIST">
+      <parameter name="allowedValues">
+        <list>
+                                  <value></value>
+                                  <value>Analyst Paper</value>
+                                  <value>Book</value>
+                                  <value>Case Study</value>
+                                  <value>Data Sheet</value>
+                                  <value>FAQ</value>
+                                  <value>Info Graphic</value>
+                                  <value>Presentation</value>
+                                  <value>Research Paper</value>
+                                  <value>Video</value>
+                                  <value>White Paper</value>
+        </list>
+      </parameter>
+    </constraint>
+
+		<constraint name="dm:region_optionlist" type="LIST">
+			<parameter name="allowedValues">
+				<list>
+          <value></value>
+          <value>AMER</value>
+          <value>ANZ</value>
+          <value>APAC</value>
+          <value>EMEA</value>
+				</list>
+			</parameter>
+		</constraint>
+
+    
+    <constraint name="dm:construction_method_optionlist" type="LIST">
+      <parameter name="allowedValues">
+        <list>
+          <value></value>
+          <value>Composite Filament Fabrication (CFF)</value>
+          <value>Direct Metal Laser Sintering (DMLS)</value>
+          <value>Electron Beam Freeform Fabrication (EBF3)</value>
+          <value>Electron-Beam Melting (EBM)</value>
+          <value>Fused Filament Fabrication (FFF)</value>
+          <value>Laminated Object Manufacturing (LOM)</value>
+          <value>Selective Heat Sintering (SHS)</value>
+          <value>Selective Laser Melting (SLM)</value>
+          <value>Stereolithography (SLA)</value>
+        </list>
+      </parameter>
+    </constraint>
+
+    <constraint name="dm:material_optionlist" type="LIST">
+      <parameter name="allowedValues">
+        <list>
+          <value></value>
+          <value>Aluminium</value>
+          <value>Carbon Fiber</value>
+          <value>Fiberglass</value>
+          <value>Cobalt Chrome Alloys</value>
+          <value>Nylon</value>
+          <value>Brass</value>
+          <value>Metal Clay</value>
+          <value>Paper</value>
+          <value>Plaster</value>
+          <value>PolyJet Photopolymers</value>
+          <value>Porcelain</value>
+          <value>Rubber</value>      
+          <value>Silicone</value>
+          <value>Stainless Steel</value>
+          <value>Thermoplastic powder</value>
+          <value>Thermoplastics</value>
+          <value>Titanium</value>
+          <value>Wax</value>
+        </list>
+      </parameter>
+    </constraint>
+
+	</constraints>
+
+    <!-- Custom Demo Types -->
+    <types>
+    
+         <type name="dm:contract">
+            <title>Contract</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:contractid">
+                    <title>Contract Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+         <type name="dm:sop">
+            <title>Standard Operating Procedure</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:sopid">
+                    <title>SOP Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+         <type name="dm:report">
+            <title>Report</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:reportid">
+                    <title>Report Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+         <type name="dm:casefile">
+            <title>Case File</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:caseid">
+                    <title>Case Number</title>
+                    <type>d:text</type>
+                </property>
+                <property name="dm:caseclosed">
+                    <title>Case Closed</title>
+                    <type>d:boolean</type>
+                </property>
+            </properties>
+        </type>
+         <type name="dm:issuelog">
+            <title>Issue Log</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:issueid">
+                    <title>Issue Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+         <type name="dm:proposal">
+            <title>Proposal</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:proposalid">
+                    <title>Proposal Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+         <type name="dm:meetingnotes">
+            <title>Meeting Notes</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:meetingid">
+                    <title>Meeting Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+        <type name="dm:invoice">
+            <title>Invoice</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:invoiceid">
+                    <title>Invoice Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+        <type name="dm:po">
+            <title>Purchase Order</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:poid">
+                    <title>Purchase Order Number</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+
+         <type name="dm:marketingdoc">
+            <title>Marketing Document</title>
+            <parent>cm:content</parent>
+            <properties>
+                <property name="dm:marketingdoc_category">
+                    <title>Document Category</title>
+                    <type>d:text</type>
+                      <index enabled="true">
+                        <atomic>true</atomic>
+                        <stored>false</stored> 
+                        <tokenised>true</tokenised>
+                        <facetable>true</facetable>
+                      </index>
+                    <constraints>
+                      <constraint ref="dm:marketingdoc_category_optionlist" />
+                    </constraints>
+                </property>
+                              
+               <property name="dm:marketingdoc_usage">
+                    <title>Intended Usage</title>
+                    <type>d:text</type>
+                      <index enabled="true">
+                        <facetable>true</facetable>
+                      </index>                    
+                    <constraints>
+              		    <constraint ref="dm:marketingdoc_intendedusage_optionlist" />
+              		  </constraints>
+                </property>
+                <property name="dm:marketingdoc_buyingstage">
+                    <title>Buying Stage</title>
+                    <type>d:text</type>
+                    <constraints>
+            		      <constraint ref="dm:marketingdoc_buyingstage_optionlist" />
+            		    </constraints>
+                </property>
+                <property name="dm:marketingdoc_persona">
+                    <title>Persona</title>
+                    <type>d:text</type>
+                     <index enabled="true">
+                        <facetable>true</facetable>
+                      </index>                                       
+                    <constraints>
+            		      <constraint ref="dm:marketingdoc_persona_optionlist" />
+            		    </constraints>
+                </property>
+
+                <property name="dm:marketingdoc_published_date">
+                    <title>Publishing Date</title>
+                    <type>d:date</type>
+                </property>
+
+
+            </properties>
+        </type>
+
+     </types>
+
+    <aspects>
+	    <aspect name="dm:product">
+	         <title>Product</title>
+	         <description>Product</description>
+	         <properties>
+
+              <property name="dm:component">
+                  <title>Component</title>
+                  <type>d:text</type>
+               <index enabled="true">
+                  <facetable>true</facetable>
+                </index>                                           
+              </property>
+
+              <property name="dm:construction_method">
+                 <title>Construction Method</title>
+                 <type>d:text</type>
+                 <default></default>
+                 <index enabled="true">
+                    <facetable>true</facetable>
+                  </index>                                    
+                 <constraints>
+                    <constraint ref="dm:construction_method_optionlist" />
+                 </constraints>
+              </property>
+
+              <property name="dm:material">
+                 <title>Material</title>
+                 <type>d:text</type>
+                 <default></default>
+                 <index enabled="true">
+                    <facetable>true</facetable>
+                  </index>                                    
+                 <constraints>
+                    <constraint ref="dm:material_optionlist" />
+                 </constraints>
+              </property>
+
+	         </properties>
+	     </aspect>
+	    <aspect name="dm:customer">
+	         <title>Customer</title>
+	         <description>Customer</description>
+	         <properties>
+
+                <property name="dm:customer_id">
+                    <title>Customer ID</title>
+                    <type>d:text</type>
+                </property>
+                <property name="dm:customer_contact">
+                    <title>Customer Contact</title>
+                    <type>d:text</type>
+                </property>
+
+   
+            <property name="dm:customer_name">
+                <title>Customer Name</title>
+                <type>d:text</type>
+             <index enabled="true">
+                <facetable>true</facetable>
+              </index>
+            </property>
+            <property name="dm:industry">
+                <title>Industry</title>
+                <type>d:text</type>
+             <index enabled="true">
+                <facetable>true</facetable>
+              </index>                                           
+                        <constraints>
+    		      <constraint ref="dm:industry_optionlist" />
+    		    </constraints>
+                    </property>
+                    <property name="dm:country">
+                        <title>Country</title>
+                        <type>d:text</type>
+                     <index enabled="true">
+                        <facetable>true</facetable>
+                      </index>                                          
+                        <constraints>
+    		      <constraint ref="dm:country_optionlist" />
+    		    </constraints>
+                    </property>
+                    <property name="dm:region">
+                        <title>Region</title>
+                        <type>d:text</type>
+                     <index enabled="true">
+                        <facetable>true</facetable>
+                      </index>                                          
+                        <constraints>
+                          <constraint ref="dm:region_optionlist" />
+    		    </constraints>
+                    </property>
+	         </properties>
+	     </aspect>
+    <!-- Supplier Aspect -->
+        <aspect name="dm:supplier">
+            <title>Supplier Details</title>
+            <properties>
+                <property name="dm:suppliername">
+                    <title>Supplier Name</title>
+                    <type>d:text</type>
+                </property>
+                <property name="dm:supplierid">
+                    <title>Supplier ID</title>
+                    <type>d:text</type>
+                </property>
+                <property name="dm:suppliercontact">
+                    <title>Supplier Contact</title>
+                    <type>d:text</type>
+                </property>  
+            </properties>
+        </aspect>
+    <!-- Employe Aspect -->
+        <aspect name="dm:employee">
+            <title>Employee Details</title>
+            <properties>
+                <property name="dm:employeename">
+                    <title>Employee Name</title>
+                    <type>d:text</type>
+                </property>
+                <property name="dm:employeeid">
+                    <title>Employee ID</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </aspect>
+    <!-- Document Status Aspect -->
+        <aspect name="dm:docstatus">
+            <title>Document Status</title>
+            <properties>
+                <property name="dm:status">
+                    <title>Document Status</title>
+                    <type>d:text</type>
+                    <constraints>
+			        	<constraint ref="dm:docstatus_value" />
+				    </constraints>
+                </property>
+            </properties>
+        </aspect>	     
+
+
+    </aspects>
+
+</model>
+
+<!--
+d:text - Text field
+d:boolean - Checkbox
+d:noderef - Space Selector
+d:category - Category Selector
+d:datetime - Date Time range selectors
+d:date - Date range selectors
+d:int - Text field
+d:long - Text field
+d:double - Text field
+d:float - Text field
+-->

@@ -26,8 +26,7 @@
     <Loader className="org.apache.catalina.loader.VirtualWebappLoader"
             searchVirtualFirst="true"
             virtualClasspath="${project.parent.basedir}/alfresco-demo-data-repo-amp/target/classes;${project.parent.basedir}/alfresco-demo-data-repo-amp/target/alfresco-demo-data-repo-amp/config;${project.parent.basedir}/alfresco-demo-data-repo-amp/target/test-classes;
-            				  ${project.parent.basedir}/alfresco-demo-data-exporter-repo-amp/target/classes;${project.parent.basedir}/alfresco-demo-data-exporter-repo-amp/target/alfresco-demo-data-exporter-repo-amp/config;${project.parent.basedir}/alfresco-demo-data-exporter-repo-amp/target/test-classes	
-            " />
+            				  ${project.parent.basedir}/alfresco-demo-data-exporter-repo-amp/target/classes;${project.parent.basedir}/alfresco-demo-data-exporter-repo-amp/target/alfresco-demo-data-exporter-repo-amp/config;${project.parent.basedir}/alfresco-demo-data-exporter-repo-amp/target/test-classes" />
 
     <!-- Load from all directories, not just when the META-INF directory is found in exploded JAR -->
     <JarScanner scanAllDirectories="true" />

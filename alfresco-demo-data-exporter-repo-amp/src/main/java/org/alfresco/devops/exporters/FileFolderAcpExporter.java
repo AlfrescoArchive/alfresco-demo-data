@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.alfresco.model.ContentModel;
 import org.alfresco.repo.content.MimetypeMap;
 import org.alfresco.repo.exporter.ACPExportPackageHandler;
 import org.alfresco.repo.model.Repository;
@@ -63,33 +62,42 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 		boolean crawlContent = isNullOrEmpty(paramCrawlContent) ? true : Boolean.parseBoolean(paramCrawlContent);
 		boolean crawlAssociations = isNullOrEmpty(paramCrawlAssociations) ? true : Boolean.parseBoolean(paramCrawlAssociations);
 
-
 		try
-
 		{
 			if(isNullOrEmpty(path)){
 				throw new WebScriptException("No Path Parameter Specified in the URL");
 			}
-			
-			List<String> pathElements = new ArrayList<String>(Arrays.asList(path.split("/")));
-			pathElements.removeAll(Arrays.asList("", null));
-			
-			//Will search just inside Company Home
-			FileInfo fi = fileFolderService.resolveNamePath(repositoryHelper.getCompanyHome(), pathElements);
 
-			String exportName = fi.getName();
-			NodeRef nr  = fi.getNodeRef();
+			String[] els = path.split(",");
+			List<NodeRef> nodes = new ArrayList<NodeRef>();
 
-			if(logger.isDebugEnabled()){
-				logger.debug("Exporting "+(fi.isFolder() ? "folder " : "node ") +exportName +" nodeRef "+nr);
-				logger.debug("Exporting Parameters: crawlSelf="+crawlSelf+" crawlChildNodes="+crawlChildNodes+" crawlContent="+crawlContent+ " crawlAssociations="+crawlAssociations);
+			for(String el:els){
+
+				List<String> pathElements = new ArrayList<String>(Arrays.asList(el.split("/")));
+
+				pathElements.removeAll(Arrays.asList("", null));
+
+				//Will search just inside Company Home
+				FileInfo fi = fileFolderService.resolveNamePath(repositoryHelper.getCompanyHome(), pathElements);
+
+				String exportName = fi.getName();
+				NodeRef nr  = fi.getNodeRef();
+				nodes.add(nr);
+
+				if(logger.isDebugEnabled()){
+					logger.debug("Exporting "+(fi.isFolder() ? "folder " : "node ") +exportName +" ,nodeRef: "+nr);
+				}
 			}
 
-			res.setContentType(MimetypeMap.MIMETYPE_ACP);
-			res.setHeader("Content-Disposition","attachment; fileName="+exportName+ "." + ACPExportPackageHandler.ACP_EXTENSION);
+			logger.debug("Exporting Parameters: crawlSelf="+crawlSelf+" crawlChildNodes="+crawlChildNodes+" crawlContent="+crawlContent+ " crawlAssociations="+crawlAssociations);
 
+			res.setContentType(MimetypeMap.MIMETYPE_ACP);
+			res.setHeader("Content-Disposition","attachment; fileName=NodesExport." + ACPExportPackageHandler.ACP_EXTENSION);
+
+			NodeRef[] lnodes = nodes.toArray(new NodeRef[nodes.size()]);
+			
 			ExporterCrawlerParameters parameters = new ExporterCrawlerParameters();
-			parameters.setExportFrom(new Location(nr));
+			parameters.setExportFrom(new Location(lnodes));
 			parameters.setCrawlChildNodes(crawlChildNodes);
 			parameters.setCrawlSelf(crawlSelf);
 			parameters.setCrawlContent(crawlContent);
@@ -114,7 +122,7 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 			res.setContentType(MimetypeMap.MIMETYPE_TEXT_PLAIN);
 			res.getOutputStream().write(e.getMessage().getBytes());
 		}
-		
+
 		catch (Exception e)
 		{
 			res.setContentType(MimetypeMap.MIMETYPE_TEXT_PLAIN);

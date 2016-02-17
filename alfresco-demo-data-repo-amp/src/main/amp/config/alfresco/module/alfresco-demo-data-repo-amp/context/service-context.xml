@@ -33,7 +33,7 @@
 	</bean>
     
     
-     <bean id="patch.authoritiesPatch.generic" abstract="true" parent="basePatch">
+     <bean id="patch.usersPatch.generic" abstract="true" parent="basePatch">
 		<property name="description"><value>patch.authorities.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>
 		<property name="fixesToSchema"><value>${version.schema}</value></property>
@@ -41,6 +41,15 @@
 		<property name="dependsOn"><list><ref bean="patch.updateDmPermissions" /></list></property>
         <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" />
         <property name="usersBootstrap" ref="siteLoadBootstrap-Users" />
+        <property name="descriptorService" ref="descriptorComponent" />
+      </bean>
+      
+      <bean id="patch.groupsPatch.generic" abstract="true" parent="basePatch">
+		<property name="description"><value>patch.authorities.description</value></property>
+        <property name="fixesFromSchema"><value>0</value></property>
+		<property name="fixesToSchema"><value>${version.schema}</value></property>
+		<property name="targetSchema"><value>10000</value></property>
+		<property name="dependsOn"><list><ref bean="patch.updateDmPermissions" /></list></property>
         <property name="descriptorService" ref="descriptorComponent" />
         <property name="authorityService" ref="authorityService" />
         <property name="personService" ref="PersonService"/>
@@ -56,5 +65,28 @@
     </bean>
     
     <bean id="resourcesResolver" class="org.alfresco.devops.services.ResourcesResolver"/>
+    
+    <bean id="patch.import.demodata.repo" abstract="true" parent="basePatch">
+		<property name="id">
+			<value>patch.importDemoDataJavaScript</value>
+		</property>
+		<property name="description">
+			<value>patch.exampleJavaScript.description</value>
+		</property>
+		<property name="fixesFromSchema">
+			<value>0</value>
+		</property>
+		<property name="fixesToSchema">
+			<value>${version.schema}</value>
+		</property>
+		<property name="targetSchema">
+			<value>10000</value>
+		</property>
+		<property name="importerBootstrap">
+			<ref bean="spacesBootstrap" />
+		</property>
+	</bean>
+    
+    
     
 </beans>
