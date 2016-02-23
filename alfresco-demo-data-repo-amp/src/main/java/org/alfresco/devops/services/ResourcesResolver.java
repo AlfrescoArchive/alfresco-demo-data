@@ -30,6 +30,7 @@ public class ResourcesResolver {
 				int index = getIndex(url.toString());
 				if(index>=0){
 					String internalFilePath = url.toString().substring(index);
+					internalFilePath = internalFilePath.replace("%20", " ");
 					res.add(internalFilePath);
 				}
 			}
