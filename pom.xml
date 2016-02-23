@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.devops</groupId>
 	<artifactId>alfresco-demo-data</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.5-SNAPSHOT</version>
 	<name>Alfresco Repository and Share Quickstart with database and an embedded Tomcat runner.</name>
 	<description>This All-in-One project allows to manage all the components involved in Alfresco development (Repo, Share, Solr4, AMPs) in one project
     </description>
