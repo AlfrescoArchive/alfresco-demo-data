@@ -1,0 +1,12 @@
+<webscript>
+  <shortname>Export Categories</shortname>
+  <description>
+  <![CDATA[
+  Exports an ACP containing the categories]]></description>
+  <url>/api/categories/export?crawlSelf={crawlSelf}&amp;crawlChildNodes={crawlChildNodes}&amp;crawlContent={crawlContent}&amp;crawlAssociations={crawlAssociations}</url>
+  <format default="html">argument</format>
+  <authentication>admin</authentication>
+  <transaction allow="readonly">required</transaction>
+  <lifecycle>internal</lifecycle>
+  <family>alfresco-demo-data-exporters</family>
+</webscript>
