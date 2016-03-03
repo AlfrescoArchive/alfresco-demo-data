@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Enable/Disable Smart Folders</shortname>
+  <url>/api/smart-folders?enable={enable}</url>
+  <format default="json">argument</format>
+  <authentication>admin</authentication>
+  <transaction allow="readonly">required</transaction>
+  <lifecycle>internal</lifecycle>
+  <family>alfresco-demo-data-exporters</family>
+</webscript>

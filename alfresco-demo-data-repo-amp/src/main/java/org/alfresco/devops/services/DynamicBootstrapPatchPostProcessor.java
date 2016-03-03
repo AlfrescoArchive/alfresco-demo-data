@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -65,6 +64,7 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 
 		if(invoked==Boolean.FALSE){
 			invoked=Boolean.TRUE;
+			
 
 			if(!repoDisabled){
 				Set<String> reposFiles = resourcesResolver.resolveResourcesFromAMP(repoLocation);
@@ -162,6 +162,8 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 				registry.registerBeanDefinition(Constants.USERS_BEAN_ID, getUsersBeanDefinition().getBeanDefinition() );
 				registry.registerBeanDefinition(Constants.GROUPS_BEAN_ID, getGroupsBeanDefinition().getBeanDefinition() );
 			}
+			
+	
 		}
 	}
 
@@ -251,7 +253,6 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 			return null;
 		}
 	}
-
 
 	private BeanDefinitionBuilder getModelBeanDefinition(List<String> models,List<String> labels) {
 		BeanDefinitionBuilder beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(); 

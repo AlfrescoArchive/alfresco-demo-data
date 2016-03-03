@@ -19,7 +19,7 @@
 <beans>
     
    	<bean id="patch.siteLoadPatch.generic" abstract="true" parent="basePatch">
-		<property name="description"><value>patch.demoDataSiteLoadPatch.description</value></property>
+		<property name="description"><value>patch.demoData.sites.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>
 		<property name="fixesToSchema"><value>${version.schema}</value></property>
 		<property name="targetSchema"><value>10000</value></property>
@@ -30,11 +30,11 @@
         <property name="descriptorService" ref="descriptorComponent" />
         <property name="authorityService" ref="authorityService" />
         <property name="behaviourFilter" ref="policyBehaviourFilter" />
-	</bean>
+    </bean>
     
     
      <bean id="patch.usersPatch.generic" abstract="true" parent="basePatch">
-		<property name="description"><value>patch.authorities.description</value></property>
+		<property name="description"><value>patch.authorities.users.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>
 		<property name="fixesToSchema"><value>${version.schema}</value></property>
 		<property name="targetSchema"><value>10000</value></property>
@@ -45,7 +45,7 @@
       </bean>
       
       <bean id="patch.groupsPatch.generic" abstract="true" parent="basePatch">
-		<property name="description"><value>patch.authorities.description</value></property>
+		<property name="description"><value>patch.authorities.groups.description</value></property>
         <property name="fixesFromSchema"><value>0</value></property>
 		<property name="fixesToSchema"><value>${version.schema}</value></property>
 		<property name="targetSchema"><value>10000</value></property>
@@ -71,7 +71,7 @@
 			<value>patch.importDemoDataJavaScript</value>
 		</property>
 		<property name="description">
-			<value>patch.exampleJavaScript.description</value>
+			<value>patch.repoImport.description</value>
 		</property>
 		<property name="fixesFromSchema">
 			<value>0</value>
@@ -86,6 +86,14 @@
 			<ref bean="spacesBootstrap" />
 		</property>
 	</bean>
+	
+	<bean id="bootstrapResourceBundles" class="org.alfresco.i18n.ResourceBundleBootstrapComponent">
+        <property name="resourceBundles">
+            <list>
+                <value>alfresco.messages.boostrap-messages</value>
+            </list>
+        </property>
+    </bean>
     
     
     

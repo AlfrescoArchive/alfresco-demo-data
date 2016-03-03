@@ -41,7 +41,10 @@ public class PostSiteLoadPatch extends SiteLoadPatch implements ApplicationListe
 				return applyInternal();
 			}
 		};
-		transactionService.getRetryingTransactionHelper().doInTransaction(txnWork, false);
+		transactionService.getRetryingTransactionHelper().doInTransaction(txnWork, false,false);
+
 	}
+
+
 
 }
