@@ -209,7 +209,7 @@ Export/Import Examples:
 		```
 * **Export/Import the Smart Folders templates**
 
-	The Smart folders template folder already have a json example in it, so in order to export it, it is necessary to specify the content of the folder to export, separating it via commas, for example:
+	The 'Smart folders template' folder already has a json example in it, so in order to export it, it is necessary to specify the content of the folder to export, separating it via commas, for example:
 
 	```
 	http://localhost:8080/alfresco/service/api/file-folder/export?path=/Data Dictionary/Smart Folder Templates/mysf1.json,/Data Dictionary/Smart Folder Templates/mysf2.json
