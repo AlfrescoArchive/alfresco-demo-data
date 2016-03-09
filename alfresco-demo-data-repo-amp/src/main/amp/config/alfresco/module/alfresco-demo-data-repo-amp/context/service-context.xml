@@ -30,6 +30,7 @@
         <property name="descriptorService" ref="descriptorComponent" />
         <property name="authorityService" ref="authorityService" />
         <property name="behaviourFilter" ref="policyBehaviourFilter" />
+        <property name="attributeService" ref="AttributeService"/>
     </bean>
     
     
@@ -42,6 +43,7 @@
         <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" />
         <property name="usersBootstrap" ref="siteLoadBootstrap-Users" />
         <property name="descriptorService" ref="descriptorComponent" />
+        <property name="attributeService" ref="AttributeService"/>
       </bean>
       
       <bean id="patch.groupsPatch.generic" abstract="true" parent="basePatch">
@@ -54,7 +56,8 @@
         <property name="authorityService" ref="authorityService" />
         <property name="personService" ref="PersonService"/>
         <property name="siteService" ref="SiteService" />
-      </bean>
+        <property name="attributeService" ref="AttributeService"/>
+       </bean>
     
     <bean id="patch.abstract.fixRMSite" abstract="true" parent="basePatch">
         <property name="id"><value>patch.fixRMSite</value></property>
@@ -62,6 +65,7 @@
         <property name="fixesFromSchema"><value>0</value></property>
         <property name="fixesToSchema"><value>${version.schema}</value></property>
         <property name="targetSchema"><value>10000</value></property>
+        <property name="attributeService" ref="AttributeService"/>
     </bean>
     
     <bean id="resourcesResolver" class="org.alfresco.devops.services.ResourcesResolver"/>
@@ -94,6 +98,8 @@
             </list>
         </property>
     </bean>
+
+    
     
     
     

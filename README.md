@@ -324,3 +324,10 @@ In the url you can set:
 - **excludeSiteGroups**: boolean (TRUE/FALSE), determines whether to exclude or not Site Groups
 - **groupsToExclude**: comma separated list of groups to export, if not present all the groups will be exported. IGNORED if groupsToExport is present
 - **usersToExclude**: comma separated list of users to export, if not present all the users will be exported. IGNORED if usersToExport is present
+
+**NOTE:** to avoid conflicts the authorities api won't export the following users:
+
+- admin
+- guest
+- mjackson
+- abeecher 

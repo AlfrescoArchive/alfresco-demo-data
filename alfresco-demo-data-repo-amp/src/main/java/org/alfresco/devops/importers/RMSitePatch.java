@@ -9,6 +9,7 @@ import org.alfresco.repo.admin.patch.AbstractPatch;
 import org.alfresco.repo.security.authentication.AuthenticationUtil;
 import org.alfresco.repo.security.authentication.AuthenticationUtil.RunAsWork;
 import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
+import org.alfresco.service.cmr.attributes.AttributeService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
@@ -23,6 +24,8 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 
 	private static final Log logger = LogFactory.getLog(RMSitePatch.class);
 	private boolean onContextRefreshedEvent=false;
+	private AttributeService attributeService;
+	private static final Serializable[] RM_PATCH_APPLIED = new Serializable[] {"RMPatchApplied"};
 
 	public RMSitePatch()
 	{
@@ -36,50 +39,59 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 			return "This patch will be applied at Spring ContextRefreshedEvent";
 		}
 
-		ResultSet rs=null;
-		try{
-			SearchParameters sp = new SearchParameters();
-			sp.addStore(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
-			sp.setLanguage(SearchService.LANGUAGE_FTS_ALFRESCO);
+		Boolean importedSites = (Boolean)attributeService.getAttribute(RM_PATCH_APPLIED);
+		if(importedSites==null){
 
-			sp.setQuery("ASPECT:\"rma:extendedSecurity\"");
-			rs = searchService.query(sp);
+			ResultSet rs=null;
+			try{
+				logger.info("[DEMO-DATA] Importing Groups");
+				SearchParameters sp = new SearchParameters();
+				sp.addStore(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
+				sp.setLanguage(SearchService.LANGUAGE_FTS_ALFRESCO);
 
-			for(NodeRef nr : rs.getNodeRefs()){
-				Serializable serPropReaders = nodeService.getProperty(nr, RecordsManagementModel.PROP_READERS);
-				Serializable serPropWriters = nodeService.getProperty(nr, RecordsManagementModel.PROP_WRITERS);
+				sp.setQuery("ASPECT:\"rma:extendedSecurity\"");
+				rs = searchService.query(sp);
 
-				if(serPropReaders instanceof String){
-					Map<String, Integer> map = getMapFromString(serPropReaders);
-					nodeService.setProperty(nr, RecordsManagementModel.PROP_READERS,(Serializable)map);
+				for(NodeRef nr : rs.getNodeRefs()){
+					Serializable serPropReaders = nodeService.getProperty(nr, RecordsManagementModel.PROP_READERS);
+					Serializable serPropWriters = nodeService.getProperty(nr, RecordsManagementModel.PROP_WRITERS);
+
+					if(serPropReaders instanceof String){
+						Map<String, Integer> map = getMapFromString(serPropReaders);
+						nodeService.setProperty(nr, RecordsManagementModel.PROP_READERS,(Serializable)map);
+					}
+
+					if(serPropWriters instanceof String){
+						Map<String, Integer> map = getMapFromString(serPropWriters);
+						nodeService.setProperty(nr, RecordsManagementModel.PROP_WRITERS,(Serializable)map);
+					}
 				}
+				attributeService.setAttribute(Boolean.TRUE, RM_PATCH_APPLIED);
 
-				if(serPropWriters instanceof String){
-					Map<String, Integer> map = getMapFromString(serPropWriters);
-					nodeService.setProperty(nr, RecordsManagementModel.PROP_WRITERS,(Serializable)map);
-				}
+				//			sp.setQuery("ASPECT:\"rma:unpublishedUpdate\"");
+				//			rs = searchService.query(sp);
+				//
+				//			for(NodeRef nr : rs.getNodeRefs()){
+				//				Serializable serProp = nodeService.getProperty(nr, RecordsManagementModel.PROP_UPDATED_PROPERTIES);
+				//				logger.debug("NodeRef: "+nr+" propertyVal :"+serProp);;
+				//			}
+
 			}
 
-			//			sp.setQuery("ASPECT:\"rma:unpublishedUpdate\"");
-			//			rs = searchService.query(sp);
-			//
-			//			for(NodeRef nr : rs.getNodeRefs()){
-			//				Serializable serProp = nodeService.getProperty(nr, RecordsManagementModel.PROP_UPDATED_PROPERTIES);
-			//				logger.debug("NodeRef: "+nr+" propertyVal :"+serProp);;
-			//			}
-
-		}
-
-		finally
-		{
-			if (rs != null)
+			finally
 			{
-				rs.close();
+				if (rs != null)
+				{
+					rs.close();
+				}
 			}
-		}
+			return "RM Fix Patch applied";
 
-		return "RM Fix Patch applied";
-		
+		}
+		return "RM Fix Patch already applied";
+
+
+
 	}
 
 	private Map<String, Integer> getMapFromString(Serializable prop) {
@@ -126,6 +138,10 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 				return null;
 			}
 		});
+	}
+
+	public void setAttributeService(AttributeService attributeService) {
+		this.attributeService = attributeService;
 	}
 
 }

@@ -59,7 +59,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private static Log logger = LogFactory.getLog(PeopleUsersGroupAcpExporter.class);
 
 
-	private static final List<String> USERS_NOT_TO_EXPORT = Arrays.asList(new String[] { "guest","admin" });
+	private static final List<String> USERS_NOT_TO_EXPORT = Arrays.asList(new String[] { "guest","admin","abeecher","mjackson" });
 	private static final String PARAM_USERS_TO_EXPORT = "usersToExport";
 	private static final String PARAM_GROUPS_TO_EXPORT = "groupsToExport";
 	private static final String PARAM_EXCLUDE_SITES_GROUPS = "excludeSiteGroups";
@@ -70,8 +70,8 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private static final String USERS_ACP = "Users.acp";
 	private static final String GROUP_JSON= "Groups.json";
 	private static final String COMMA_SEPARATOR= ",";
-    private static final String SITE_PREFIX = "site_";
-    private static final String GROUP_SITE_PREFIX = PermissionService.GROUP_PREFIX + SITE_PREFIX;
+	private static final String SITE_PREFIX = "site_";
+	private static final String GROUP_SITE_PREFIX = PermissionService.GROUP_PREFIX + SITE_PREFIX;
 
 
 
@@ -94,7 +94,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 
 		String usersToExludeString = req.getParameter(PARAM_EXCLUDE_USERS);
 		String groupsToExludeString = req.getParameter(PARAM_EXCLUDE_GROUPS);
-		
+
 		initialiseVariables();
 
 		excludeSiteGroups = req.getParameter (PARAM_EXCLUDE_SITES_GROUPS) != null ? Boolean.parseBoolean(req.getParameter(PARAM_EXCLUDE_SITES_GROUPS)) : false;
@@ -138,10 +138,16 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 
 		CloseIgnoringOutputStream outputForNesting = new CloseIgnoringOutputStream(mainZip); 
 
-		mainZip.putNextEntry(new ZipEntry(PEOPLE_ACP));
-
-		doPeopleACPExport(outputForNesting);
-
+		List<NodeRef> peopleNR = getPeopleNodeRefs();
+		if(peopleNR.size()>0){
+			mainZip.putNextEntry(new ZipEntry(PEOPLE_ACP));
+			doPeopleACPExport(peopleNR,outputForNesting);
+		}else{
+			mainZip.putNextEntry(new ZipEntry("No People found in the repo.txt"));
+			String text = "Users were not exported because none found";
+			outputForNesting.write(text.getBytes("ASCII"));
+		}
+		
 		RepositoryAuthenticationDao authenticationDao = null;
 		for(String contextName : authenticationContextManager.getInstanceIds())
 		{
@@ -163,8 +169,15 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		}
 		else
 		{
-			mainZip.putNextEntry(new ZipEntry(USERS_ACP));
-			doUsersACPExport(outputForNesting, authenticationDao);
+			List<NodeRef> users = getUsersNodes(authenticationDao);
+			if(users.size()>0){
+				mainZip.putNextEntry(new ZipEntry(USERS_ACP));
+				doUsersACPExport(users,outputForNesting, authenticationDao);
+			}else{
+				mainZip.putNextEntry(new ZipEntry("No Users found in the repo.txt"));
+				String text ="Users were not exported because none found";
+				outputForNesting.write(text.getBytes("ASCII"));
+			}
 		}
 
 		try {
@@ -190,9 +203,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 
 
 
-
-	protected void doPeopleACPExport(CloseIgnoringOutputStream writeTo) throws IOException
-	{
+	protected List<NodeRef> getPeopleNodeRefs(){
 		List<NodeRef> nrList = new ArrayList<NodeRef>();
 
 		if(!usersToExportList.isEmpty()){
@@ -213,9 +224,14 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 				}
 			}
 		}
+		return nrList;
+	}
+	
+	protected void doPeopleACPExport(List<NodeRef> nrList, CloseIgnoringOutputStream writeTo) throws IOException
+	{
 		
 		logger.debug("EXPORTING PEOPLE: "+nrList);
-		
+
 		// Build the parameters
 		ExporterCrawlerParameters parameters = new ExporterCrawlerParameters();
 		parameters.setExportFrom(new Location(nrList.toArray(new NodeRef[nrList.size()])));
@@ -236,8 +252,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		exporterService.exportView(handler, parameters, null);
 	}
 
-	protected void doUsersACPExport(CloseIgnoringOutputStream writeTo,RepositoryAuthenticationDao authenticationDao) throws IOException
-	{
+	protected List<NodeRef> getUsersNodes(RepositoryAuthenticationDao authenticationDao){
 		List<NodeRef> exportNodes = new ArrayList<NodeRef>();
 
 		// If explicitely set users to import just import them
@@ -265,21 +280,30 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 			}
 		}
 
+		return exportNodes;
+
+	}
+
+
+	protected void doUsersACPExport(List<NodeRef> exportNodes, CloseIgnoringOutputStream writeTo,RepositoryAuthenticationDao authenticationDao) throws IOException
+	{
 		logger.debug("EXPORTING USERS: "+exportNodes);
 
-		// Build the parameters
-		ExporterCrawlerParameters parameters = new ExporterCrawlerParameters();
-		parameters.setExportFrom(new Location(exportNodes.toArray(new NodeRef[exportNodes.size()])));
-		parameters.setCrawlChildNodes(true);
-		parameters.setCrawlSelf(true);
-		parameters.setCrawlContent(true);
-		parameters.setCrawlAssociations(true);
+		if(exportNodes.size()>0){
+			// Build the parameters
+			ExporterCrawlerParameters parameters = new ExporterCrawlerParameters();
+			parameters.setExportFrom(new Location(exportNodes.toArray(new NodeRef[exportNodes.size()])));
+			parameters.setCrawlChildNodes(true);
+			parameters.setCrawlSelf(true);
+			parameters.setCrawlContent(true);
+			parameters.setCrawlAssociations(true);
 
-		// And the export handler
-		ACPExportPackageHandler handler = new ACPExportPackageHandler(writeTo,new File("users.xml"),new File("users"),mimetypeService);
+			// And the export handler
+			ACPExportPackageHandler handler = new ACPExportPackageHandler(writeTo,new File("users.xml"),new File("users"),mimetypeService);
 
-		// Do the export
-		exporterService.exportView(handler, parameters, null);
+			// Do the export
+			exporterService.exportView(handler, parameters, null);
+		}
 	}
 
 
@@ -295,18 +319,18 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		JSONArray rootGroupList = new JSONArray();
 
 		PagingRequest paging = new PagingRequest(10000);
-        PagingResults<AuthorityInfo> groups = authorityService.getAuthoritiesInfo(AuthorityType.GROUP, null, null, null, true, paging);
+		PagingResults<AuthorityInfo> groups = authorityService.getAuthoritiesInfo(AuthorityType.GROUP, null, null, null, true, paging);
 
-        List<AuthorityInfo> groupInfo = groups.getPage();
-        for(AuthorityInfo ai : groupInfo){
-        	if(includeGroup(ai.getAuthorityName())){
+		List<AuthorityInfo> groupInfo = groups.getPage();
+		for(AuthorityInfo ai : groupInfo){
+			if(includeGroup(ai.getAuthorityName())){
 				rootGroupList.put(createGroupObject(ai));
-        	}
-        }
+			}
+		}
 
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, Constants.UTF8));
+		PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, Constants.UTF8));
 
-        //String prettyJsonString = prettifyJsonString(rootGroupList.toString());
+		//String prettyJsonString = prettifyJsonString(rootGroupList.toString());
 
 		out.print(rootGroupList.toString());
 		//out.print(prettyJsonString);
@@ -326,7 +350,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private JSONObject createGroupObject(AuthorityInfo group) throws JSONException{
 
 		logger.debug("EXPORTING GROUP "+group);
-		
+
 		JSONObject jgroup = new JSONObject();
 		JSONArray jsubgroups = new JSONArray();
 
@@ -334,7 +358,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		String name = group.getAuthorityName();
 		JSONArray zones = createZones(authorityService.getAuthorityZones(name));
 		JSONArray members =createMembers(authorityService.getContainedAuthorities(AuthorityType.USER, name, true));
-		
+
 		Set<String> containedGroups =authorityService.getContainedAuthorities(AuthorityType.GROUP, name, true);
 
 		for(String containedGroup : containedGroups){
@@ -352,7 +376,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 		if(jsubgroups.length()>0){
 			jgroup.put(Constants.GROUP_SUBGROUPS, jsubgroups);
 		}
-		
+
 		return jgroup;
 
 	}
@@ -368,7 +392,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private JSONArray createMembers(Set<String> members) throws JSONException{
 		JSONArray jmembers = new JSONArray();
 		for(String member:members){
-				jmembers.put(member);
+			jmembers.put(member);
 		}
 		return jmembers;
 	}

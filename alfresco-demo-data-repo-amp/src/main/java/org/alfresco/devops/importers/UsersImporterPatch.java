@@ -18,6 +18,7 @@
  */
 package org.alfresco.devops.importers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,7 @@ import java.util.Properties;
 import org.alfresco.error.AlfrescoRuntimeException;
 import org.alfresco.repo.admin.patch.AbstractPatch;
 import org.alfresco.repo.importer.ImporterBootstrap;
+import org.alfresco.service.cmr.attributes.AttributeService;
 import org.alfresco.service.cmr.view.ImporterBinding.UUID_BINDING;
 import org.alfresco.service.descriptor.Descriptor;
 import org.alfresco.service.descriptor.DescriptorService;
@@ -41,6 +43,8 @@ public class UsersImporterPatch extends AbstractPatch{
 	public static final String PROPERTIES_PEOPLE = "people";
 	public static final String PROPERTY_LOCATION = "location";
 
+	private AttributeService attributeService;
+	private static final Serializable[] IMPORTED_USERS = new Serializable[] {"DDImportedUsers"};
 
 	private static final Map<String,String> DEFAULT_PATHS = new HashMap<String, String>();
 	static {
@@ -127,71 +131,86 @@ public class UsersImporterPatch extends AbstractPatch{
 
 	private String applyInternalImpl() throws Exception
 	{
-		if(descriptorService != null)
-		{
-			// if the descriptor service is wired up only load at install time (and not on upgrade)
-			Descriptor installed = descriptorService.getInstalledRepositoryDescriptor();
-			Descriptor live = descriptorService.getServerDescriptor();
 
-			if(!installed.getVersion().equals(live.getVersion()))
+		Boolean importedUsers = (Boolean)attributeService.getAttribute(IMPORTED_USERS);
+		if(importedUsers==null || importedUsers.booleanValue()==false){
+			
+
+			if(descriptorService != null)
 			{
-				return "Users not created.";
-			}
-		}
+				// if the descriptor service is wired up only load at install time (and not on upgrade)
+				Descriptor installed = descriptorService.getInstalledRepositoryDescriptor();
+				Descriptor live = descriptorService.getServerDescriptor();
 
-		if (bootstrapViews == null || bootstrapViews.size() == 0)
-		{
-			if (logger.isDebugEnabled())
-			{
-				logger.debug("No Bootstraps given to import from - bootstrap import ignored");
-			}
-			return I18NUtil.getMessage(MSG_NO_BOOTSTRAP_VIEWS_GIVEN);
-		}
-
-		// Setup the Importer Bootstrap Beans
-		for(ImporterBootstrap bootstrap : new ImporterBootstrap[] { spacesBootstrap, usersBootstrap })
-		{
-			bootstrap.setAllowWrite(true);
-			bootstrap.setUseExistingStore(true);
-			bootstrap.setUuidBinding(UUID_BINDING.REPLACE_EXISTING);
-		}
-
-		for(String type : DEFAULT_PATHS.keySet())
-		{
-			Properties props = bootstrapViews.get(type);
-			if(props != null && DEFAULT_PATHS.get(type) != null)
-			{
-				if(!props.containsKey("path"))
+				if(!installed.getVersion().equals(live.getVersion()))
 				{
-					props.setProperty("path", DEFAULT_PATHS.get(type));
+					return "Users not created.";
 				}
 			}
-		}
 
-		try{
-			if(bootstrapViews.containsKey(PROPERTIES_USERS))
+			if (bootstrapViews == null || bootstrapViews.size() == 0)
 			{
-				List<Properties> views = new ArrayList<Properties>(1);
-				views.add(bootstrapViews.get(PROPERTIES_USERS));
-				usersBootstrap.setBootstrapViews(views);
-				usersBootstrap.bootstrap();
-
+				if (logger.isDebugEnabled())
+				{
+					logger.debug("No Bootstraps given to import from - bootstrap import ignored");
+				}
+				return I18NUtil.getMessage(MSG_NO_BOOTSTRAP_VIEWS_GIVEN);
 			}
 
-			if(bootstrapViews.containsKey(PROPERTIES_PEOPLE))
+			logger.info("[DEMO-DATA] Importing Users");
+
+			// Setup the Importer Bootstrap Beans
+			for(ImporterBootstrap bootstrap : new ImporterBootstrap[] { spacesBootstrap, usersBootstrap })
 			{
-				List<Properties> views = new ArrayList<Properties>(1);
-				views.add(bootstrapViews.get(PROPERTIES_PEOPLE));
-				spacesBootstrap.setBootstrapViews(views);
-				spacesBootstrap.bootstrap();
+				bootstrap.setAllowWrite(true);
+				bootstrap.setUseExistingStore(true);
+				bootstrap.setUuidBinding(UUID_BINDING.REPLACE_EXISTING);
 			}
 
-		}
-		catch(AlfrescoRuntimeException ine){
-			logger.warn("this patch might have already run -- continue -- set DEBUG on org.alfresco.repo.admin.patch if it's not the case");
-		}
+			for(String type : DEFAULT_PATHS.keySet())
+			{
+				Properties props = bootstrapViews.get(type);
+				if(props != null && DEFAULT_PATHS.get(type) != null)
+				{
+					if(!props.containsKey("path"))
+					{
+						props.setProperty("path", DEFAULT_PATHS.get(type));
+					}
+				}
+			}
 
-		return "Users loaded";
+			try{
+				if(bootstrapViews.containsKey(PROPERTIES_USERS))
+				{
+					List<Properties> views = new ArrayList<Properties>(1);
+					views.add(bootstrapViews.get(PROPERTIES_USERS));
+					usersBootstrap.setBootstrapViews(views);
+					usersBootstrap.bootstrap();
+
+				}
+
+				if(bootstrapViews.containsKey(PROPERTIES_PEOPLE))
+				{
+					List<Properties> views = new ArrayList<Properties>(1);
+					views.add(bootstrapViews.get(PROPERTIES_PEOPLE));
+					spacesBootstrap.setBootstrapViews(views);
+					spacesBootstrap.bootstrap();
+				}
+				attributeService.setAttribute(Boolean.TRUE, IMPORTED_USERS);
+			}
+			catch(AlfrescoRuntimeException ine){
+				logger.warn("this patch might have already run -- continue -- set DEBUG on org.alfresco.repo.admin.patch if it's not the case",ine);
+			}
+
+			return "Users loaded";
+		}
+		return "Users already imported";
+
+	}
+
+
+	public void setAttributeService(AttributeService attributeService) {
+		this.attributeService = attributeService;
 	}
 
 

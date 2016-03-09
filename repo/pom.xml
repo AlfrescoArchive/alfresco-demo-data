@@ -32,14 +32,14 @@
 		</dependency>
 		<!-- Demonstrating the dependency / installation of the repo AMP developed 
 			in the 'repo-amp' module -->
-		<!--
-		<dependency>
-			<groupId>${alfresco.groupId}</groupId>
-			<artifactId>alfresco-rm</artifactId>
-			<version>${alfresco.rm.version}</version>
-			<type>amp</type>
-		</dependency>
-		-->
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>${alfresco.groupId}</groupId> -->
+<!-- 			<artifactId>alfresco-rm-enterprise-repo</artifactId> -->
+<!-- 			<version>${alfresco.rm.version}</version> -->
+<!-- 			<type>amp</type> -->
+<!-- 		</dependency> -->
+		
 		<!--
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -91,13 +91,13 @@
 							<!-- To allow inclusion of META-INF -->
 							<excludes />
 						</overlay>
-						<!--
-						<overlay>
-							<groupId>${alfresco.groupId}</groupId>
-							<artifactId>alfresco-rm</artifactId>
-							<type>amp</type>
-						</overlay>
-						-->
+						
+<!-- 						<overlay> -->
+<!-- 							<groupId>${alfresco.groupId}</groupId> -->
+<!-- 							<artifactId>alfresco-rm-enterprise-repo</artifactId> -->
+<!-- 							<type>amp</type> -->
+<!-- 						</overlay> -->
+						
 						<!-- Add / sort your AMPs here -->
 						<!--
 						<overlay>

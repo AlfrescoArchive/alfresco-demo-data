@@ -20,6 +20,7 @@ package org.alfresco.devops.importers;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -34,6 +35,7 @@ import org.alfresco.repo.importer.ImporterBootstrap;
 import org.alfresco.repo.security.authentication.AuthenticationUtil;
 import org.alfresco.repo.security.authentication.AuthenticationUtil.RunAsWork;
 import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
+import org.alfresco.service.cmr.attributes.AttributeService;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.cmr.security.PersonService;
@@ -57,6 +59,8 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 	public static final String PROPERTY_LOCATION = "location";
 	private boolean onContextRefreshedEvent=false;
 	private boolean updateGroups=false;
+	private AttributeService attributeService;
+	private static final Serializable[] IMPORTED_GROUPS = new Serializable[] {"DDImportedGroups"};
 
 
 
@@ -144,46 +148,52 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 
 	private String applyInternalImpl() throws Exception
 	{
-		if(descriptorService != null)
-		{
-			// if the descriptor service is wired up only load at install time (and not on upgrade)
-			Descriptor installed = descriptorService.getInstalledRepositoryDescriptor();
-			Descriptor live = descriptorService.getServerDescriptor();
+		Boolean importedGroups = (Boolean)attributeService.getAttribute(IMPORTED_GROUPS);
+		if(importedGroups==null){
 
-			if(!installed.getVersion().equals(live.getVersion()))
+			if(descriptorService != null)
 			{
-				return "Groups not created.";
-			}
-		}
+				// if the descriptor service is wired up only load at install time (and not on upgrade)
+				Descriptor installed = descriptorService.getInstalledRepositoryDescriptor();
+				Descriptor live = descriptorService.getServerDescriptor();
 
-		if (bootstrapViews == null || bootstrapViews.size() == 0)
-		{
-			if (logger.isDebugEnabled())
+				if(!installed.getVersion().equals(live.getVersion()))
+				{
+					return "Groups not created.";
+				}
+			}
+
+			if (bootstrapViews == null || bootstrapViews.size() == 0)
 			{
-				logger.debug("No Bootstraps given to import from - bootstrap import ignored");
+				if (logger.isDebugEnabled())
+				{
+					logger.debug("No Bootstraps given to import from - bootstrap import ignored");
+				}
+				return I18NUtil.getMessage(MSG_NO_BOOTSTRAP_VIEWS_GIVEN);
 			}
-			return I18NUtil.getMessage(MSG_NO_BOOTSTRAP_VIEWS_GIVEN);
-		}
 
-		try{
+			try{
 
-			// Put people into groups
-			if(bootstrapViews.containsKey(PROPERTIES_GROUPS))
-			{
-				doGroupImport(bootstrapViews.get(PROPERTIES_GROUPS).getProperty(PROPERTY_LOCATION));
-
+				// Put people into groups
+				if(bootstrapViews.containsKey(PROPERTIES_GROUPS))
+				{
+					doGroupImport(bootstrapViews.get(PROPERTIES_GROUPS).getProperty(PROPERTY_LOCATION));
+					attributeService.setAttribute(Boolean.TRUE, IMPORTED_GROUPS);
+				}
 			}
-		}
-		catch(AlfrescoRuntimeException ine){
-			logger.warn("this patch might have already run -- continue -- set DEBUG on org.alfresco.repo.admin.patch if it's not the case");
-		}
+			catch(AlfrescoRuntimeException ine){
+				logger.warn("this patch might have already run -- continue -- set DEBUG on org.alfresco.repo.admin.patch if it's not the case");
+			}
 
-		return "Groups loaded";
+			return "Groups loaded";
+		}
+		return "Groups already loaded";
 	}
 
 
 	private void doGroupImport(String location)
 	{
+		logger.info("[DEMO-DATA] Importing Groups");
 		File groupFile = ImporterBootstrap.getFile(location);
 		JSONParser parser = new JSONParser();
 		try{
@@ -324,8 +334,7 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 
 		onContextRefreshedEvent=true;
 
-		AuthenticationUtil.runAsSystem(new RunAsWork<Void>()
-				{
+		AuthenticationUtil.runAsSystem(new RunAsWork<Void>(){
 			@Override 
 			public Void doWork() throws Exception
 			{
@@ -343,7 +352,7 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 				}
 				return null;
 			}
-				});
+		});
 
 	}
 
@@ -356,6 +365,11 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 
 	public void setUpdateGroups(boolean updateGroups) {
 		this.updateGroups = updateGroups;
+	}
+
+
+	public void setAttributeService(AttributeService attributeService) {
+		this.attributeService = attributeService;
 	}
 
 

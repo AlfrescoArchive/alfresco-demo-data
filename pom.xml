@@ -39,7 +39,7 @@
 		<alfresco.repo.artifactId>alfresco-enterprise</alfresco.repo.artifactId>
 		<alfresco.share.artifactId>share</alfresco.share.artifactId>
 		<app.slf4j.scope>provided</app.slf4j.scope>
-		<alfresco.rm.version>2.3</alfresco.rm.version>
+		<alfresco.rm.version>2.5-SNAPSHOT</alfresco.rm.version>
 		<alfresco.data.location>${session.executionRootDirectory}/alf_data_dev</alfresco.data.location>
 		<!-- <app.log.root.level>WARN</app.log.root.level> -->
 		<!-- <env>local</env> -->
@@ -47,34 +47,17 @@
 		<maven.release.plugin.version>2.5.1</maven.release.plugin.version>
 	</properties>
 
-<!-- 	<repositories> -->
-<!-- 		<repository> -->
-<!-- 			<id>alfresco-ea-repo</id> -->
-<!-- 			<url>https://artifacts.alfresco.com/nexus/content/repositories/5.1-EA</url> -->
-<!-- 		</repository> -->
-<!-- 	</repositories> -->
-
     <repositories>
 <!--         <repository> -->
 <!--             <id>alfresco-public</id> -->
 <!--             <url>https://artifacts.alfresco.com/nexus/content/groups/public</url> -->
 <!--         </repository> -->
-<!--         <repository> -->
-<!--             <id>alfresco-internal-snapshots</id> -->
-<!--             <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-snapshots</url> -->
-<!--         </repository> -->
-<!--         <repository> -->
-<!--             <id>alfresco-public-snapshots</id> -->
-<!--             <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url> -->
-<!--         </repository> -->
-<!--         <repository> -->
-<!--             <id>alfresco-private-repository</id> -->
-<!--             <url>https://artifacts.alfresco.com/nexus/content/groups/private</url> -->
-<!--         </repository> -->
         <repository>
-			<id>internal-staging</id>
-			<url>https://artifacts.alfresco.com/nexus/content/repositories/internal-staging</url>
-		</repository>
+            <id>alfresco-private-repository</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
+        </repository>
+
+
     </repositories>
 
 	<!-- Here we realize the connection with the Alfresco selected platform 
@@ -115,27 +98,11 @@
 <!--             <id>alfresco-public</id> -->
 <!--             <url>https://artifacts.alfresco.com/nexus/content/groups/public</url> -->
 <!--         </pluginRepository> -->
-<!--         <pluginRepository> -->
-<!--             <id>alfresco-internal-snapshots</id> -->
-<!--             <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-snapshots</url> -->
-<!--         </pluginRepository> -->
-<!--         <pluginRepository> -->
-<!--             <id>alfresco-public-snapshots</id> -->
-<!--             <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url> -->
-<!--         </pluginRepository> -->
-<!--         <pluginRepository> -->
-<!--             <id>alfresco-private-repository</id> -->
-<!--             <url>https://artifacts.alfresco.com/nexus/content/groups/private</url> -->
-<!--         </pluginRepository> -->
         <pluginRepository>
-			<id>internal-staging</id>
-			<url>https://artifacts.alfresco.com/nexus/content/repositories/internal-staging</url>
-		</pluginRepository>
-<!-- 		<pluginRepository> -->
-<!-- 			<id>alfresco-ea-repo</id> -->
-<!-- 			<name>Alfresco 5.1 EA Repository</name> -->
-<!-- 			<url>https://artifacts.alfresco.com/nexus/content/repositories/5.1-EA/</url> -->
-<!-- 		</pluginRepository> -->
+            <id>alfresco-private-repository</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
+        </pluginRepository>
+
 	</pluginRepositories>
 
 	<profiles>

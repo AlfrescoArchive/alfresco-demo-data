@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="demodata:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<!-- Optional meta-data about the model -->
+	<description>Document Model for Demo Data Exporter</description>
+	<author>Alfresco Devops</author>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.alfresco.com/model/alfresco-demo-data-export/1.0" prefix="demodata" />
+	</namespaces>
+
+	<aspects>
+
+		<aspect name="demodata:ignoreExport">
+			<title>Ignore Export</title>
+			<description>Ignore export when aspect applied</description>
+		</aspect>
+
+
+	</aspects>
+
+</model>

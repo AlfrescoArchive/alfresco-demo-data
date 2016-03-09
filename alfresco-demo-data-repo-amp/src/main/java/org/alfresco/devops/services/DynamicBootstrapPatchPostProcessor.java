@@ -22,6 +22,7 @@ import org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -38,7 +39,6 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 	private Boolean modelsDisabled = false;
 	private Boolean repoDisabled = false;
 	private Boolean wfDisabled = false;
-	private Boolean invoked=false;
 	private Boolean updateGroups=false;
 
 	private String sitesContentLocation;
@@ -62,9 +62,6 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 	@Override
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 
-		if(invoked==Boolean.FALSE){
-			invoked=Boolean.TRUE;
-			
 
 			if(!repoDisabled){
 				Set<String> reposFiles = resourcesResolver.resolveResourcesFromAMP(repoLocation);
@@ -74,6 +71,8 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 					int index = repoLocation.indexOf("*");
 					if(index>0){
 						String location = repoLocation.substring(0, index);
+
+//						List<Properties> bootstrapViews = new ArrayList<Properties>();
 
 						for(String fileLocation:reposFiles){
 
@@ -90,13 +89,23 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 								path = path.substring(0,path.length()-1);
 							}
 
-							String linearPath = repoPath.replaceAll("[./:]","_");
+							String linearPath = repoPath.replaceAll("[./:-]","_");
 							String beanId = linearPath;
 
 							BeanDefinitionBuilder beanDefinition = getRepoBeanDefinition(path,fileLocation,beanId);
 							registry.registerBeanDefinition(beanId, beanDefinition.getBeanDefinition() );
+							
+//							Properties prop = new Properties();
+//							prop.setProperty(Constants.PATH, path);
+//							prop.setProperty(Constants.LOCATION, fileLocation);
+//							
+//							bootstrapViews.add(prop);
+							
 
 						}
+						
+//						BeanDefinitionBuilder beanDefinition = getGlobalRepoBeanDefinition(bootstrapViews);
+//						registry.registerBeanDefinition("demoDataRepoBootrapPatch", beanDefinition.getBeanDefinition() );
 					}
 				}
 			}
@@ -123,7 +132,7 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 				Set<String> definitionsSet = resourcesResolver.resolveResourcesFromAMP(wfDefinitionsLocation); 
 				Set<String> labelsSet = resourcesResolver.resolveResourcesFromAMP(wfLabelsLocation); 
 				Set<String> modelsSet = resourcesResolver.resolveResourcesFromAMP(wfModelsLocation);
-				
+
 				if(!definitionsSet.isEmpty()){
 					List<String> models = new ArrayList<String>();
 					List<String> labels = new ArrayList<String>();
@@ -163,8 +172,6 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 				registry.registerBeanDefinition(Constants.GROUPS_BEAN_ID, getGroupsBeanDefinition().getBeanDefinition() );
 			}
 			
-	
-		}
 	}
 
 	private Set<String> extractValidLabels(Set<String> labelsSet) {
@@ -299,9 +306,21 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 		p.setProperty(Constants.LOCATION, fileLocation);
 		p.setProperty(Constants.PATH, path);
 		p.setProperty(Constants.UUIDBINDING, Constants.REPLACE_EXISTING);
-		//		p.setProperty(Constants.MESSAGES, Constants.MESSAGES_BOOTSTRAP_SPACES);
 
 		beanDefinition.addPropertyValue(Constants.BOOTSTRAPVIEW, p);
+		return beanDefinition;
+	}
+	
+	//Does not seem to work...
+	private BeanDefinitionBuilder getGlobalRepoBeanDefinition(List<Properties> bootstrapViews) {
+
+		BeanDefinitionBuilder beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(); 
+		beanDefinition.setParentName("spacesStoreImporter");
+		beanDefinition.setScope(BeanDefinition.SCOPE_SINGLETON);
+
+		
+		beanDefinition.addPropertyValue("useExistingStore", "true");
+		beanDefinition.addPropertyValue(Constants.BOOTSTRAPVIEWS, bootstrapViews);
 		return beanDefinition;
 	}
 
