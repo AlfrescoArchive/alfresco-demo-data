@@ -56,7 +56,10 @@
             <id>alfresco-private-repository</id>
             <url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
         </repository>
-
+       <repository>
+            <id>internal-snapshots</id>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-snapshots</url>
+        </repository>
 
     </repositories>
 
@@ -94,6 +97,7 @@
 	</build>
 
 	<pluginRepositories>
+
 <!-- 		<pluginRepository> -->
 <!--             <id>alfresco-public</id> -->
 <!--             <url>https://artifacts.alfresco.com/nexus/content/groups/public</url> -->

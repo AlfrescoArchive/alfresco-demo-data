@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.alfresco.module.org_alfresco_module_rm.model.RecordsManagementModel;
 import org.alfresco.repo.admin.patch.AbstractPatch;
 import org.alfresco.repo.security.authentication.AuthenticationUtil;
 import org.alfresco.repo.security.authentication.AuthenticationUtil.RunAsWork;
@@ -15,6 +14,7 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchParameters;
 import org.alfresco.service.cmr.search.SearchService;
+import org.alfresco.service.namespace.QName;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationListener;
@@ -26,6 +26,9 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 	private boolean onContextRefreshedEvent=false;
 	private AttributeService attributeService;
 	private static final Serializable[] RM_PATCH_APPLIED = new Serializable[] {"RMPatchApplied"};
+	public static final QName PROP_READERS = QName.createQName("http://www.alfresco.org/model/recordsmanagement/1.0", "readers");
+    public static final QName PROP_WRITERS = QName.createQName("http://www.alfresco.org/model/recordsmanagement/1.0", "writers");
+
 
 	public RMSitePatch()
 	{
@@ -44,7 +47,7 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 
 			ResultSet rs=null;
 			try{
-				logger.info("[DEMO-DATA] Importing Groups");
+				logger.info("[DEMO-DATA] RM Site Patch");
 				SearchParameters sp = new SearchParameters();
 				sp.addStore(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
 				sp.setLanguage(SearchService.LANGUAGE_FTS_ALFRESCO);
@@ -53,17 +56,17 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 				rs = searchService.query(sp);
 
 				for(NodeRef nr : rs.getNodeRefs()){
-					Serializable serPropReaders = nodeService.getProperty(nr, RecordsManagementModel.PROP_READERS);
-					Serializable serPropWriters = nodeService.getProperty(nr, RecordsManagementModel.PROP_WRITERS);
+					Serializable serPropReaders = nodeService.getProperty(nr, PROP_READERS);
+					Serializable serPropWriters = nodeService.getProperty(nr, PROP_WRITERS);
 
 					if(serPropReaders instanceof String){
 						Map<String, Integer> map = getMapFromString(serPropReaders);
-						nodeService.setProperty(nr, RecordsManagementModel.PROP_READERS,(Serializable)map);
+						nodeService.setProperty(nr, PROP_READERS,(Serializable)map);
 					}
 
 					if(serPropWriters instanceof String){
 						Map<String, Integer> map = getMapFromString(serPropWriters);
-						nodeService.setProperty(nr, RecordsManagementModel.PROP_WRITERS,(Serializable)map);
+						nodeService.setProperty(nr, PROP_WRITERS,(Serializable)map);
 					}
 				}
 				attributeService.setAttribute(Boolean.TRUE, RM_PATCH_APPLIED);
