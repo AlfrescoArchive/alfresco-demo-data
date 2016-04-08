@@ -156,7 +156,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 			{
 				authenticationDao = (RepositoryAuthenticationDao)ctx.getBean(RepositoryAuthenticationDao.class);
 			} catch(NoSuchBeanDefinitionException e) {
-				logger.error("No authenticationDao",e);
+				logger.warn("No authenticationDao - Using external authentication?",e);
 
 			}
 		}

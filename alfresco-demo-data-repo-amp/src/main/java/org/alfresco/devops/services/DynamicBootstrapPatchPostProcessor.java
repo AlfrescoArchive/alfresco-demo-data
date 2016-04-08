@@ -168,8 +168,14 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 			}
 
 			if(!authoritiesDisabled){
-				registry.registerBeanDefinition(Constants.USERS_BEAN_ID, getUsersBeanDefinition().getBeanDefinition() );
-				registry.registerBeanDefinition(Constants.GROUPS_BEAN_ID, getGroupsBeanDefinition().getBeanDefinition() );
+				BeanDefinitionBuilder users = getUsersBeanDefinition();
+				BeanDefinitionBuilder groups = getGroupsBeanDefinition();
+				if(users!=null){
+					registry.registerBeanDefinition(Constants.USERS_BEAN_ID, users.getBeanDefinition() );
+				}
+				if(groups!=null){
+					registry.registerBeanDefinition(Constants.GROUPS_BEAN_ID, groups.getBeanDefinition() );
+				}
 			}
 			
 	}
