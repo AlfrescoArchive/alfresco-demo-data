@@ -9,7 +9,7 @@ if not exist %springloadedfile% (
   mvn validate -Psetup
 )
 
-set MAVEN_OPTS=-javaagent:"%springloadedfile%" -noverify -Xms256m -Xmx2G
+set MAVEN_OPTS=-Xms256m -Xmx2G
 
 mvn install -Prun -nsu
 :: mvn install -Prun 

@@ -22,7 +22,6 @@ import org.alfresco.repo.admin.patch.impl.GenericBootstrapPatch;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -63,121 +62,111 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 
 
-			if(!repoDisabled){
-				Set<String> reposFiles = resourcesResolver.resolveResourcesFromAMP(repoLocation);
+		if(!repoDisabled){
+			Set<String> reposFiles = resourcesResolver.resolveResourcesFromAMP(repoLocation);
 
-				if(!reposFiles.isEmpty()){
+			if(!reposFiles.isEmpty()){
 
-					int index = repoLocation.indexOf("*");
-					if(index>0){
-						String location = repoLocation.substring(0, index);
+				int index = repoLocation.indexOf("*");
+				if(index>0){
+					String location = repoLocation.substring(0, index);
 
-//						List<Properties> bootstrapViews = new ArrayList<Properties>();
+					for(String fileLocation:reposFiles){
 
-						for(String fileLocation:reposFiles){
+						String repoPath = fileLocation.substring(location.length());
+						Path p = Paths.get(repoPath);
+						if(p!=null){
+							Path fileNamePath = p.getFileName();
+							if(fileNamePath!=null){
+								String fileName= fileNamePath.toString();
+								String path = repoPath.substring(0,repoPath.length()-fileName.length());
+								if (!path.startsWith("/")){
+									path = "/"+ path;
+								}
+								if (path.endsWith("/")){
+									path = path.substring(0,path.length()-1);
+								}
 
-							String repoPath = fileLocation.substring(location.length());
+								String linearPath = repoPath.replaceAll("[./:-]","_");
+								String beanId = linearPath;
 
-							Path p = Paths.get(repoPath);
-							String fileName = p.getFileName().toString();
-
-							String path = repoPath.substring(0,repoPath.length()-fileName.length());
-							if (!path.startsWith("/")){
-								path = "/"+ path;
+								BeanDefinitionBuilder beanDefinition = getRepoBeanDefinition(path,fileLocation,beanId);
+								registry.registerBeanDefinition(beanId, beanDefinition.getBeanDefinition() );
 							}
-							if (path.endsWith("/")){
-								path = path.substring(0,path.length()-1);
-							}
-
-							String linearPath = repoPath.replaceAll("[./:-]","_");
-							String beanId = linearPath;
-
-							BeanDefinitionBuilder beanDefinition = getRepoBeanDefinition(path,fileLocation,beanId);
-							registry.registerBeanDefinition(beanId, beanDefinition.getBeanDefinition() );
-							
-//							Properties prop = new Properties();
-//							prop.setProperty(Constants.PATH, path);
-//							prop.setProperty(Constants.LOCATION, fileLocation);
-//							
-//							bootstrapViews.add(prop);
-							
-
 						}
-						
-//						BeanDefinitionBuilder beanDefinition = getGlobalRepoBeanDefinition(bootstrapViews);
-//						registry.registerBeanDefinition("demoDataRepoBootrapPatch", beanDefinition.getBeanDefinition() );
 					}
 				}
 			}
+		}
 
 
-			if(!modelsDisabled){
-				Set<String> modelsXml = resourcesResolver.resolveResourcesFromAMP(modelsXmlLocation);
-				Set<String> modelsLabels = resourcesResolver.resolveResourcesFromAMP(modelsLabelsLocation);
+		if(!modelsDisabled){
+			Set<String> modelsXml = resourcesResolver.resolveResourcesFromAMP(modelsXmlLocation);
+			Set<String> modelsLabels = resourcesResolver.resolveResourcesFromAMP(modelsLabelsLocation);
 
-				if(!modelsXml.isEmpty()){
-					List<String> models = new ArrayList<String>();
-					List<String> labels = new ArrayList<String>();
-					models.addAll(modelsXml);
-					Set<String> labelSet = extractValidLabels(modelsLabels);
-					labels.addAll(labelSet);
+			if(!modelsXml.isEmpty()){
+				List<String> models = new ArrayList<String>();
+				List<String> labels = new ArrayList<String>();
+				models.addAll(modelsXml);
+				Set<String> labelSet = extractValidLabels(modelsLabels);
+				labels.addAll(labelSet);
 
 
-					BeanDefinitionBuilder beanDefinition = getModelBeanDefinition(models, labels);
-					registry.registerBeanDefinition("demodata_models_dictionaryBootstrap", beanDefinition.getBeanDefinition() );
+				BeanDefinitionBuilder beanDefinition = getModelBeanDefinition(models, labels);
+				registry.registerBeanDefinition("demodata_models_dictionaryBootstrap", beanDefinition.getBeanDefinition() );
+			}
+		}
+
+		if(!wfDisabled){
+			Set<String> definitionsSet = resourcesResolver.resolveResourcesFromAMP(wfDefinitionsLocation); 
+			Set<String> labelsSet = resourcesResolver.resolveResourcesFromAMP(wfLabelsLocation); 
+			Set<String> modelsSet = resourcesResolver.resolveResourcesFromAMP(wfModelsLocation);
+
+			if(!definitionsSet.isEmpty()){
+				List<String> models = new ArrayList<String>();
+				List<String> labels = new ArrayList<String>();
+				List<String> definitions = new ArrayList<String>();
+
+				models.addAll(modelsSet);
+				definitions.addAll(definitionsSet);
+
+				Set<String> labelSet = extractValidLabels(labelsSet);
+				labels.addAll(labelSet);
+
+				BeanDefinitionBuilder beanDefinition = getWorkflowBeanDefinition(definitions,models, labels);
+				registry.registerBeanDefinition("demodata_wfss_dictionaryBootstrap", beanDefinition.getBeanDefinition() );
+			}
+		}
+
+		if(!sitesDisabled){
+			Set<String> acps = resourcesResolver.resolveResourcesFromAMP(sitesContentLocation);
+			for(String acp:acps){
+				String siteName = getSiteNameFromAcp(acp);
+				if(siteName.equalsIgnoreCase("RM") && rmSiteImportDisabled){
+					continue;
+				}
+				if(!siteName.isEmpty() ){
+					BeanDefinitionBuilder beanDefinition = getSiteBeanDefinition(acp, siteName);
+					registry.registerBeanDefinition(Constants.SITES_BEAN_ID+siteName, beanDefinition.getBeanDefinition() );
 				}
 			}
+		}
 
-			if(!wfDisabled){
-				Set<String> definitionsSet = resourcesResolver.resolveResourcesFromAMP(wfDefinitionsLocation); 
-				Set<String> labelsSet = resourcesResolver.resolveResourcesFromAMP(wfLabelsLocation); 
-				Set<String> modelsSet = resourcesResolver.resolveResourcesFromAMP(wfModelsLocation);
+		if(!rmFixDisabled){
+			registry.registerBeanDefinition(Constants.RM_FIX_BEAN_ID, getRMSiteFixBeanDefinition().getBeanDefinition());
+		}
 
-				if(!definitionsSet.isEmpty()){
-					List<String> models = new ArrayList<String>();
-					List<String> labels = new ArrayList<String>();
-					List<String> definitions = new ArrayList<String>();
-
-					models.addAll(modelsSet);
-					definitions.addAll(definitionsSet);
-
-					Set<String> labelSet = extractValidLabels(labelsSet);
-					labels.addAll(labelSet);
-
-					BeanDefinitionBuilder beanDefinition = getWorkflowBeanDefinition(definitions,models, labels);
-					registry.registerBeanDefinition("demodata_wfss_dictionaryBootstrap", beanDefinition.getBeanDefinition() );
-				}
+		if(!authoritiesDisabled){
+			BeanDefinitionBuilder users = getUsersBeanDefinition();
+			BeanDefinitionBuilder groups = getGroupsBeanDefinition();
+			if(users!=null){
+				registry.registerBeanDefinition(Constants.USERS_BEAN_ID, users.getBeanDefinition() );
 			}
-
-			if(!sitesDisabled){
-				Set<String> acps = resourcesResolver.resolveResourcesFromAMP(sitesContentLocation);
-				for(String acp:acps){
-					String siteName = getSiteNameFromAcp(acp);
-					if(siteName.equalsIgnoreCase("RM") && rmSiteImportDisabled){
-						continue;
-					}
-					if(!siteName.isEmpty() ){
-						BeanDefinitionBuilder beanDefinition = getSiteBeanDefinition(acp, siteName);
-						registry.registerBeanDefinition(Constants.SITES_BEAN_ID+siteName, beanDefinition.getBeanDefinition() );
-					}
-				}
+			if(groups!=null){
+				registry.registerBeanDefinition(Constants.GROUPS_BEAN_ID, groups.getBeanDefinition() );
 			}
+		}
 
-			if(!rmFixDisabled){
-				registry.registerBeanDefinition(Constants.RM_FIX_BEAN_ID, getRMSiteFixBeanDefinition().getBeanDefinition());
-			}
-
-			if(!authoritiesDisabled){
-				BeanDefinitionBuilder users = getUsersBeanDefinition();
-				BeanDefinitionBuilder groups = getGroupsBeanDefinition();
-				if(users!=null){
-					registry.registerBeanDefinition(Constants.USERS_BEAN_ID, users.getBeanDefinition() );
-				}
-				if(groups!=null){
-					registry.registerBeanDefinition(Constants.GROUPS_BEAN_ID, groups.getBeanDefinition() );
-				}
-			}
-			
 	}
 
 	private Set<String> extractValidLabels(Set<String> labelsSet) {
@@ -316,19 +305,7 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 		beanDefinition.addPropertyValue(Constants.BOOTSTRAPVIEW, p);
 		return beanDefinition;
 	}
-	
-	//Does not seem to work...
-	private BeanDefinitionBuilder getGlobalRepoBeanDefinition(List<Properties> bootstrapViews) {
 
-		BeanDefinitionBuilder beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(); 
-		beanDefinition.setParentName("spacesStoreImporter");
-		beanDefinition.setScope(BeanDefinition.SCOPE_SINGLETON);
-
-		
-		beanDefinition.addPropertyValue("useExistingStore", "true");
-		beanDefinition.addPropertyValue(Constants.BOOTSTRAPVIEWS, bootstrapViews);
-		return beanDefinition;
-	}
 
 	private BeanDefinitionBuilder getSiteBeanDefinition(String acp,String siteName) {
 		BeanDefinitionBuilder beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(PostSiteLoadPatch.class); 

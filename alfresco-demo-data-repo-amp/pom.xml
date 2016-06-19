@@ -32,13 +32,13 @@
 		<!-- Uncomment if you are using RM (Records Management) module, brings 
 			in RM related classes -->
 
-		<dependency>
-			<groupId>${alfresco.groupId}</groupId>
-			<artifactId>alfresco-rm-enterprise-repo</artifactId>
-			<version>${alfresco.rm.version}</version>
-			<classifier>classes</classifier>
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>${alfresco.groupId}</groupId> -->
+<!-- 			<artifactId>alfresco-rm-enterprise-repo</artifactId> -->
+<!-- 			<version>${alfresco.rm.version}</version> -->
+<!-- 			<classifier>classes</classifier> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 
 
 		<dependency>

@@ -71,7 +71,8 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 			String[] els = path.split(",");
 			List<NodeRef> nodes = new ArrayList<NodeRef>();
 
-			String exportName="";
+			String exportName="multiple-contents-"+System.currentTimeMillis();
+
 			for(String el:els){
 
 				List<String> pathElements = new ArrayList<String>(Arrays.asList(el.split("/")));
@@ -81,29 +82,24 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 				//Will search just inside Company Home
 				FileInfo fi = fileFolderService.resolveNamePath(repositoryHelper.getCompanyHome(), pathElements);
 
-				exportName = fi.getName();
+				if(els.length==1){
+					exportName = fi.getName().replaceAll("[ .]", "_");
+				}
 				NodeRef nr  = fi.getNodeRef();
 				nodes.add(nr);
 
 				if(logger.isDebugEnabled()){
-					logger.debug("Exporting "+(fi.isFolder() ? "folder " : "node ") +exportName +" ,nodeRef: "+nr);
+					logger.debug("Exporting "+(fi.isFolder() ? "folder " : "node '") +exportName +"' , nodeRef: "+nr);
 				}
 			}
-			
-			if(els.length==1){
-				exportName = exportName.replaceAll("[ .]", "_");
-			}
-			else{
-				exportName="multiple-contents-"+System.currentTimeMillis();
-			}
-			
+
 			logger.debug("Exporting Parameters: crawlSelf="+crawlSelf+" crawlChildNodes="+crawlChildNodes+" crawlContent="+crawlContent+ " crawlAssociations="+crawlAssociations);
 
 			res.setContentType(MimetypeMap.MIMETYPE_ACP);
 			res.setHeader("Content-Disposition","attachment; fileName="+exportName+"." + ACPExportPackageHandler.ACP_EXTENSION);
 
 			NodeRef[] lnodes = nodes.toArray(new NodeRef[nodes.size()]);
-			
+
 			ExporterCrawlerParameters parameters = new ExporterCrawlerParameters();
 			parameters.setExportFrom(new Location(lnodes));
 			parameters.setCrawlChildNodes(crawlChildNodes);
