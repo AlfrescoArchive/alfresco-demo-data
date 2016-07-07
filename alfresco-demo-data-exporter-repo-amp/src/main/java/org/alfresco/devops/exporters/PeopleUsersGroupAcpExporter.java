@@ -14,6 +14,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.alfresco.devops.exporter.util.Constants;
+import org.alfresco.devops.exporter.util.Utils;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.content.MimetypeMap;
@@ -65,6 +66,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private static final String PARAM_EXCLUDE_SITES_GROUPS = "excludeSiteGroups";
 	private static final String PARAM_EXCLUDE_GROUPS = "groupsToExclude";
 	private static final String PARAM_EXCLUDE_USERS = "usersToExclude";
+	private static final String PARAM_PRETTY_JSON = "prettyJson";
 	private static final String ZIP_FILE_NAME = "people-users-groups-export.zip";
 	private static final String PEOPLE_ACP = "People.acp";
 	private static final String USERS_ACP = "Users.acp";
@@ -80,6 +82,7 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 	private List<String> usersToExportList = null;
 	private List<String> groupsToExportList = null;
 	boolean excludeSiteGroups = false;
+	private boolean prettyJson=false;
 
 
 	@Override
@@ -94,6 +97,9 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 
 		String usersToExludeString = req.getParameter(PARAM_EXCLUDE_USERS);
 		String groupsToExludeString = req.getParameter(PARAM_EXCLUDE_GROUPS);
+		String prettyJsonParam = req.getParameter(PARAM_PRETTY_JSON);
+		prettyJson = Utils.isNullOrEmpty(prettyJsonParam) ? false : Boolean.parseBoolean(prettyJsonParam);
+
 
 		initialiseVariables();
 
@@ -330,10 +336,13 @@ public class PeopleUsersGroupAcpExporter extends AbstractWebScript{
 
 		PrintWriter out = new PrintWriter(new OutputStreamWriter(writeTo, Constants.UTF8));
 
-		//String prettyJsonString = prettifyJsonString(rootGroupList.toString());
-
-		out.print(rootGroupList.toString());
-		//out.print(prettyJsonString);
+		if(prettyJson){
+		 String prettyJsonString = prettifyJsonString(rootGroupList.toString());
+			out.print(prettyJsonString);
+		}
+		else{
+			out.print(rootGroupList.toString());
+		}
 
 		out.close();
 	}

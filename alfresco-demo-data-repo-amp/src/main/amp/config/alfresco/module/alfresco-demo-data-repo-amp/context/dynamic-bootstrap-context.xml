@@ -7,30 +7,19 @@
 		<property name="resourcesResolver" ref="resourcesResolver" />
 		<property name="sitesDisabled"><value>false</value></property>
 		<property name="authoritiesDisabled"><value>false</value></property>
-		<property name="rmSiteImportDisabled"><value>true</value></property>
-		<property name="rmFixDisabled"><value>true</value></property>
-		<property name="modelsDisabled"><value>false</value></property>
 		<property name="repoDisabled"><value>false</value></property>
 		<property name="wfDisabled"><value>false</value></property>
 		<property name="updateGroups"><value>false</value></property>
-		
 		<property name="sitesContentLocation" 	value="alfresco/module/${project.artifactId}/bootstrap/dynamic/sites/**/Contents.acp" />
-		
 		<property name="usersLocation" 			value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Users.acp" />
 		<property name="peopleLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/People.acp" />
 		<property name="groupsLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/authorities/Groups.json" />
-		
 		<property name="modelsXmlLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/models/xml/*.xml" />
 		<property name="modelsLabelsLocation" 	value="alfresco/module/${project.artifactId}/bootstrap/dynamic/models/labels/*.properties" />
-		
 		<property name="repoLocation" 			value="alfresco/module/${project.artifactId}/bootstrap/dynamic/repo/**/*.acp" />
-		
 		<property name="wfDefinitionsLocation" 	value="alfresco/module/${project.artifactId}/bootstrap/dynamic/workflows/workflowDefinitions/*.*" />
 		<property name="wfModelsLocation" 		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/workflows/models/*.xml" />
 		<property name="wfLabelsLocation"		value="alfresco/module/${project.artifactId}/bootstrap/dynamic/workflows/labels/*.properties" />
-
-
-
 	</bean>
 	
 	

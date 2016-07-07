@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.alfresco.devops.exporter.util.Utils;
 import org.alfresco.repo.content.MimetypeMap;
 import org.alfresco.repo.exporter.ACPExportPackageHandler;
 import org.alfresco.repo.model.Repository;
@@ -57,14 +58,14 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 		String paramCrawlContent = req.getParameter(PARAM_CRAWL_CONTENT);
 		String paramCrawlAssociations = req.getParameter(PARAM_CRAWL_ASSOCIATIONS);
 
-		boolean crawlSelf = isNullOrEmpty(paramSelf) ? true : Boolean.parseBoolean(paramSelf);
-		boolean crawlChildNodes = isNullOrEmpty(paramChildNodes) ? true : Boolean.parseBoolean(paramChildNodes);
-		boolean crawlContent = isNullOrEmpty(paramCrawlContent) ? true : Boolean.parseBoolean(paramCrawlContent);
-		boolean crawlAssociations = isNullOrEmpty(paramCrawlAssociations) ? true : Boolean.parseBoolean(paramCrawlAssociations);
+		boolean crawlSelf = Utils.isNullOrEmpty(paramSelf) ? true : Boolean.parseBoolean(paramSelf);
+		boolean crawlChildNodes = Utils.isNullOrEmpty(paramChildNodes) ? true : Boolean.parseBoolean(paramChildNodes);
+		boolean crawlContent = Utils.isNullOrEmpty(paramCrawlContent) ? true : Boolean.parseBoolean(paramCrawlContent);
+		boolean crawlAssociations = Utils.isNullOrEmpty(paramCrawlAssociations) ? true : Boolean.parseBoolean(paramCrawlAssociations);
 
 		try
 		{
-			if(isNullOrEmpty(path)){
+			if(Utils.isNullOrEmpty(path)){
 				throw new WebScriptException("No Path Parameter Specified in the URL");
 			}
 
@@ -118,7 +119,7 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 		catch (FileNotFoundException e)
 		{
 			res.setContentType(MimetypeMap.MIMETYPE_TEXT_PLAIN);
-			String text = "Path "+path+" not available \nUse existing path inside Company Home \nexample: path=/Data Dictionary/Scripts";
+			String text = "Path "+path+" not available \nUse existing path inside Company Home \nexamples:\n path=/Data Dictionary/Scripts\npath=/Sites/Scripts";
 			byte[] bytes = text.getBytes();
 			res.getOutputStream().write(bytes);
 		}
@@ -142,12 +143,6 @@ public class FileFolderAcpExporter extends AbstractWebScript{
 
 
 
-	}
-
-
-
-	private boolean isNullOrEmpty(String paramSelf) {
-		return paramSelf == null || paramSelf.trim().isEmpty();
 	}
 
 

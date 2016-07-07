@@ -190,7 +190,7 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 		return "Groups already loaded";
 	}
 
-
+	@SuppressWarnings("unchecked")
 	private void doGroupImport(String location)
 	{
 		logger.info("[DEMO-DATA] Importing Groups");
@@ -347,7 +347,6 @@ public class GroupsImporterPatch extends AbstractPatch implements ApplicationLis
 					};
 					transactionService.getRetryingTransactionHelper().doInTransaction(txnWork, false);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					logger.error("-- Error bootstrapping --",e);
 				}
 				return null;

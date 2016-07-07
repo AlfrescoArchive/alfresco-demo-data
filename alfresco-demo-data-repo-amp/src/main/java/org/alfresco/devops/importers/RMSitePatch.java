@@ -71,16 +71,7 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 				}
 				attributeService.setAttribute(Boolean.TRUE, RM_PATCH_APPLIED);
 
-				//			sp.setQuery("ASPECT:\"rma:unpublishedUpdate\"");
-				//			rs = searchService.query(sp);
-				//
-				//			for(NodeRef nr : rs.getNodeRefs()){
-				//				Serializable serProp = nodeService.getProperty(nr, RecordsManagementModel.PROP_UPDATED_PROPERTIES);
-				//				logger.debug("NodeRef: "+nr+" propertyVal :"+serProp);;
-				//			}
-
 			}
-
 			finally
 			{
 				if (rs != null)
@@ -131,6 +122,7 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 			@Override 
 			public Void doWork() throws Exception
 			{
+				try{
 				RetryingTransactionCallback<String> txnWork = new RetryingTransactionCallback<String>(){
 					public String execute() throws Exception
 					{
@@ -138,6 +130,9 @@ public class RMSitePatch extends AbstractPatch implements ApplicationListener<Co
 					}
 				};
 				transactionService.getRetryingTransactionHelper().doInTransaction(txnWork, false);
+				}catch(Exception ex){
+					logger.error("-- Error applying RM Patch --",ex);
+				}
 				return null;
 			}
 		});

@@ -33,8 +33,7 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 
 	private Boolean sitesDisabled = false;
 	private Boolean authoritiesDisabled = false;
-	private Boolean rmSiteImportDisabled=false;
-	private Boolean rmFixDisabled = false;
+	private Boolean rmFixDisabled = true;
 	private Boolean modelsDisabled = false;
 	private Boolean repoDisabled = false;
 	private Boolean wfDisabled = false;
@@ -50,7 +49,7 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 	private String wfDefinitionsLocation;
 	private String wfModelsLocation;
 	private String wfLabelsLocation;
-
+	
 	private static final String LABEL_PATTERN="_[a-zA-Z]{2}$";
 
 
@@ -61,18 +60,14 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 	@Override
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 
-
 		if(!repoDisabled){
 			Set<String> reposFiles = resourcesResolver.resolveResourcesFromAMP(repoLocation);
 
 			if(!reposFiles.isEmpty()){
-
 				int index = repoLocation.indexOf("*");
 				if(index>0){
 					String location = repoLocation.substring(0, index);
-
 					for(String fileLocation:reposFiles){
-
 						String repoPath = fileLocation.substring(location.length());
 						Path p = Paths.get(repoPath);
 						if(p!=null){
@@ -86,10 +81,8 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 								if (path.endsWith("/")){
 									path = path.substring(0,path.length()-1);
 								}
-
 								String linearPath = repoPath.replaceAll("[./:-]","_");
 								String beanId = linearPath;
-
 								BeanDefinitionBuilder beanDefinition = getRepoBeanDefinition(path,fileLocation,beanId);
 								registry.registerBeanDefinition(beanId, beanDefinition.getBeanDefinition() );
 							}
@@ -142,8 +135,10 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 			Set<String> acps = resourcesResolver.resolveResourcesFromAMP(sitesContentLocation);
 			for(String acp:acps){
 				String siteName = getSiteNameFromAcp(acp);
-				if(siteName.equalsIgnoreCase("RM") && rmSiteImportDisabled){
-					continue;
+				boolean isRM = siteName.equalsIgnoreCase("RM");
+				
+				if(isRM){
+					rmFixDisabled=false;
 				}
 				if(!siteName.isEmpty() ){
 					BeanDefinitionBuilder beanDefinition = getSiteBeanDefinition(acp, siteName);
@@ -360,10 +355,6 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 		this.authoritiesDisabled = authoritiesDisabled;
 	}
 
-	public void setRmFixDisabled(Boolean rmFixDisabled) {
-		this.rmFixDisabled = rmFixDisabled;
-	}
-
 	public void setUsersLocation(String usersLocation) {
 		this.usersLocation = usersLocation;
 	}
@@ -376,9 +367,6 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 		this.groupsLocation = groupsLocation;
 	}
 
-	public void setRmSiteImportDisabled(Boolean rmSiteImportDisabled) {
-		this.rmSiteImportDisabled = rmSiteImportDisabled;
-	}
 
 	public void setModelsXmlLocation(String modelsXmlLocation) {
 		this.modelsXmlLocation = modelsXmlLocation;
@@ -419,6 +407,4 @@ public class DynamicBootstrapPatchPostProcessor implements BeanDefinitionRegistr
 	public void setUpdateGroups(Boolean updateGroups) {
 		this.updateGroups = updateGroups;
 	}
-
-
 }

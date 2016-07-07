@@ -16,8 +16,8 @@
 		<!-- Property overrides are mostly done in parent pom -->
 	</properties>
 
-	<!-- Following dependencies are needed for compiling Java code in src/main/java; 
-		<scope>provided</scope> is inherited for each of the following; for more 
+	<!-- Following dependencies are needed for compiling Java code in src/main/java;
+		<scope>provided</scope> is inherited for each of the following; for more
 		info, please refer to alfresco-platform-distribution POM -->
 	<dependencies>
 		<dependency>
@@ -29,7 +29,7 @@
 			<artifactId>gson</artifactId>
 			<version>2.4</version>
 		</dependency>
-		<!-- Uncomment if you are using RM (Records Management) module, brings 
+		<!-- Uncomment if you are using RM (Records Management) module, brings
 			in RM related classes -->
 		<!--
 		<dependency>
@@ -49,7 +49,7 @@
 
 	<profiles>
 
-		<!-- Brings in the extra Enterprise specific repository classes, if the 
+		<!-- Brings in the extra Enterprise specific repository classes, if the
 			'enterprise' profile has been activated, needs to be activated manually. -->
 		<profile>
 			<id>enterprise</id>

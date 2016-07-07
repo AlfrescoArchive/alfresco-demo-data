@@ -56,6 +56,7 @@ public final class Constants {
 
 	public static final String DEMODATA_REPO_PARENT_BEAN = "patch.import.demodata.repo";
 	
+	
 	private Constants(){
 		throw new AssertionError();
 	}
