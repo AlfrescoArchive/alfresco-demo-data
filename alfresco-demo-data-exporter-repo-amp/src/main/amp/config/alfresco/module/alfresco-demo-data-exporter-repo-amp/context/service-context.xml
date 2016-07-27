@@ -43,16 +43,16 @@
    </bean>
    
    
-    <bean id="exporterComponent" class="org.alfresco.repo.exporter.ExporterComponentCustom">
-        <property name="namespaceService" ref="NamespaceService" />
-        <property name="dictionaryService" ref="DictionaryService" />
-        <property name="nodeService" ref="NodeService" />
-        <property name="searchService" ref="SearchService" />
-        <property name="contentService" ref="ContentService" />
-        <property name="descriptorService" ref="DescriptorService" />
-        <property name="authenticationService" ref="AuthenticationService" />
-        <property name="permissionService" ref="PermissionService" />
-     </bean>
+<!--     <bean id="exporterComponent" class="org.alfresco.repo.exporter.ExporterComponentCustom"> -->
+<!--         <property name="namespaceService" ref="NamespaceService" /> -->
+<!--         <property name="dictionaryService" ref="DictionaryService" /> -->
+<!--         <property name="nodeService" ref="NodeService" /> -->
+<!--         <property name="searchService" ref="SearchService" /> -->
+<!--         <property name="contentService" ref="ContentService" /> -->
+<!--         <property name="descriptorService" ref="DescriptorService" /> -->
+<!--         <property name="authenticationService" ref="AuthenticationService" /> -->
+<!--         <property name="permissionService" ref="PermissionService" /> -->
+<!--      </bean> -->
     
   	<bean id="org.alfresco.devops.demodata.dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
 		<property name="models">

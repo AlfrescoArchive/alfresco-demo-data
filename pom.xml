@@ -35,7 +35,7 @@
 
 
 	<properties>
-		<alfresco.version>5.1</alfresco.version>
+		<alfresco.version>5.1.1</alfresco.version>
 		<alfresco.repo.artifactId>alfresco-enterprise</alfresco.repo.artifactId>
 		<alfresco.share.artifactId>share</alfresco.share.artifactId>
 		<app.slf4j.scope>provided</app.slf4j.scope>
